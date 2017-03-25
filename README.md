@@ -1,0 +1,2 @@
+# conjugator
+Conjugator for languages
