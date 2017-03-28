@@ -96,14 +96,15 @@ describe('Hindi', () => {
       word = ic.conjugate('rukna', {tense: 'Future'});
       expect(word).to.equal('rukne ja unga');
 
-      word = ic.conjugate('padhna', {tense: 'Future'});
-      expect(word).to.equal('padhta hoon');
+      // I'm not sure what tense these are. I'm guessing they're present tense. -Bryan
+      // word = ic.conjugate('padhna', {tense: 'Future'});
+      // expect(word).to.equal('padhta hoon');
 
-      word = ic.conjugate('kam karna', {tense: 'Future'});
-      expect(word).to.equal('kam karta hoon');
+      // word = ic.conjugate('kam karna', {tense: 'Future'});
+      // expect(word).to.equal('kam karta hoon');
 
-      word = ic.conjugate('sona', {tense: 'Future'});
-      expect(word).to.equal('sota hoon');
+      // word = ic.conjugate('sona', {tense: 'Future'});
+      // expect(word).to.equal('sota hoon');
     });
  });
 });

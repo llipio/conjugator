@@ -8,6 +8,8 @@ class Hindi {
         return word.replace(/na$/, 'ta hoon');
       case 'past':
         return word.replace(/na$/, 'ta tha');
+      case 'future':
+        return word.replace(/na$/, 'ne ja unga');
       default:
         return 'Could not find any rules for conjugation';
     }
