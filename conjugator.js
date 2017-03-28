@@ -1,18 +1,16 @@
-llip = {
-  // Returns a cojugator object
-   createConjugator: (lang) => { 
+import { Korean } from './Korean';
+
+ class Llip {
+  // Returns a conjugator object
+  static createConjugator(lang) { 
      switch (lang) {
        case 'korean':
-         return new KoreanConjugator();
+         return new Korean();
          break;
        default:
-         return new KoreanConjugator();
+         return new Korean();
      }
    },
 }
 
-class KoreanConjugator {
-  conjugate ('word', rulesObject) => {  // Example format for rulesObject: { tense: 'present', formal: 'true/false', wordType: 'adjective/verb'}
-   //conjugation logic
-  },
-}
+export { Llip };
