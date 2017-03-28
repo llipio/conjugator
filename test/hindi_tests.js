@@ -27,6 +27,15 @@ describe('Hindi', () => {
       word = ic.conjugate('rukna', {tense: 'present'});
       expect(word).to.equal('rukta hoon');
 
+      word = ic.conjugate('padhna', {tense: 'present'});
+      expect(word).to.equal('padhta hoon');
+
+      word = ic.conjugate('kam karna', {tense: 'present'});
+      expect(word).to.equal('kam karta hoon');
+
+      word = ic.conjugate('sona', {tense: 'present'});
+      expect(word).to.equal('sota hoon');
+
       // I'm not sure what tense the below are, but I'm guessing they aren't present tense. -Bryan
       // word = ic.conjugate('padhna', {tense: 'present'});
       // expect(word).to.equal('padhne un janga');
@@ -61,15 +70,6 @@ describe('Hindi', () => {
 
       word = ic.conjugate('rukna', {tense: 'past'});
       expect(word).to.equal('rukta tha');
-
-      word = ic.conjugate('padhna', {tense: 'present'});
-      expect(word).to.equal('padhta hoon');
-
-      word = ic.conjugate('kam karna', {tense: 'present'});
-      expect(word).to.equal('kam karta hoon');
-
-      word = ic.conjugate('sona', {tense: 'present'});
-      expect(word).to.equal('sota hoon');
     });
   });
 
