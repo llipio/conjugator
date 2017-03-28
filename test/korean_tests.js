@@ -83,5 +83,6 @@ describe('Korean', () => {
 
       presentWord = kc.conjugate('지다', {tense: 'present'});
       expect(presentWord).to.equal('져');
+   });
+ });
 });
-
