@@ -1,10 +1,9 @@
 // reference: http://www.programminginkorean.com/programming/hangul-in-unicode/composing-syllables-in-unicode/
 // input: hangul character
 // output: returns an array of components that make up the given hangul
+// ex: breakdown('린') outputs [5,20,4]
 const breakdown = (input) => {
-  const hex = '\\u'+(input.charCodeAt(0)+0x10000).toString(16).slice(1);
-  const numHex = hex.substring(2);
-  total = parseInt(numHex, 16);
+  let total = parseInt(input.charCodeAt(0).toString(16), 16); 
 
   let letterArray = [];
   total = total - 44032;
@@ -19,4 +18,3 @@ const breakdown = (input) => {
   }
   return letterArray;
 }
-
