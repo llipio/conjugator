@@ -30,6 +30,8 @@ class Korean {
       let newSyllable = brokeWord.slice(0, brokeLength - 1);
       switch(syllableEnd) {
         case 0: 
+        case 1:
+        case 4:
           // if last letter is ㅏ leave alone
           return word.slice(0, wordLength - 1);
         case 8: 
