@@ -1,17 +1,46 @@
 class Hindi {
 
   conjugate (word, info) {
-    // Format for info: { tense: 'present/past', formal: true/false, wordType: 'adjective/verb' }
-    word = word.trim();
-    switch (info.tense.trim().toLowerCase()) {
+    // Format for info:
+    // { tense: 'past/present/future', gender: 'm/f', formal: true/false, wordType: 'adjective/verb' }
+
+    word = word.trim().toLowerCase();
+    const tense = (info.tense || '').trim().toLowerCase();
+    const gender = (info.gender || '').trim().toLowerCase();
+
+    const TENSE_ERROR = `You entered a tense that we don't know about: "${tense}". The tenses that we support are "past", "present", and "future".`;
+    const GENDER_ERROR = `You entered a gender that we don't know about: "${gender}". The genders that we support are "m" and "f".`;
+
+    switch (tense) {
       case 'present':
-        return word.replace(/na$/, 'ta hoon');
+        switch (gender) {
+          case 'm':
+            return word.replace(/na$/, 'ta hun');
+          case 'f':
+            return word.replace(/na$/, 'ti hun');
+          default:
+            throw new Error(GENDER_ERROR);
+        }
       case 'past':
-        return word.replace(/na$/, 'ta tha');
+        switch (gender) {
+          case 'm':
+            return word.replace(/na$/, 'ta tha');
+          case 'f':
+            return word.replace(/na$/, 'ti thi');
+          default:
+            throw new Error(GENDER_ERROR);
+        }
       case 'future':
-        return word.replace(/na$/, 'ne ja unga');
+        switch (gender) {
+          case 'm':
+            return word.replace(/na$/, 'nga');
+          case 'f':
+            return word.replace(/na$/, 'ungi');
+          default:
+            throw new Error(GENDER_ERROR);
+        }
       default:
-        return 'Could not find any rules for conjugation';
+        throw new Error(TENSE_ERROR);
     }
   }
 }
