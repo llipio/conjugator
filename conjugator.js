@@ -1,4 +1,4 @@
-import { Korean } from './Korean';
+import { Korean } from './korean';
 
  class Llip {
   // Returns a conjugator object
