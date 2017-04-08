@@ -4,6 +4,7 @@ const expect = require('chai').expect;
 import { Conjugator } from '../src/conjugator';
 import { Korean } from '../src/korean';
 import { Hindi } from '../src/hindi';
+import { French } from '../src/french';
 
 describe('Conjugator', () => {
   it('should return Korean conjugator when language is Korean', () => {
@@ -19,5 +20,9 @@ describe('Conjugator', () => {
     expect(ic).to.be.an.instanceof(Hindi);
     const ic2 = Conjugator.create('HiNdi');
     expect(ic2).to.be.an.instanceof(Hindi);
+  });
+  it('should return French conjugator when language is french', () => {
+    const fr = Conjugator.create('french');
+    expect(fr).to.be.an.instanceof(French);
   });
 });
