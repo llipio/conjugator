@@ -21,13 +21,21 @@ class Korean {
     if (word[wordLength - 2] === '하') {
         conjugate = word.slice(0, wordLength - 2);
         return conjugate.concat('해');
-    } else {
+    } else if (word[wordLength -2] === '르') {
+      let stem = breakdown(word.slice(0, wordLength - 2));
+      stem.push(8); // ㄹ
+      console.log(stem);
+      let newSyllable = combineSymbols(stem);
+      console.log(newSyllable);
+      return newSyllable.concat('러');
+    }else {
       /** breakdown the word to find out the 2nd to last character's letter **/
       let brokeWord = breakdown(word[wordLength - 2]);
       let brokeLength = brokeWord.length;
       let syllableEnd = brokeWord[brokeLength - 1];
       let stemWord = word.slice(0, wordLength - 2);
       let newSyllable = brokeWord.slice(0, brokeLength - 1);
+
       switch(syllableEnd) {
         case 0: 
         case 1:
@@ -75,10 +83,10 @@ class Korean {
     } // end of first else
   } // end of presentWord function
 
-  doPast(word) {
-    let presentWord = doPresent(word);
-    // stuff for past tense
-  }
+  // doPast(word) {
+  //   let presentWord = doPresent(word);
+  //   // stuff for past tense
+  // }
 } // end for class
 
 
