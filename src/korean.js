@@ -85,11 +85,12 @@ class Korean {
 /** the conjugate returns a conjugate verb, but it should be checked for tense, past tense will take present tense verb and then add something to the the verb, and then add an additional letter after **/
 
 /** Additional Functions **/
-
+// reference: http://www.programminginkorean.com/programming/hangul-in-unicode/composing-syllables-in-unicode/
+// input: hangul character
+// output: returns an array of components that make up the given hangul
+// ex: breakdown('린') outputs [5,20,4]
 const breakdown = (input) => {
-    const hex = '\\u' + (input.charCodeAt(0) + 0x10000).toString(16).slice(1);
-    const numHex = hex.substring(2);
-    let total = parseInt(numHex, 16);
+    let total = parseInt(input.charCodeAt(0).toString(16), 16); 
 
     let letterArray = [];
     total = total - 44032;
@@ -105,6 +106,8 @@ const breakdown = (input) => {
     return letterArray;
 }
 
+// input: array of 2 or 3 numbers representing modern jamo (components) that make up a hangul syllable
+// output: a hangul character
 const combineSymbols = (input) => {
     let initialValue = input[0] * 588;
     let medialValue = input[1] * 28;
