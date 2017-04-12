@@ -6,7 +6,7 @@ import { French } from '../src/french';
 
 describe('French', () => {
   describe('Present Tense', () => {
-    it('should conjugate être present tense correctly', () => {
+    it('should conjugate "être", "avoir", "aller" and verbs ending in "-er" correctly', () => {
       let conjugatedWord;
       const fr = new French();
 
@@ -34,11 +34,11 @@ describe('French', () => {
       conjugatedWord = fr.conjugate('céder', {tense: 'present', formal: false, singular: false, person: '1', gender: 'male'});
       expect(conjugatedWord).to.equal('cédons');
 
-      conjugatedWord = fr.conjugate('jeter', {tense: 'present', formal: false, singular: true, person: '1', gender: 'male'});
-      expect(conjugatedWord).to.equal('jette');
+      conjugatedWord = fr.conjugate('rejeter', {tense: 'present', formal: false, singular: true, person: '1', gender: 'male'});
+      expect(conjugatedWord).to.equal('rejette');
 
-      conjugatedWord = fr.conjugate('jeter', {tense: 'present', formal: false, singular: false, person: '1', gender: 'male'});
-      expect(conjugatedWord).to.equal('jetons');
+      conjugatedWord = fr.conjugate('rejeter', {tense: 'present', formal: false, singular: false, person: '1', gender: 'male'});
+      expect(conjugatedWord).to.equal('rejetons');
 
       conjugatedWord = fr.conjugate('modeler', {tense: 'present', formal: false, singular: true, person: '1', gender: 'male'});
       expect(conjugatedWord).to.equal('modèle');
@@ -47,7 +47,7 @@ describe('French', () => {
       expect(conjugatedWord).to.equal('modelons');
 
       conjugatedWord = fr.conjugate('niveler', {tense: 'present', formal: false, singular: true, person: '1', gender: 'male'});
-      expect(conjugatedWord).to.equal('nivèle / nivelle');
+      expect(conjugatedWord).to.equal('nivelle / nivèle');
 
       conjugatedWord = fr.conjugate('niveler', {tense: 'present', formal: false, singular: false, person: '1', gender: 'male'});
       expect(conjugatedWord).to.equal('nivelons');
@@ -65,22 +65,10 @@ describe('French', () => {
       expect(conjugatedWord).to.equal('payons');
 
       conjugatedWord = fr.conjugate('broyer', {tense: 'present', formal: false, singular: true, person: '1', gender: 'male'});
-      expect(conjugatedWord).to.equal('paie');
+      expect(conjugatedWord).to.equal('broie');
 
       conjugatedWord = fr.conjugate('broyer', {tense: 'present', formal: false, singular: false, person: '1', gender: 'male'});
       expect(conjugatedWord).to.equal('broyons');
-
-    });
-
-    it('should tell verb not in our database yet', () => {
-      let conjugatedWord;
-      const fr = new French();
-
-      conjugatedWord = fr.conjugate('avoir', {tense: 'present', formal: false, singular: true, person: '1'});
-      expect(conjugatedWord).to.equal('Verb not in our database');
-
-      conjugatedWord = fr.conjugate('danser', {tense: 'present', formal: false, singular: true, person: '1'});
-      expect(conjugatedWord).to.equal('Verb not in our database');
     });
   });
 });

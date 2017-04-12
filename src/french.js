@@ -37,13 +37,13 @@ class French {
     if (info.singular === true) {
       if (info.person === '2' && info.formal === true){
         //if the subject ('you') is meant as formal and singular, it is conjugated as plural, but the past participle stays singular
-        return 'p' + info.person;
+        return 'p2';
       }
       return 's' + info.person;
     } else {
       if (info.person === '3' && info.gender === 'unknown'){
         //if the subject is plural and undefined ('on'), is is conjugated as singular, but the past participle stays plural
-        return 's' + info.person;
+        return 's3';
       }
       return 'p' + info.person;
     }
@@ -73,10 +73,9 @@ class French {
     // in some cases there are several stem solutions
     // those cases apply to all tenses
     let combinations = [];
-
-    if (group === group1) {
+    if (group === 'group1') {
       // rules for group1: verbs ending in -er
-      if (ending.charAt(0) === 'a' || ending.charAt(0) === 'O') {
+      if (ending.charAt(0) === 'a' || ending.charAt(0) === 'o') {
         // cases of tense endings: 'a' or 'o'
         if (stem.charAt(stem.length - 1) === 'c') {
           // verbs ending in -cer
@@ -94,21 +93,21 @@ class French {
           if (stem.slice(-2) === 'el' || stem.slice(-2) === 'et') {
             // verbs ending in -eler or -eter
             // special cases of -el and -et that always become -èl and -èt
-            const elExceptions = ['cel', 'décel', 'recel', 'cisel', 'démantel', 'écartel', 'encastel', 'gel', 'dégel', 'congel', 'surgel', 'martel', 'model', 'pel'];
+            const elExceptions = ['cel', 'décel', 'recel', 'cisel', 'démantel', 'écartel', 'encastel', 'gel', 'dégel', 'congel', 'surgel', 'décongel', 'martel', 'model', 'pel', 'remodel'];
             const etExceptions = ['achet', 'rachet', 'béguet', 'corset', 'crochet', 'filet', 'furet', 'halet'];
             // special cases of -el and -et that always become -ell and -ett
             const patternCase1 = /jet$/;
             const patternCase2 = /appel$/;
             const case3 = 'interpel';
 
-            if(elExceptions.indexOf('stem') !== -1 || etExceptions.indexOf('stem') !== -1) {
+            if(elExceptions.indexOf(stem) !== -1 || etExceptions.indexOf(stem) !== -1) {
               return [stem.slice(0, -2) + 'è' + stem.slice(-1) + ending];
             } else if (patternCase1.test(stem) || patternCase2.test(stem) || stem === case3) {
               return [stem + stem.slice(-1) + ending];
             } else {
               //all other cases can have two solutions: (-èl and -èt) or (-ell and -ett)
-              combinations[0] = stem.slice(0, -2) + 'è' + stem.slice(-1) + ending;
-              combinations[1] = stem + stem.slice(-1) + ending;
+              combinations[0] = stem + stem.slice(-1) + ending;
+              combinations[1] = stem.slice(0, -2) + 'è' + stem.slice(-1) + ending;
               return combinations;
             }
           } else if (stem.slice(-3) === 'evr') {
@@ -151,29 +150,6 @@ class French {
   }
 
   doPresent (word, info) {
-    const subject = this.findSubject (info);
-
-    if (word === être || word === avoir || word === aller) {
-      return word[subject];
-    }
-
-    const verbProperties = this.findWordGroup (word);
-    const group = verbProperties[0];
-    const stem = verbProperties[1];
-
-    if (group === 'group1') {
-      //temperory test until other groups implemented
-      const solutions = combineToConjugate(group, stem, tenseEnding[group][subject]);
-      if (solutions.length > 1) {
-        return solutions[0] + ' / ' + solutions[1];
-      } else {
-        return solutions[0];
-      }
-    } else {
-      return 'not yet implemented'
-    }
-
-
     const tenseEnding = {
       group1: {
         s1: 'e',
@@ -192,32 +168,54 @@ class French {
         p3: 'ent'
       }
     };
+    const specialVerbs = {
+      être: {
+        s1: 'suis',
+        s2: 'es',
+        s3: 'est',
+        p1: 'sommes',
+        p2: 'êtes',
+        p3: 'sont'
+      },
+      avoir: {
+        s1: 'ai',
+        s2: 'as',
+        s3: 'a',
+        p1: 'avons',
+        p2: 'avez',
+        p3: 'ont'
+      },
+      aller: {
+        s1: 'vais',
+        s2: 'vas',
+        s3: 'va',
+        p1: 'allons',
+        p2: 'allez',
+        p3: 'vont'
+      }
+    };
 
-    const être = {
-      s1: 'suis',
-      s2: 'es',
-      s3: 'est',
-      p1: 'sommes',
-      p2: 'êtes',
-      p3: 'sont'
+    const subject = this.findSubject (info);
+
+    if (word === 'être' || word === 'avoir' || word === 'aller') {
+      return specialVerbs[word][subject];
     }
 
-    const avoir = {
-      s1: 'ai',
-      s2: 'as',
-      s3: 'a',
-      p1: 'avons',
-      p2: 'avez',
-      p3: 'ont'
-    }
+    const verbProperties = this.findWordGroup (word);
+    const group = verbProperties[0];
+    const stem = verbProperties[1];
 
-    const aller = {
-      s1: 'vais',
-      s2: 'vas',
-      s3: 'va',
-      p1: 'allons',
-      p2: 'allez',
-      p3: 'vont'
+    if (group === 'group1') {
+      //temperory test until other groups implemented
+      const solutions = this.combineToConjugate(group, stem, tenseEnding[group][subject]);
+      if (solutions.length > 1) {
+        return solutions[0] + ' / ' + solutions[1];
+      } else {
+        return solutions[0];
+      }
+    } else {
+      return 'not yet implemented'
     }
   }
 }
+export { French };
