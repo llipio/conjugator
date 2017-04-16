@@ -17,7 +17,7 @@ class Korean {
  doPresent(word) {
     let wordLength = word.length;
     let conjugate = '';
-    // if the ending is 'ha' then convert to 'hey'
+    // if the ending is 'ha' then convert to 'hae'
     if (word[wordLength - 2] === '하') {
         conjugate = word.slice(0, wordLength - 2);
         return conjugate.concat('해');
@@ -119,7 +119,7 @@ const breakdown = (input) => {
 const combineSymbols = (input) => {
     let initialValue = input[0] * 588;
     let medialValue = input[1] * 28;
-    let finalValue = input[3] ? input[3] : 0;
+    let finalValue = input[2] ? input[2] : 0;
     let total = initialValue + medialValue + finalValue + 44032;
     let finalWord = String.fromCharCode(total);
     return finalWord;
