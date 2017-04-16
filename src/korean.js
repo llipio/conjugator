@@ -24,10 +24,16 @@ class Korean {
     } else if (word[wordLength -2] === '르') {
       let stem = breakdown(word.slice(0, wordLength - 2));
       stem.push(8); // ㄹ
-      console.log(stem);
       let newSyllable = combineSymbols(stem);
-      console.log(newSyllable);
-      return newSyllable.concat('러');
+      switch(stem[stem.length-2]) {
+        case 0:
+        case 8:
+          // ㅏ and ㅗ are followed by 라
+          return newSyllable.concat('라');
+        default:
+          // other vowels are followed by 러
+          return newSyllable.concat('러');
+      }
     }else {
       /** breakdown the word to find out the 2nd to last character's letter **/
       let brokeWord = breakdown(word[wordLength - 2]);
