@@ -7,8 +7,8 @@ class Korean {
      case 'present':
        return this.doPresent(word);
        break;
-      // case 'past':
-      //   return this.doPast(word);
+     case 'past':
+       return this.doPast(word);
      default:
      return 'Could not find any rules for conjugation';
    }
@@ -89,10 +89,10 @@ class Korean {
     } // end of first else
   } // end of presentWord function
 
-  // doPast(word) {
-  //   let presentWord = doPresent(word);
-  //   // stuff for past tense
-  // }
+  doPast(word) {
+    let presentWord = doPresent(word);
+    // stuff for past tense
+  }
 } // end for class
 
 
