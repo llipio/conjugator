@@ -73,6 +73,20 @@ describe('French', () => {
       conjugatedWord = fr.conjugate('broyer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
       expect(conjugatedWord).to.equal('broyons');
     });
+
+    it('should conjugate regular verbs ending in "-ir" correctly', () => {
+      let conjugatedWord;
+      const fr = new French();
+
+      conjugatedWord = fr.conjugate('finir', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      expect(conjugatedWord).to.equal('finissons');
+
+      conjugatedWord = fr.conjugate('haïr', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      expect(conjugatedWord).to.equal('hais');
+
+      conjugatedWord = fr.conjugate('agir', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      expect(conjugatedWord).to.equal('agis');
+    });
   });
 
   describe('Infinitif Présent', () => {

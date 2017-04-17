@@ -348,6 +348,10 @@ class French {
       return [stem + ending];
       //end group1
     } else if (group === 'group2') {
+      if (/^[aeio]/.test(ending) && ending.length > 1) {
+        stem += 'ss';
+      }
+      return [stem + ending];
     } else if (/^group3/.test(group)) {
       //TODO define the rules for and group3
     }
@@ -416,6 +420,14 @@ class French {
       } else {
         return solutions[0];
       }
+    } else if (group === 'group2') {
+      if (/ï$/.test(stem) && /^s/.test(subject)) {
+        stem = stem.slice(0,-1) + 'i';
+      }
+      let solutions = this.combineToConjugate(group, stem, tenseEnding['ending2'][subject]);
+      return solutions[0];
+    } else {
+      return 'not yet implemented'
     }
   }
 }
