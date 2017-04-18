@@ -9,8 +9,10 @@ class Korean {
        break;
      case 'past':
        return this.doPast(word);
+       break;
      case 'future':
        return this.doFuture(word);
+       break;
      default:
      return 'Could not find any rules for conjugation';
    }
@@ -96,9 +98,12 @@ class Korean {
     // stuff for past tense
   }
 
-  doFuture(word) {
-    // to do
-    return '';
+  doFuture (word) {
+    let stem = breakdown(word.slice(0,-1));
+    if (stem[-1] !== 8) {
+      stem.push(8);
+    }
+    return combineSymbols(stem) + '꺼야';
   }
 } // end for class
 
