@@ -7,8 +7,8 @@ class Korean {
      case 'present':
        return this.doPresent(word);
        break;
-      // case 'past':
-      //   return this.doPast(word);
+     case 'past':
+       return this.doPast(word);
      default:
      return 'Could not find any rules for conjugation';
    }
@@ -17,17 +17,31 @@ class Korean {
  doPresent(word) {
     let wordLength = word.length;
     let conjugate = '';
-    // if the ending is 'ha' then convert to 'hey'
+    // if the ending is 'ha' then convert to 'hae'
     if (word[wordLength - 2] === '하') {
         conjugate = word.slice(0, wordLength - 2);
         return conjugate.concat('해');
-    } else {
+    } else if (word[wordLength -2] === '르') {
+      let stem = breakdown(word.slice(0, wordLength - 2));
+      stem.push(8); // ㄹ
+      let newSyllable = combineSymbols(stem);
+      switch(stem[stem.length-2]) {
+        case 0:
+        case 8:
+          // ㅏ and ㅗ are followed by 라
+          return newSyllable.concat('라');
+        default:
+          // other vowels are followed by 러
+          return newSyllable.concat('러');
+      }
+    }else {
       /** breakdown the word to find out the 2nd to last character's letter **/
       let brokeWord = breakdown(word[wordLength - 2]);
       let brokeLength = brokeWord.length;
       let syllableEnd = brokeWord[brokeLength - 1];
       let stemWord = word.slice(0, wordLength - 2);
       let newSyllable = brokeWord.slice(0, brokeLength - 1);
+
       switch(syllableEnd) {
         case 0: 
         case 1:
@@ -111,7 +125,7 @@ const breakdown = (input) => {
 const combineSymbols = (input) => {
     let initialValue = input[0] * 588;
     let medialValue = input[1] * 28;
-    let finalValue = input[3] ? input[3] : 0;
+    let finalValue = input[2] ? input[2] : 0;
     let total = initialValue + medialValue + finalValue + 44032;
     let finalWord = String.fromCharCode(total);
     return finalWord;
