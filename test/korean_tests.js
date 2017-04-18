@@ -109,24 +109,24 @@ describe('Korean', () => {
  describe('Future Tense', () => {
    it('should conjugate regular verbs correctly', () => {
      const kc = new Korean();
-     let presentWord = kc.conjugate('하다', {tense: 'present'});
+     let presentWord = kc.conjugate('하다', {tense: 'future'});
      expect(presentWord).to.equal('할꺼야');
 
-     presentWord = kc.conjugate('오다', {tense: 'present'});
+     presentWord = kc.conjugate('오다', {tense: 'future'});
      expect(presentWord).to.equal('올꺼야');
 
-     presentWord = kc.conjugate('비다', {tense: 'present'});
+     presentWord = kc.conjugate('비다', {tense: 'future'});
      expect(presentWord).to.equal('빌꺼야');
    });
    it('should conjugate words with ㄹ final vowel correctly', () => {
      const kc = new Korean();
-     let presentWord = kc.conjugate('놀다', {tense: 'present'});
+     let presentWord = kc.conjugate('놀다', {tense: 'future'});
      expect(presentWord).to.equal('놀꺼야');
 
-     presentWord = kc.conjugate('날다', {tense: 'present'});
+     presentWord = kc.conjugate('날다', {tense: 'future'});
      expect(presentWord).to.equal('날꺼야');
 
-     presentWord = kc.conjugate('울다', {tense: 'present'});
+     presentWord = kc.conjugate('울다', {tense: 'future'});
      expect(presentWord).to.equal('울꺼야');
    });
  });
