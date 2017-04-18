@@ -9,19 +9,19 @@ describe('Korean', () => {
       const kc = new Korean();
       let presentWord = kc.conjugate('하다', {tense: 'present'});
       expect(presentWord).to.equal('해');
-      
+
       presentWord = kc.conjugate('좋아하다', {tense: 'present'});
       expect(presentWord).to.equal('좋아해');
-      
+
       presentWord = kc.conjugate('필요하다', {tense: 'present'});
       expect(presentWord).to.equal('필요해');
-      
+
       presentWord = kc.conjugate('약속하다', {tense: 'present'});
       expect(presentWord).to.equal('약속해');
-      
+
       presentWord = kc.conjugate('걱정하다', {tense: 'present'});
       expect(presentWord).to.equal('걱정해');
-      
+
       presentWord = kc.conjugate('그만하다', {tense: 'present'});
       expect(presentWord).to.equal('그만해');
     });
@@ -98,12 +98,36 @@ describe('Korean', () => {
       const kc = new Korean();
       let presentWord = kc.conjugate('모르다', {tense: 'present'});
       expect(presentWord).to.equal('몰라');
-      
+
       presentWord = kc.conjugate('부르다', {tense: 'present'});
       expect(presentWord).to.equal('불러');
 
       presentWord = kc.conjugate('서두르다', {tense: 'present'});
       presentWord = kc.conjugate('서둘러', {tense: 'present'});
     });
+ });
+ describe('Future Tense', () => {
+   it('should conjugate regular verbs correctly', () => {
+     const kc = new Korean();
+     let presentWord = kc.conjugate('하다', {tense: 'future'});
+     expect(presentWord).to.equal('할꺼야');
+
+     presentWord = kc.conjugate('오다', {tense: 'future'});
+     expect(presentWord).to.equal('올꺼야');
+
+     presentWord = kc.conjugate('비다', {tense: 'future'});
+     expect(presentWord).to.equal('빌꺼야');
+   });
+   it('should conjugate words with ㄹ final vowel correctly', () => {
+     const kc = new Korean();
+     let presentWord = kc.conjugate('놀다', {tense: 'future'});
+     expect(presentWord).to.equal('놀꺼야');
+
+     presentWord = kc.conjugate('날다', {tense: 'future'});
+     expect(presentWord).to.equal('날꺼야');
+
+     presentWord = kc.conjugate('울다', {tense: 'future'});
+     expect(presentWord).to.equal('울꺼야');
+   });
  });
 });

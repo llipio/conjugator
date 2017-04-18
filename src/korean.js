@@ -9,6 +9,8 @@ class Korean {
        break;
      case 'past':
        return this.doPast(word);
+     case 'future':
+       return this.doFuture(word);
      default:
      return 'Could not find any rules for conjugation';
    }
@@ -34,7 +36,7 @@ class Korean {
           // other vowels are followed by 러
           return newSyllable.concat('러');
       }
-    }else {
+    } else {
       /** breakdown the word to find out the 2nd to last character's letter **/
       let brokeWord = breakdown(word[wordLength - 2]);
       let brokeLength = brokeWord.length;
@@ -43,12 +45,12 @@ class Korean {
       let newSyllable = brokeWord.slice(0, brokeLength - 1);
 
       switch(syllableEnd) {
-        case 0: 
+        case 0:
         case 1:
         case 4:
           // if last letter is ㅏ leave alone
           return word.slice(0, wordLength - 1);
-        case 8: 
+        case 8:
           // replace with: ㅘ (9)
             // concat back to word
             newSyllable.push(9);
@@ -93,6 +95,11 @@ class Korean {
     let presentWord = doPresent(word);
     // stuff for past tense
   }
+
+  doFuture(word) {
+    // to do
+    return '';
+  }
 } // end for class
 
 
@@ -104,7 +111,7 @@ class Korean {
 // output: returns an array of components that make up the given hangul
 // ex: breakdown('린') outputs [5,20,4]
 const breakdown = (input) => {
-    let total = parseInt(input.charCodeAt(0).toString(16), 16); 
+    let total = parseInt(input.charCodeAt(0).toString(16), 16);
 
     let letterArray = [];
     total = total - 44032;
