@@ -29,19 +29,12 @@ class French {
         switch (info.tense) {
           case 'Présent':
             return this.doIndicatifPresent(word, info);
-            break;
           case 'Passé Composé':
-            break;
           case 'Imparfait':
-            break;
           case 'Plus-que-parfait':
-            break;
           case 'Passé Simple':
-            break;
           case 'Passé Antérieur':
-            break;
           case 'Futur Simple':
-            break;
           case 'Futur Antérieur':
             break;
           default:
@@ -52,7 +45,6 @@ class French {
         switch (info.tense) {
           case 'Présent':
            return word;
-           break;
           case 'Passé':
             break;
           default:
@@ -62,43 +54,33 @@ class French {
       case 'Participe':
         switch (info.tense) {
           case 'Présent':
-           break;
           case 'Passé':
             break;
           default:
             return 'Participe Tense not found';
         }
-        break;
       case 'Subjonctif':
         switch (info.tense) {
           case 'Présent':
-            break;
           case 'Passé':
-            break;
           case 'Imparfait':
-            break;
           case 'Plus-que-parfait':
             break;
           default:
             return 'Subjonctif Tense not found';
         }
-        break;
       case 'Impératif':
         switch (info.tense) {
           case 'Présent':
-            break;
           case 'Passé':
             break;
           default:
             return 'Impératif Tense not found';
         }
-        break;
       case 'Conditionnel':
         switch (info.tense) {
           case 'Présent':
-            break;
           case 'Passé 1':
-            break;
           case 'Passé 2':
             break;
           default:
@@ -110,24 +92,24 @@ class French {
     }
   }
 
-  findSubject (info) {
+  getSubject (info) {
     // returns the subject for conjugation: 's1'/'s2'/'s3'/'p1'/'p2'/'p3'
-    if (info.singular === true) {
+    if (info.singular) {
       if (info.person === '2' && info.formal === true){
         //if the subject ('you') is meant as formal and singular, it is conjugated as plural, but the past participle stays singular
         return 'p2';
       }
-      return 's' + info.person;
+      return `s${info.person}`;
     } else {
       if (info.person === '3' && info.gender === 'unknown'){
         //if the subject is plural and undefined ('on'), is is conjugated as singular, but the past participle stays plural
         return 's3';
       }
-      return 'p' + info.person;
+      return `p${info.person}`;
     }
   }
 
-  findWordGroup (word) {
+  getWordGroup (word) {
     // returns group1/group2/group3 depending on ending of the infinif form of the verb
     // group1: all verbs ending in -er except the verb 'aller'
     // group2: all verbs ending in -ir except the irregular verbs ending in -ir
@@ -403,26 +385,26 @@ class French {
       }
     };
 
-    const subject = this.findSubject (info);
+    const subject = this.getSubject (info);
 
     if (word === 'être' || word === 'avoir' || word === 'aller') {
       return specialVerbs[word][subject];
     }
 
-    const verbProperties = this.findWordGroup (word);
+    const verbProperties = this.getWordGroup (word);
     const group = verbProperties[0];
     let stem = verbProperties[1];
 
     if (group === 'group1') {
       let solutions = this.combineToConjugate(group, stem, tenseEnding['ending1'][subject]);
       if (solutions.length > 1) {
-        return solutions[0] + ' / ' + solutions[1];
+        return `${solutions[0]} / ${solutions[1]}`;
       } else {
         return solutions[0];
       }
     } else if (group === 'group2') {
       if (/ï$/.test(stem) && /^s/.test(subject)) {
-        stem = stem.slice(0,-1) + 'i';
+        stem = stem.slice(0, -1) + 'i';
       }
       let solutions = this.combineToConjugate(group, stem, tenseEnding['ending2'][subject]);
       return solutions[0];

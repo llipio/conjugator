@@ -72,6 +72,9 @@ describe('French', () => {
 
       conjugatedWord = fr.conjugate('broyer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
       expect(conjugatedWord).to.equal('broyons');
+
+      conjugatedWord = fr.conjugate('sevrer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      expect(conjugatedWord).to.equal('sèvre');
     });
 
     it('should conjugate regular verbs ending in "-ir" correctly', () => {
