@@ -13,6 +13,9 @@ class Korean {
      case 'future':
        return this.doFuture(word);
        break;
+     case 'PresentContinuous':
+       return this.doPresentContinuous(word);
+       break;
      default:
      return 'Could not find any rules for conjugation';
    }
@@ -92,6 +95,13 @@ class Korean {
       }
     } // end of first else
   } // end of presentWord function
+
+  doPresentContinuous(word) {
+    let wordLength = word.length
+    let conjugate = word.split("").slice(0, wordLength-1)
+    conjugate.push('고','있','어')
+    return conjugate = conjugate.join("")
+  }
 
   doPast(word) {
     let presentWord = doPresent(word);
