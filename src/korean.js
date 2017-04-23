@@ -97,10 +97,9 @@ class Korean {
   } // end of presentWord function
 
   doPresentContinuous(word) {
-    let wordLength = word.length
-    let conjugate = word.split("").slice(0, wordLength-1)
-    conjugate.push('고','있','어')
-    return conjugate = conjugate.join("")
+    let wordLength = word.length;
+    let conjugate = word.substring(0, wordLength-1);
+    return `${conjugate}고있어`;
   }
 
   doPast(word) {
