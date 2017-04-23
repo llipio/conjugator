@@ -4,8 +4,8 @@
 
 const recomposition = (arr) => {
   let unicodeTotal = (arr[0] * 588) + (arr[1] * 28) + 44032;
-  if(arr.length === 3) {
+  if (arr.length === 3) {
     unicodeTotal += arr[2];
   }
   return unicodeTotal;
-}
+};
