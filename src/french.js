@@ -428,4 +428,4 @@ class French {
     return 'not yet implemented';
   }
 }
-export default { French };
+export { French };

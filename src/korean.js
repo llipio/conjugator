@@ -136,4 +136,4 @@ class Korean {
   }
 } // end for class
 
-export default { Korean };
+export { Korean };

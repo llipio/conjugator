@@ -9,6 +9,7 @@ module.exports = {
     "space-before-function-paren": [2, "always"],
     "class-methods-use-this": 0,
     "no-param-reassign": 0,
-    "max-len": 0
+    "max-len": 0,
+    "import/prefer-default-export": 0
   }
 };

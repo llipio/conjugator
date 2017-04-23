@@ -45,4 +45,4 @@ class Hindi {
   }
 }
 
-export default { Hindi };
+export { Hindi };

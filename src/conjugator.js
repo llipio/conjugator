@@ -17,4 +17,4 @@ const Conjugator = {
   }
 };
 
-export default { Conjugator };
+export { Conjugator };
