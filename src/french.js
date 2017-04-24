@@ -48,26 +48,24 @@ class French {
           case 'Passé Antérieur':
           case 'Futur Simple':
           case 'Futur Antérieur':
-            return 'not implemented yet'
+            return 'not implemented yet';
           default:
             return 'Indicatif Tense not found';
         }
-        break;
       case 'Infinitif':
         switch (info.tense) {
           case 'Présent':
             return word;
           case 'Passé':
-            return 'not implemented yet'
+            return 'not implemented yet';
           default:
             return 'Infinitif Tense not found';
         }
-        break;
       case 'Participe':
         switch (info.tense) {
           case 'Présent':
           case 'Passé':
-            return 'not implemented yet'
+            return 'not implemented yet';
           default:
             return 'Participe Tense not found';
         }
@@ -77,7 +75,7 @@ class French {
           case 'Passé':
           case 'Imparfait':
           case 'Plus-que-parfait':
-            return 'not implemented yet'
+            return 'not implemented yet';
           default:
             return 'Subjonctif Tense not found';
         }
@@ -85,7 +83,7 @@ class French {
         switch (info.tense) {
           case 'Présent':
           case 'Passé':
-            return 'not implemented yet'
+            return 'not implemented yet';
           default:
             return 'Impératif Tense not found';
         }
@@ -94,7 +92,7 @@ class French {
           case 'Présent':
           case 'Passé 1':
           case 'Passé 2':
-            return 'not implemented yet'
+            return 'not implemented yet';
           default:
             return 'Conditionnel Tense not found';
         }
@@ -107,19 +105,18 @@ class French {
     // returns the subject for conjugation: 's1'/'s2'/'s3'/'p1'/'p2'/'p3'
     if (info.singular) {
       if (info.person === '2' && info.formal === true) {
-        /*if the subject ('you') is meant as formal and singular,
-        it is conjugated as plural, but the past participle stays singular*/
+        /* if the subject ('you') is meant as formal and singular,
+        it is conjugated as plural, but the past participle stays singular */
         return 'p2';
       }
       return `s${info.person}`;
-    } else {
-      if (info.person === '3' && info.gender === 'unknown') {
-        /*if the subject is plural and undefined ('on'),
-         is is conjugated as singular, but the past participle stays plural*/
-        return 's3';
-      }
-      return `p${info.person}`;
     }
+    if (info.person === '3' && info.gender === 'unknown') {
+      /* if the subject is plural and undefined ('on'),
+       is is conjugated as singular, but the past participle stays plural */
+      return 's3';
+    }
+    return `p${info.person}`;
   }
 
   getWordGroup (word) {
@@ -128,8 +125,8 @@ class French {
       group1: all verbs ending in -er except the verb 'aller'
       group2: all verbs ending in -ir except the irregular verbs ending in -ir
       group3: irregular verbs ending in -ir, -re, -oir*/
-      let stem = word.slice(0, -2);
-      let ending = word.slice(-2);
+    const ending = word.slice(-2);
+    let stem = word.slice(0, -2);
 
     if (ending === 'er') {
       return ['group1', stem];
@@ -143,7 +140,7 @@ class French {
         return ['group3-3', stem];
       } else if (/vêtir$/.test(word)) {
         return ['group3-4', stem];
-      } else if (/ouvrir$/.test(word) || /(?:o|sou)ffrir$/.test(word)){
+      } else if (/ouvrir$/.test(word) || /(?:o|sou)ffrir$/.test(word)) {
         return ['group3-5', stem];
       } else if (/cueillir$/.test(word)) {
         return ['group3-6', stem];
@@ -165,10 +162,9 @@ class French {
         return ['group3-14', stem];
       } else if (word === 'gésir') {
         return ['group3-15', stem];
-      } else {
-        stem += ending.charAt(0);
-        return ['group2', stem]
       }
+      stem += ending.charAt(0);
+      return ['group2', stem];
     } else if (ending === 'ir' && stem.slice(-1) === 'o') {
       if (/cevoir$/.test(word)) {
         return ['group3-16', stem];
@@ -271,7 +267,7 @@ class French {
       affect each other in some specific cases
       in some cases there are several stem solutions
       those cases apply to all tenses*/
-    let combinations = [];
+    const combinations = [];
     if (group === 'group1') {
       // rules for group1: verbs ending in -er
       if (ending.charAt(0) === 'a' || ending.charAt(0) === 'o') {
@@ -294,51 +290,48 @@ class French {
             // verbs ending in -eler or -eter
             // special cases of -el and -et that always become -èl and -èt
             const elExceptions = ['cel', 'décel', 'recel', 'cisel', 'démantel',
-                                  'écartel', 'encastel', 'gel', 'dégel',
-                                  'congel', 'surgel', 'décongel', 'martel',
-                                  'model', 'pel', 'remodel'];
+              'écartel', 'encastel', 'gel', 'dégel',
+              'congel', 'surgel', 'décongel', 'martel',
+              'model', 'pel', 'remodel'];
             const etExceptions = ['achet', 'rachet', 'béguet', 'corset',
-                                  'crochet', 'filet', 'furet', 'halet'];
+              'crochet', 'filet', 'furet', 'halet'];
             // special cases of -el and -et that always become -ell and -ett
             const patternCase1 = /jet$/;
             const patternCase2 = /appel$/;
             const case3 = 'interpel';
 
-            if(elExceptions.indexOf(stem) !== -1 || etExceptions.indexOf(stem) !== -1) {
+            if (elExceptions.indexOf(stem) !== -1 || etExceptions.indexOf(stem) !== -1) {
               return [`${stem.slice(0, -2)}è${stem.slice(-1) + ending}`];
             } else if (patternCase1.test(stem) || patternCase2.test(stem) || stem === case3) {
               return [`${stem + stem.slice(-1) + ending}`];
-              //return [stem + stem.slice(-1) + ending];
-            } else {
-              /*all other cases can have two solutions:
-               (-èl and -èt) or (-ell and -ett)*/
-              combinations[0] = `${stem + stem.slice(-1) + ending}`;
-              combinations[1] = `${stem.slice(0, -2)}è${stem.slice(-1) + ending}`;
-              return combinations;
+              // return [stem + stem.slice(-1) + ending];
             }
+            /* all other cases can have two solutions:
+             (-èl and -èt) or (-ell and -ett) */
+            combinations[0] = `${stem + stem.slice(-1) + ending}`;
+            combinations[1] = `${stem.slice(0, -2)}è${stem.slice(-1) + ending}`;
+            return combinations;
           } else if (stem.slice(-3) === 'evr') {
             // verbs ending in -evrer
             return [`${stem.slice(0, -3)}èvr${ending}`];
-          } else {
-            /* verbs ending in -e(.)er where (.) is either
-               'c', 'm', 'n', 'p', 'r', 's', 'v'*/
-            return [`${stem.slice(0, -2)}è${stem.slice(-1) + ending}`];
           }
+          /* verbs ending in -e(.)er where (.) is either
+             'c', 'm', 'n', 'p', 'r', 's', 'v'*/
+          return [`${stem.slice(0, -2)}è${stem.slice(-1) + ending}`];
         }
 
         if (/[aou]y/.test(stem.slice(-2))) {
-          //verbs ending in -ayer, -oyer or -uyer
+          // verbs ending in -ayer, -oyer or -uyer
           if (/envoy/.test(stem) && ending.charAt(1) === 'r') {
             /* exceptions: verbs with '-envoy-' in the stem,
-              like envoyer, renvoyer,...*/
+              like envoyer, renvoyer,... */
             return [`${stem.slice(0, -2)}er${ending.slice(2)}`];
-          } else {
-            combinations[0] = `${stem.slice(0,-1)}i${ending}`;
-            if (stem.charAt(stem.length - 2) === 'a') {
-              combinations[1] = `${stem + ending}`;
-            }
-            return combinations;
           }
+          combinations[0] = `${stem.slice(0, -1)}i${ending}`;
+          if (stem.charAt(stem.length - 2) === 'a') {
+            combinations[1] = `${stem + ending}`;
+          }
+          return combinations;
         }
 
         if (ending.charAt(1) !== 'r') {
@@ -346,20 +339,20 @@ class French {
           // verbs ending in -é(.)er
           if (stem.substr(-2, 1) === 'é') {
             return [`${stem.slice(0, -2)}è${stem.slice(-1) + ending}`];
-          } else if (stem.substr(-3, 1) === 'é'){
+          } else if (stem.substr(-3, 1) === 'é') {
             return [`${stem.slice(0, -3)}è${stem.slice(-2) + ending}`];
           }
         }
       }
       return [stem + ending];
-      //end group1
+      // end group1
     } else if (group === 'group2') {
       if (/^[aeio]/.test(ending) && ending.length > 1) {
         stem += 'ss';
       }
       return [stem + ending];
     } else if (/^group3/.test(group)) {
-      //TODO define the rules for and group3
+      // TODO define the rules for and group3
     }
   }
 
@@ -409,32 +402,30 @@ class French {
       }
     };
 
-    const subject = this.getSubject (info);
+    const subject = this.getSubject(info);
 
     if (word === 'être' || word === 'avoir' || word === 'aller') {
       return specialVerbs[word][subject];
     }
 
-    const verbProperties = this.getWordGroup (word);
+    const verbProperties = this.getWordGroup(word);
     const group = verbProperties[0];
     let stem = verbProperties[1];
 
     if (group === 'group1') {
-      let solutions = this.combineToConjugate(group, stem, tenseEnding['ending1'][subject]);
+      const solutions = this.combineToConjugate(group, stem, tenseEnding.ending1[subject]);
       if (solutions.length > 1) {
         return `${solutions[0]} / ${solutions[1]}`;
-      } else {
-        return solutions[0];
       }
+      return solutions[0];
     } else if (group === 'group2') {
       if (/ï$/.test(stem) && /^s/.test(subject)) {
         stem = `${stem.slice(0, -1)}i`;
       }
-      let solutions = this.combineToConjugate(group, stem, tenseEnding['ending2'][subject]);
+      const solutions = this.combineToConjugate(group, stem, tenseEnding.ending2[subject]);
       return solutions[0];
-    } else {
-      return 'not yet implemented'
     }
+    return 'not yet implemented';
   }
 }
 export { French };
