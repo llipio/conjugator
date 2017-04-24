@@ -123,7 +123,7 @@ class Korean {
   } // end of presentWord function
 
   doPast (word) {
-    console.log(word);
+    console.info(word);
     // stuff for past tense
   }
 
