@@ -19,3 +19,8 @@ let conjugatedWord = koreanConjugator.conjugate(‘하다’, {
 `npm run test`
 
 [Full API Documentation](https://github.com/llipio/conjugator/wiki)
+
+# Before commit a pull request (Must)
+```sh
+$ npm run eslint
+```
