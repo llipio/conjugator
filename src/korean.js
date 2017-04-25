@@ -25,11 +25,11 @@ const breakdown = (input) => {
 // input: array of 2 or 3 numbers representing modern jamo (components) that make up a hangul syllable
 // output: a hangul character
 const combineSymbols = (input) => {
-  const initialValue = input[0] * 588;
-  const medialValue = input[1] * 28;
-  const finalValue = input[2] ? input[2] : 0;
-  const total = initialValue + medialValue + finalValue + 44032;
-  const finalWord = String.fromCharCode(total);
+  let unicodeTotal = (input[0] * 588) + (input[1] * 28) + 44032;
+  if(input.length === 3) {
+    unicodeTotal += input[2];
+  }
+  const finalWord = String.fromCharCode(unicodeTotal);
   return finalWord;
 };
 
