@@ -24,8 +24,3 @@ $ npm run test:watch  # live re-run test for any change
 ```
 
 [Full API Documentation](https://github.com/llipio/conjugator/wiki)
-
-# Before commit a pull request (Must)
-```sh
-$ npm run eslint
-```
