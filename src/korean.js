@@ -29,8 +29,7 @@ const combineSymbols = (input) => {
   if(input.length === 3) {
     unicodeTotal += input[2];
   }
-  const finalWord = String.fromCharCode(unicodeTotal);
-  return finalWord;
+  return String.fromCharCode(unicodeTotal);
 };
 
 class Korean {
@@ -131,15 +130,15 @@ class Korean {
     const stem = breakdown(word.slice(0, -1));
     if (stem.length < 3) {
       stem.push(8);
-      return `${combineSymbols(stem)}꺼야`;
+      return `${combineSymbols(stem)} 꺼야`;
     } else {
       if (stem[stem.length-1] === 17) {
         stem.pop();
-        return `${combineSymbols(stem)}울꺼야`;
+        return `${combineSymbols(stem)}울 꺼야`;
       } else if (stem[stem.length-1] === 8) {
-        return `${combineSymbols(stem)}꺼야`;
+        return `${combineSymbols(stem)} 꺼야`;
       }
-      return `${combineSymbols(stem)}을꺼야`;
+      return `${combineSymbols(stem)}을 꺼야`;
     }
   }
 } // end for class

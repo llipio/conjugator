@@ -110,43 +110,43 @@ describe('Korean', () => {
    it('should conjugate verbs with stem ending with a vowel correctly', () => {
      const kc = new Korean();
      let futureWord = kc.conjugate('하다', {tense: 'future'});
-     expect(futureWord).to.equal('할꺼야');
+     expect(futureWord).to.equal('할 꺼야');
 
      futureWord = kc.conjugate('오다', {tense: 'future'});
-     expect(futureWord).to.equal('올꺼야');
+     expect(futureWord).to.equal('올 꺼야');
 
      futureWord = kc.conjugate('비다', {tense: 'future'});
-     expect(futureWord).to.equal('빌꺼야');
+     expect(futureWord).to.equal('빌 꺼야');
    });
    it('should conjugate verbs with stem ending with a ㄹ consonant correctly',
    () => {
      const kc = new Korean();
      let futureWord = kc.conjugate('놀다', {tense: 'future'});
-     expect(futureWord).to.equal('놀꺼야');
+     expect(futureWord).to.equal('놀 꺼야');
 
      futureWord = kc.conjugate('날다', {tense: 'future'});
-     expect(futureWord).to.equal('날꺼야');
+     expect(futureWord).to.equal('날 꺼야');
 
      futureWord = kc.conjugate('울다', {tense: 'future'});
-     expect(futureWord).to.equal('울꺼야');
+     expect(futureWord).to.equal('울 꺼야');
    });
    it('should conjugate verbs with stem ending with ㅂ consonant correctly',
    () => {
      const kc = new Korean();
      let futureWord = kc.conjugate('춥다', {tense: 'future'});
-     expect(futureWord).to.equal('추울꺼야');
+     expect(futureWord).to.equal('추울 꺼야');
 
      futureWord = kc.conjugate('덥다', {tense: 'future'});
-     expect(futureWord).to.equal('더울꺼야');
+     expect(futureWord).to.equal('더울 꺼야');
    });
    it('should conjugate verbs with stem ending with other consonants correctly',
    () => {
      const kc = new Korean();
      let futureWord = kc.conjugate('있다', {tense: 'future'});
-     expect(futureWord).to.equal('있을꺼야');
+     expect(futureWord).to.equal('있을 꺼야');
 
      futureWord = kc.conjugate('먹다', {tense: 'future'});
-     expect(futureWord).to.equal('먹을꺼야');
+     expect(futureWord).to.equal('먹을 꺼야');
    });
 
  });
