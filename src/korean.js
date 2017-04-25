@@ -130,15 +130,15 @@ class Korean {
     const stem = breakdown(word.slice(0, -1));
     if (stem.length < 3) {
       stem.push(8);
-      return `${combineSymbols(stem)} 꺼야`;
+      return `${combineSymbols(stem)} 거야`;
     } else {
       if (stem[stem.length-1] === 17) {
         stem.pop();
-        return `${combineSymbols(stem)}울 꺼야`;
+        return `${combineSymbols(stem)}울 거야`;
       } else if (stem[stem.length-1] === 8) {
-        return `${combineSymbols(stem)} 꺼야`;
+        return `${combineSymbols(stem)} 거야`;
       }
-      return `${combineSymbols(stem)}을 꺼야`;
+      return `${combineSymbols(stem)}을 거야`;
     }
   }
 } // end for class
