@@ -36,26 +36,22 @@ const combineSymbols = (input) => {
 class Korean {
 
   conjugate (word, info) {
-    // Format for rulesObject: { tense: 'present', formal: 'true/false', wordType: 'adjective/verb'}
-    // TODO: test if word is verb, return to avoid switch
+  // Format for rulesObject: { tense: 'present', formal: 'true/false', wordType: 'adjective/verb'}
+  // TODO: test if word is verb, return to avoid switch
 
-   switch (info.tense) {
-     case 'present':
-       return this.doPresent(word);
-       break;
-     case 'past':
-       return this.doPast(word);
-       break;
-     case 'future':
-       return this.doFuture(word);
-       break;
-     case 'PresentContinuous':
-       return this.doPresentContinuous(word);
-       break;
-     default:
-     return 'Could not find any rules for conjugation';
-   }
- }
+    switch (info.tense) {
+      case 'present':
+        return this.doPresent(word);
+      case 'past':
+        return this.doPast(word);
+      case 'future':
+        return this.doFuture(word);
+      case 'PresentContinuous':
+        return this.doPresentContinuous(word);
+      default:
+        return 'Could not find any rules for conjugation';
+    }
+  }
 
   doPresent (word) {
     const wordLength = word.length;
@@ -129,14 +125,12 @@ class Korean {
     } // end of first else
   } // end of presentWord function
 
-  doPresentContinuous(word) {
-    let wordLength = word.length;
-    let conjugate = word.substring(0, wordLength-1);
-    return `${conjugate}고있어`;
+  doPresentContinuous (word) {
+    return `${word.substring(0, word.length - 1)}고있어`;
   }
 
-  doPast(word) {
-    let presentWord = doPresent(word);
+  doPast (word) {
+    console.info(word);
     // stuff for past tense
   }
 
