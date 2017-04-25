@@ -38,17 +38,24 @@ class Korean {
   conjugate (word, info) {
     // Format for rulesObject: { tense: 'present', formal: 'true/false', wordType: 'adjective/verb'}
     // TODO: test if word is verb, return to avoid switch
-    switch (info.tense) {
-      case 'present':
-        return this.doPresent(word);
-      case 'past':
-        return this.doPast(word);
-      case 'future':
-        return this.doFuture(word);
-      default:
-        return 'Could not find any rules for conjugation';
-    }
-  }
+
+   switch (info.tense) {
+     case 'present':
+       return this.doPresent(word);
+       break;
+     case 'past':
+       return this.doPast(word);
+       break;
+     case 'future':
+       return this.doFuture(word);
+       break;
+     case 'PresentContinuous':
+       return this.doPresentContinuous(word);
+       break;
+     default:
+     return 'Could not find any rules for conjugation';
+   }
+ }
 
   doPresent (word) {
     const wordLength = word.length;
@@ -122,8 +129,14 @@ class Korean {
     } // end of first else
   } // end of presentWord function
 
-  doPast (word) {
-    console.info(word);
+  doPresentContinuous(word) {
+    let wordLength = word.length;
+    let conjugate = word.substring(0, wordLength-1);
+    return `${conjugate}고있어`;
+  }
+
+  doPast(word) {
+    let presentWord = doPresent(word);
     // stuff for past tense
   }
 
