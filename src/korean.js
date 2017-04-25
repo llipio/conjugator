@@ -1,4 +1,6 @@
-/** the conjugate returns a conjugate verb, but it should be checked for tense, past tense will take present tense verb and then add something to the the verb, and then add an additional letter after **/
+/** the conjugate returns a conjugate verb, but it should be checked for tense,
+ past tense will take present tense verb and then add something to the the verb,
+ and then add an additional letter after **/
 
 /** Additional Functions **/
 // reference: http://www.programminginkorean.com/programming/hangul-in-unicode/composing-syllables-in-unicode/
