@@ -25,11 +25,11 @@ const breakdown = (input) => {
 // input: array of 2 or 3 numbers representing modern jamo (components) that make up a hangul syllable
 // output: a hangul character
 const combineSymbols = (input) => {
-  const initialValue = input[0] * 588;
-  const medialValue = input[1] * 28;
-  const finalValue = input[2] ? input[2] : 0;
-  const total = initialValue + medialValue + finalValue + 44032;
-  const finalWord = String.fromCharCode(total);
+  let unicodeTotal = (input[0] * 588) + (input[1] * 28) + 44032;
+  if(input.length === 3) {
+    unicodeTotal += input[2];
+  }
+  const finalWord = String.fromCharCode(unicodeTotal);
   return finalWord;
 };
 
@@ -129,10 +129,18 @@ class Korean {
 
   doFuture (word) {
     const stem = breakdown(word.slice(0, -1));
-    if (stem[-1] !== 8) {
+    if (stem.length < 3) {
       stem.push(8);
+      return `${combineSymbols(stem)}꺼야`;
+    } else {
+      if (stem[stem.length-1] === 17) {
+        stem.pop();
+        return `${combineSymbols(stem)}울꺼야`;
+      } else if (stem[stem.length-1] === 8) {
+        return `${combineSymbols(stem)}꺼야`;
+      }
+      return `${combineSymbols(stem)}을꺼야`;
     }
-    return `${combineSymbols(stem)}꺼야`;
   }
 } // end for class
 
