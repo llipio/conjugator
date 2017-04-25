@@ -131,7 +131,7 @@ describe('Korean', () => {
    });
  });
  describe('Present Continuous Tense', () => {
-   it('should conjugate verbs correctly', () => {
+   it.skip('should conjugate verbs correctly', () => {
      const kc = new Korean();
      let presentWord = kc.conjugate('하다', {tense: 'PresentContinuous'});
      expect(presentWord).to.equal('하고있어');
