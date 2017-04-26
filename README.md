@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/llipio/conjugator.svg?branch=master)](https://travis-ci.org/llipio/conjugator)
+
 # conjugator
 Conjugator for languages, currently supporting Korean and Hindi. Quickly look up a verb and its usage!
 
@@ -16,6 +18,9 @@ let conjugatedWord = koreanConjugator.conjugate(‘하다’, {
 ```
 
 # Tests
-`npm run test`
+```sh
+$ npm run test        # run single time
+$ npm run test:watch  # live re-run test for any change
+```
 
 [Full API Documentation](https://github.com/llipio/conjugator/wiki)

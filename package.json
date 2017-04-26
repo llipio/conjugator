@@ -7,8 +7,11 @@
     "test": "test"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register -w",
-    "start": "babel src/conjugator.js -o build/app.js -w"
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register",
+    "test:watch": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register -w",
+    "start": "babel src/conjugator.js -o build/app.js -w",
+    "eslint": "./node_modules/.bin/eslint src --ext .js",
+    "eslint:watch": "./node_modules/.bin/esw src -w --color --ext .js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +34,10 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-es2016": "^6.22.0",
     "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-watch": "^3.1.0",
     "mocha": "^3.2.0"
   }
 }
