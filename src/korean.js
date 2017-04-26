@@ -104,7 +104,7 @@ class Korean {
 
   doPast(word) {
     let presentWord = doPresent(word);
-    // stuff for past tense
+    return presentWord.concat('ㅆ어')
   }
 
   doFuture (word) {
