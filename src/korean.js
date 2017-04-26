@@ -26,7 +26,7 @@ const breakdown = (input) => {
 // output: a hangul character
 const combineSymbols = (input) => {
   let unicodeTotal = (input[0] * 588) + (input[1] * 28) + 44032;
-  if(input.length === 3) {
+  if (input.length === 3) {
     unicodeTotal += input[2];
   }
   return String.fromCharCode(unicodeTotal);
@@ -138,15 +138,14 @@ class Korean {
     if (stem.length < 3) {
       stem.push(8);
       return `${combineSymbols(stem)} 거야`;
-    } else {
-      if (stem[stem.length-1] === 17) {
-        stem.pop();
-        return `${combineSymbols(stem)}울 거야`;
-      } else if (stem[stem.length-1] === 8) {
-        return `${combineSymbols(stem)} 거야`;
-      }
-      return `${combineSymbols(stem)}을 거야`;
     }
+    if (stem[stem.length - 1] === 17) {
+      stem.pop();
+      return `${combineSymbols(stem)}울 거야`;
+    } else if (stem[stem.length - 1] === 8) {
+      return `${combineSymbols(stem)} 거야`;
+    }
+    return `${combineSymbols(stem)}을 거야`;
   }
 } // end for class
 
