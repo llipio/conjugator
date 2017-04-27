@@ -106,6 +106,41 @@ describe('Korean', () => {
       presentWord = kc.conjugate('서둘러', {tense: 'present'});
     });
  });
+// Enable when past tense conjugator for Korean is ready
+/* describe('Past Tense', () => {
+   it('should conjugate verbs with stem ending with a vowel correctly', () => {
+     const kc = new Korean();
+     let pastWord = kc.conjugate('하다', {tense: 'past'});
+     expect(pastWord).to.equal('했어');
+
+     pastWord = kc.conjugate('오다', {tense: 'past'});
+     expect(pastWord).to.equal('왔어');
+
+     pastWord = kc.conjugate('비다', {tense: 'past'});
+     expect(pastWord).to.equal('비었어');
+
+     pastWord = kc.conjugate('놀다', {tense: 'past'});
+     expect(pastWord).to.equal('놀았어');
+
+     pastWord = kc.conjugate('날다', {tense: 'past'});
+     expect(pastWord).to.equal('날았어');
+
+     pastWord = kc.conjugate('울다', {tense: 'past'});
+     expect(pastWord).to.equal('울었어');
+
+     pastWord = kc.conjugate('춥다', {tense: 'past'});
+     expect(pastWord).to.equal('추웠어');
+
+     pastWord = kc.conjugate('덥다', {tense: 'past'});
+     expect(pastWord).to.equal('더웠어');
+
+     pastWord = kc.conjugate('있다', {tense: 'past'});
+     expect(pastWord).to.equal('있었어');
+
+     pastWord = kc.conjugate('먹다', {tense: 'past'});
+     expect(pastWord).to.equal('먹었어');
+   });
+ });*/
  describe('Future Tense', () => {
    it('should conjugate verbs with stem ending with a vowel correctly', () => {
      const kc = new Korean();
@@ -148,7 +183,6 @@ describe('Korean', () => {
      futureWord = kc.conjugate('먹다', {tense: 'future'});
      expect(futureWord).to.equal('먹을 거야');
    });
-
  });
  describe('Present Continuous Tense', () => {
    it('should conjugate verbs correctly', () => {
