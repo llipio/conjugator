@@ -86,6 +86,11 @@ class Korean {
         case 4:
           // if last letter is ㅏ leave alone
           return word.slice(0, wordLength - 1);
+        case 7:
+          // replace with: ㄹ (9)
+          newSyllable.push(8);
+          newSyllable = combineSymbols(newSyllable);
+          return (stemWord + newSyllable).concat('어');
         case 8:
           // replace with: ㅘ (9)
           // concat back to word
