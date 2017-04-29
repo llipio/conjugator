@@ -92,8 +92,6 @@ describe('Korean', () => {
       presentWord = kc.conjugate('서다', {tense: 'present'});
       expect(presentWord).to.equal('서');
     });
-
-    // Will fail until Issue #12 is resolved.
     it('should conjugate ㅗ르 and ㅜ르 words correctly', () => {
       const kc = new Korean();
       let presentWord = kc.conjugate('모르다', {tense: 'present'});
@@ -105,7 +103,28 @@ describe('Korean', () => {
       presentWord = kc.conjugate('서두르다', {tense: 'present'});
       presentWord = kc.conjugate('서둘러', {tense: 'present'});
     });
- });
+    // irregular issue #47
+/*    it('should conjugate ㅏㄷ,ㄴㅈ,ㅅ/ㅗㄷ,ㄴㅈ,ㅅ words correctly', () => {
+      const kc = new Korean();
+      let presentWord = kc.conjugate('앉다', {tense: 'present'});
+      expect(presentWord).to.equal('앉아');
+
+      presentWord = kc.conjugate('닫다', {tense: 'present'});
+      expect(presentWord).to.equal('닫아');
+
+      presentWord = kc.conjugate('솟다', {tense: 'present'});
+      presentWord = kc.conjugate('솟아', {tense: 'present'});
+    });*/
+    // irregular issue #48
+/*    it('should conjugate ㅓㄷ/ㅡㄷ words correctly', () => {
+      const kc = new Korean();
+      let presentWord = kc.conjugate('걷다', {tense: 'present'});
+      expect(presentWord).to.equal('걸어');
+
+      presentWord = kc.conjugate('듣다', {tense: 'present'});
+      expect(presentWord).to.equal('들어');
+    });*/
+   });
  describe('Future Tense', () => {
    it('should conjugate verbs with stem ending with a vowel correctly', () => {
      const kc = new Korean();
