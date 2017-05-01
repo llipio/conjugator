@@ -128,9 +128,9 @@ class Korean {
     return `${word.substring(0, word.length - 1)}고있어`;
   }
 
-  doPast (word) {
-    console.info(word);
-    // stuff for past tense
+  doPast(word) {
+    let presentWord = doPresent(word);
+    return presentWord.concat('ㅆ어')
   }
 
   doFuture (word) {
