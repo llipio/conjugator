@@ -104,7 +104,7 @@ describe('Korean', () => {
       presentWord = kc.conjugate('서둘러', {tense: 'present'});
     });
     // irregular issue #47
-/*    it('should conjugate ㅏㄷ,ㄴㅈ,ㅅ/ㅗㄷ,ㄴㅈ,ㅅ words correctly', () => {
+   it('should conjugate ㅏㄷ,ㄴㅈ,ㅅ/ㅗㄷ,ㄴㅈ,ㅅ words correctly', () => {
       const kc = new Korean();
       let presentWord = kc.conjugate('앉다', {tense: 'present'});
       expect(presentWord).to.equal('앉아');
@@ -114,7 +114,7 @@ describe('Korean', () => {
 
       presentWord = kc.conjugate('솟다', {tense: 'present'});
       presentWord = kc.conjugate('솟아', {tense: 'present'});
-    });*/
+    });
     // irregular issue #48
    it('should conjugate ㅓㄷ/ㅡㄷ words correctly', () => {
       const kc = new Korean();
