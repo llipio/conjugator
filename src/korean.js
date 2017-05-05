@@ -32,7 +32,16 @@ const combineSymbols = (input) => {
   return String.fromCharCode(unicodeTotal);
 };
 
+const info = {
+  tense: ['present', 'past', 'future', 'PresentContinuous'],
+  formal: [true, false],
+  wordType: ['adjective', 'verb']
+};
 class Korean {
+
+  getInfoList () {
+    return info;
+  }
 
   conjugate (word, info) {
   // Format for rulesObject: { tense: 'present', formal: 'true/false', wordType: 'adjective/verb'}

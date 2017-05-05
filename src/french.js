@@ -1,3 +1,19 @@
+const info = {
+  tense: {
+    Indicatif: ['Présent', 'Passé Composé', 'Imparfait', 'Plus-que-parfait',
+     'Passé Simple', 'Passé Antérieur','Futur Simple', 'Futur Antérieur'],
+    Subjonctif: ['Présent', 'Passé', 'Imparfait', 'Plus-que-parfait'],
+    Impératif: ['Présent', 'Passé'],
+    Conditionnel: ['Présent', 'Passé 1', 'Passé 2'],
+    Infinitif: ['Présent', 'Passé'],
+    Participe: ['Présent', 'Passé']
+  },
+  gender: ['female', 'male', 'unknown'],
+  singular: [true, false],
+  person: ['1', '2', '3'],
+  formal: [true, false]
+};
+
 class French {
   /*
       word: verb in infinitif form -> can be divided in a stem and an ending
@@ -35,6 +51,10 @@ class French {
           ! 'on' and objects 'can' also have a gender !
       }
   */
+  getInfoList() {
+    return info;
+  }
+
   conjugate (word, info) {
     switch (info.mood) {
       case 'Indicatif':
