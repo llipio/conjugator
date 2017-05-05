@@ -1,7 +1,7 @@
-const info = {
+const allInfo = {
   tense: {
     Indicatif: ['Présent', 'Passé Composé', 'Imparfait', 'Plus-que-parfait',
-     'Passé Simple', 'Passé Antérieur','Futur Simple', 'Futur Antérieur'],
+      'Passé Simple', 'Passé Antérieur', 'Futur Simple', 'Futur Antérieur'],
     Subjonctif: ['Présent', 'Passé', 'Imparfait', 'Plus-que-parfait'],
     Impératif: ['Présent', 'Passé'],
     Conditionnel: ['Présent', 'Passé 1', 'Passé 2'],
@@ -51,8 +51,8 @@ class French {
           ! 'on' and objects 'can' also have a gender !
       }
   */
-  getInfoList() {
-    return info;
+  getInfoList () {
+    return allInfo;
   }
 
   conjugate (word, info) {

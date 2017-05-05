@@ -1,13 +1,13 @@
-const info = {
+const allInfo = {
   tense: ['present', 'past', 'future'],
-  gender: ['m','f'],
+  gender: ['m', 'f'],
   formal: [true, false],
   wordType: ['adjective', 'verb']
 };
 
 class Hindi {
   getInfoList () {
-    return info;
+    return allInfo;
   }
 
   conjugate (word, info) {

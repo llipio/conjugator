@@ -32,7 +32,7 @@ const combineSymbols = (input) => {
   return String.fromCharCode(unicodeTotal);
 };
 
-const info = {
+const allInfo = {
   tense: ['present', 'past', 'future', 'PresentContinuous'],
   formal: [true, false],
   wordType: ['adjective', 'verb']
@@ -40,7 +40,7 @@ const info = {
 class Korean {
 
   getInfoList () {
-    return info;
+    return allInfo;
   }
 
   conjugate (word, info) {
