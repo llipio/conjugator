@@ -69,9 +69,17 @@ class Korean {
       conjugate = word.slice(0, wordLength - 2);
       return conjugate.concat('해');
     } else if (word[wordLength - 2] === '르') {
-      const stem = breakdown(word.slice(0, wordLength - 2));
+      const sliced = word.slice(0, wordLength - 2);
+      let stem = [];
+      // when the stem word is longer than one letter
+      if (sliced.length > 1) {
+        conjugate = sliced.slice(0, sliced.length - 1);
+        stem = breakdown(sliced.charAt(sliced.length - 1));
+      } else {
+        stem = breakdown(word.slice(0, wordLength - 2));
+      }
       stem.push(8); // ㄹ
-      const newSyllable = combineSymbols(stem);
+      const newSyllable = `${conjugate}${combineSymbols(stem)}`;
       switch (stem[stem.length - 2]) {
         case 0:
         case 8:
@@ -81,6 +89,8 @@ class Korean {
           // other vowels are followed by 러
           return newSyllable.concat('러');
       }
+    } else if (word[wordLength - 2] === '있') {
+      return `${word.slice(0, wordLength - 1)}어`;
     } else {
       /** breakdown the word to find out the 2nd to last character's letter **/
       const brokeWord = breakdown(word[wordLength - 2]);
@@ -91,21 +101,39 @@ class Korean {
 
       switch (syllableEnd) {
         case 0:
-        case 1:
         case 4:
           // if last letter is ㅏ leave alone
           return word.slice(0, wordLength - 1);
+        case 1:
+        case 8:
+          if (syllableEnd === 1 && brokeWord.length < 3) {
+            // if last letter is simply ㅏ leave alone
+            return word.slice(0, wordLength - 1);
+          } else if (brokeWord.length > 2) {
+            // ㅗㄹ, ㅏㄹ, ㅜㄹ, ㅓㄹ, ㅗㄱ, ㅏㄱ, ㅜㄱ, ㅓㄱ
+            switch (brokeWord[brokeLength - 2]) {
+              case 0:
+              case 8:
+                return `${word.slice(0, wordLength - 1)}아`;
+              case 4:
+              case 13:
+                return `${word.slice(0, wordLength - 1)}어`;
+              default:
+                break;
+            }
+          } else {
+            // replace with: ㅘ (9)
+            // concat back to word
+            newSyllable.push(9);
+            newSyllable = combineSymbols(newSyllable);
+            return stemWord + newSyllable;
+          }
+          break;
         case 7:
           // replace with: ㄹ (9)
           newSyllable.push(8);
           newSyllable = combineSymbols(newSyllable);
           return (stemWord + newSyllable).concat('어');
-        case 8:
-          // replace with: ㅘ (9)
-          // concat back to word
-          newSyllable.push(9);
-          newSyllable = combineSymbols(newSyllable);
-          return stemWord + newSyllable;
         case 18:
           // vowel ㅡ replace with ㅓ (4)
           newSyllable.push(4);
@@ -143,8 +171,17 @@ class Korean {
   }
 
   doPast (word) {
-    console.info(word);
-    // stuff for past tense
+    const presentTense = this.doPresent(word);
+    let origin = '';
+    let brokenWord = '';
+    if (presentTense.length > 1) {
+      origin = presentTense.slice(0, presentTense.length - 1);
+      brokenWord = breakdown(presentTense.charAt(presentTense.length - 1));
+    } else {
+      brokenWord = breakdown(presentTense);
+    }
+    brokenWord.push(20);
+    return `${origin}${combineSymbols(brokenWord)}어`;
   }
 
   doFuture (word) {
