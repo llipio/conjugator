@@ -32,7 +32,16 @@ const combineSymbols = (input) => {
   return String.fromCharCode(unicodeTotal);
 };
 
+const allInfo = {
+  tense: ['present', 'past', 'future', 'PresentContinuous'],
+  formal: [true, false],
+  wordType: ['adjective', 'verb']
+};
 class Korean {
+
+  getInfoList () {
+    return allInfo;
+  }
 
   conjugate (word, info) {
   // Format for rulesObject: { tense: 'present', formal: 'true/false', wordType: 'adjective/verb'}
@@ -120,6 +129,11 @@ class Korean {
             return stemWord + newSyllable;
           }
           break;
+        case 7:
+          // replace with: ㄹ (9)
+          newSyllable.push(8);
+          newSyllable = combineSymbols(newSyllable);
+          return (stemWord + newSyllable).concat('어');
         case 18:
           // vowel ㅡ replace with ㅓ (4)
           newSyllable.push(4);
