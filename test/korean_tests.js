@@ -116,14 +116,14 @@ describe('Korean', () => {
       presentWord = kc.conjugate('솟아', {tense: 'present'});
     });*/
     // irregular issue #48
-/*    it('should conjugate ㅓㄷ/ㅡㄷ words correctly', () => {
+   it('should conjugate ㅓㄷ/ㅡㄷ words correctly', () => {
       const kc = new Korean();
       let presentWord = kc.conjugate('걷다', {tense: 'present'});
       expect(presentWord).to.equal('걸어');
 
       presentWord = kc.conjugate('듣다', {tense: 'present'});
       expect(presentWord).to.equal('들어');
-    });*/
+    });
    });
  describe('Future Tense', () => {
    it('should conjugate verbs with stem ending with a vowel correctly', () => {
