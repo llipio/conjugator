@@ -1,16 +1,9 @@
 import { connect } from 'react-redux';
 
-const generateHomeContainer = connect((state) => {
+const generateHomeContainer = connect(() => {
   return {
-    name: state.appState.name
-  }
-}, (dispatch) => {
-  return {
-    changeName: () => {
-      dispatch({
-        type: 'NAME_CHANGE'
-      });
-    }
+    word: 'speak',
+    selectedLanguage: 'Hindi'
   };
 });
 

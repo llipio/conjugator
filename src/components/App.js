@@ -6,8 +6,7 @@ const App = ({word, preferredLanguage, option}) => {
     <div className="App">
       <div>
         <form>
-          <input type="text" name="word" placeholder="Please input word"/>
-          {word}
+          <input type="text" name="word" placeholder="Please input word" value={word}/>
         </form>
       </div>
 
