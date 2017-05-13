@@ -5,6 +5,7 @@ import { Conjugator } from '../src/conjugator';
 import { Korean } from '../src/korean';
 import { Hindi } from '../src/hindi';
 import { French } from '../src/french';
+import { Portugues } from '../src/portuguese';
 
 describe('Conjugator', () => {
   it('should return Korean conjugator when language is Korean', () => {

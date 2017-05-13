@@ -1,0 +1,6 @@
+
+class Portuguese {
+
+}
+
+export {Portuguese};
