@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import '../style/App.css';
 
-const App = ({word, preferredLanguage, option}) => {
+const App = ({word, selectedLanguage, changeLanguage, submit, changeWord}) => {
+  const dropdownLanguageList = [];
+  const languageList = ['Korean', 'French', 'Hindi'];
+  languageList.forEach((e) => {
+    dropdownLanguageList.push(<option selected={selectedLanguage === e} onChange={() => {
+      changeLanguage(e);
+    }}>{e}</option>);  
+  });
+
   return (
     <div className="App">
       <div>
         <form>
-          <input type="text" name="word" placeholder="Please input word"/>
-          {word}
-        </form>
-      </div>
+          <input type="text" name="word" placeholder="Please input word" value={word} onChange={(e) => {
+            changeWord(e.target.value);
+          }}/>
+      </form>
+    </div>
 
-      <div className="dropdown">
-        <button className="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Languages
-            <span className="caret"></span></button>
-            <ul className="dropdown-menu">
-              <li><a href="#">Korean</a></li>
-              <li><a href="#">French</a></li>
-              <li><a href="#">Hindi</a></li>
-            </ul>
-      </div>
+    <select className="bootstrap-select">{dropdownLanguageList}</select>
 
     <div>
-      <button type="button" className="btn btn-primary">Submit</button>
-    </div>
+      <button type="button" className="btn btn-primary" onChange={() => {
+        submit();
+      }}>Submit</button>
   </div>
+    </div>
   );
 }
-
-
 
 export default App;
