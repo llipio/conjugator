@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import '../style/App.css';
 
 const App = ({word, selectedLanguage, changeLanguage, submit, changeWord}) => {
+  const dropdownLanguageList = [];
+  const languageList = ['Korean', 'French', 'Hindi'];
+  languageList.forEach((e) => {
+    dropdownLanguageList.push(<option selected={selectedLanguage === e} onChange={() => {
+      changeLanguage(e);
+    }}>{e}</option>);  
+  });
+
   return (
     <div className="App">
       <div>
@@ -12,27 +20,15 @@ const App = ({word, selectedLanguage, changeLanguage, submit, changeWord}) => {
       </form>
     </div>
 
-    <select className="bootstrap-select">
-      <option selected={selectedLanguage === 'Korean'} onChange={() => {
-        changeLanguage('Korean'); 
-      }}>Korean</option>
-    <option selected={selectedLanguage === 'French'} onChange={() => {
-      changeLanguage('French');
-    }}>French</option>
-  <option selected={selectedLanguage === 'Hindi'} onChange={() => {
-    changeLanguage('Hindi');
-  }}>Hindi</option>
-    </select>
+    <select className="bootstrap-select">{dropdownLanguageList}</select>
 
     <div>
       <button type="button" className="btn btn-primary" onChange={() => {
         submit();
       }}>Submit</button>
   </div>
-</div>
-);
+    </div>
+  );
 }
-
-
 
 export default App;
