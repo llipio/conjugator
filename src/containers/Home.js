@@ -7,14 +7,14 @@ const generateHomeContainer = connect(() => {
   };
 }, (dispatch) => {
   return {
-    changeLanguage: () => {
-      dispatch({ type: 'CHANGE_LANGUAGE' });
+    changeLanguage: (language) => {
+      dispatch({ type: 'CHANGE_LANGUAGE', language });
     },
     submit: () => {
       dispatch({ type: 'SUBMIT' });
     },
-    changeWord: () => {
-      dispatch({ type: 'CHANGE_WORD' });
+    changeWord: (word) => {
+      dispatch({ type: 'CHANGE_WORD', word });
     }
   };
 });
