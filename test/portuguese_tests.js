@@ -66,6 +66,57 @@ describe('Portuguese', () => {
             
           })
         })
+        describe("Verbs ending in -er", () => {
+          describe("Singular", () => {
+            var info = null;
+            const pt = new Portuguese();    
+            var verbs = ["meter", "abater", "absolver", "absorver"];
+            beforeEach(()=> {
+              info = {mood: 'Indicativo', tense: 'Presente', formal: false, singular: true, gender: 'unkown'};
+            });
+            
+            it('should conjugate in the 1st person', () => {
+              info.person = '1';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["meto", "abato", "absolvo", "absorvo"]);
+            });
+            it('should conjugate in the 2nd person', () => {
+              info.person = '2';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["metes", "abates", "absolves", "absorves"]);
+            });
+            it('should conjugate in the 3nd person', () => {
+              info.person = '3';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["mete", "abate", "absolve", "absorve"]);
+            });
+          })
+          
+          describe("Plural", () => {
+            var info = null;
+            const pt = new Portuguese();    
+            var verbs = ["meter", "abater", "absolver", "absorver"];
+            beforeEach(()=> {
+              info = {mood: 'Indicativo', tense: 'Presente', formal: false, singular: false, gender: 'unkown'};
+            });
+            it('should conjugate in the 1st person', () => {
+              info.person = '1';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["metemos", "abatemos", "absolvemos", "absorvemos"]);
+            });
+            it('should conjugate in the 2nd person', () => {
+              info.person = '2';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["meteis", "abateis", "absolveis", "absorveis"]);
+            });
+            it('should conjugate in the 3nd person', () => {
+              info.person = '3';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["metem", "abatem", "absolvem", "absorvem"]);
+            });
+          })
+          
+        })
       })
       
     });
