@@ -5,7 +5,7 @@ import { Conjugator } from '../src/conjugator';
 import { Korean } from '../src/korean';
 import { Hindi } from '../src/hindi';
 import { French } from '../src/french';
-import { Portugues } from '../src/portuguese';
+import { Portuguese } from '../src/portuguese';
 
 describe('Conjugator', () => {
   it('should return Korean conjugator when language is Korean', () => {
@@ -25,5 +25,9 @@ describe('Conjugator', () => {
   it('should return French conjugator when language is french', () => {
     const fr = Conjugator.create('french');
     expect(fr).to.be.an.instanceof(French);
+  });
+  it('should return Portuguese conjugator when language is portuguese', () => {
+    const pt = Conjugator.create('portuguese');
+    expect(pt).to.be.an.instanceof(Portuguese);
   });
 });

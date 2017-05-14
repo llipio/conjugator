@@ -1,4 +1,74 @@
 //Reference URL for Chai http://chaijs.com/api/bdd/
 
-const expect = require('chai').expect;
+const expect = require('expect');
 import { Portuguese } from '../src/portuguese';
+
+describe('Portuguese', () => {
+  
+  describe('Regular Verbs', () => {
+    
+    describe("Mood: 'Indicativo'", () => {
+      describe("Tense: 'Presente'", () => {
+        describe("Verbs ending in -ar", () => {
+          describe("Singular", () => {
+            var info = null;
+            const pt = new Portuguese();    
+            beforeEach(()=> {
+              info = {mood: 'Indicativo', tense: 'Presente', formal: false, singular: true, person: '1', gender: 'unkown'};
+            });
+            
+            it('should conjugate in the 1st person', () => {
+              info.person = '1';
+              var verbs = ["falar", "andar", "caçar", "nadar", "saltar"];
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["falo", "ando", "caço", "nado", "salto"]);
+            });
+            it('should conjugate in the 2nd person', () => {
+              info.person = '2';
+              var verbs = ["falar", "andar", "caçar", "nadar", "saltar"];
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["falas", "andas", "caças", "nadas", "saltas"]);
+            });
+            it('should conjugate in the 3rd person', () => {
+              info.person = '3';
+              var verbs = ["falar", "andar", "caçar", "nadar", "saltar"];
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["fala", "anda", "caça", "nada", "salta"]);
+            });
+            
+          })
+          
+          describe("Plural", () => {
+            var info = null;
+            const pt = new Portuguese();    
+            beforeEach(()=> {
+              info = {mood: 'Indicativo', tense: 'Presente', formal: false, singular: false, person: '1', gender: 'unkown'};
+            });
+            
+            it('should conjugate in the 1st person', () => {
+              info.person = '1';
+              var verbs = ["falar", "andar", "caçar", "nadar", "saltar"];
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["falamos", "andamos", "caçamos", "nadamos", "saltamos"]);
+            });
+            it('should conjugate in the 2nd person', () => {
+              info.person = '2';
+              var verbs = ["falar", "andar", "caçar", "nadar", "saltar"];
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["falais", "andais", "caçais", "nadais", "saltais"]);
+            });
+            it('should conjugate in the 3rd person', () => {
+              info.person = '3';
+              var verbs = ["falar", "andar", "caçar", "nadar", "saltar"];
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["falam", "andam", "caçam", "nadam", "saltam"]);
+            });
+            
+          })
+        })
+      })
+      
+    });
+    
+  })
+})
