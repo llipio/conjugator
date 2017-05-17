@@ -1,8 +1,8 @@
 {
-  "name": "conjugator",
+  "name": "universal-conjugator",
   "version": "1.0.0",
   "description": "Conjugates languages",
-  "main": "app.js",
+  "main": "src/conjugator.js",
   "directories": {
     "test": "test"
   },
