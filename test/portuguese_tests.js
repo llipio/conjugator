@@ -1,6 +1,4 @@
-//Reference URL for Chai http://chaijs.com/api/bdd/
-
-const expect = require('expect');
+import expect from 'expect';
 import { Portuguese } from '../src/portuguese';
 
 describe('Portuguese', () => {
@@ -115,6 +113,60 @@ describe('Portuguese', () => {
               expect(result).toEqual(["metem", "abatem", "absolvem", "absorvem"]);
             });
           })
+          
+        })
+        describe("Verbs ending in -ir", () => {
+          describe("Singular", () => {
+            var info = null;
+            const pt = new Portuguese();    
+            var verbs = ["abrir", "abduzir", "adquirir"];
+            beforeEach(()=> {
+              info = {mood: 'Indicativo', tense: 'Presente', formal: false, singular: true, gender: 'unkown'};
+            });
+            
+            it('should conjugate in the 1st person', () => {
+              info.person = '1';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["abro", "abduzo", "adquiro"]);
+            });
+            it('should conjugate in the 2nd person', () => {
+              info.person = '2';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["abres", "abduzes", "adquires"]);
+            });
+            it('should conjugate in the 3nd person', () => {
+              info.person = '3';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["abre", "abduze", "adquire"]);
+            });
+          })
+          
+          describe("Plural", () => {
+            var info = null;
+            const pt = new Portuguese();    
+            var verbs = ["abrir", "abduzir", "adquirir"];
+            beforeEach(()=> {
+              info = {mood: 'Indicativo', tense: 'Presente', formal: false, singular: false, gender: 'unkown'};
+            });
+            
+            it('should conjugate in the 1st person', () => {
+              info.person = '1';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["abrimos", "abduzimos", "adquirimos"]);
+            });
+            it('should conjugate in the 2nd person', () => {
+              info.person = '2';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["abris", "abduzis", "adquiris"]);
+            });
+            it('should conjugate in the 3nd person', () => {
+              info.person = '3';
+              var result = verbs.map(v => pt.conjugate(v, info));
+              expect(result).toEqual(["abrem", "abduzem", "adquirem"]);
+            });
+          })
+          
+          
           
         })
       })
