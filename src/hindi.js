@@ -7,7 +7,11 @@ const allInfo = {
 
 class Hindi {
   getInfoList () {
-    return allInfo;
+    return Object.keys(allInfo);
+  }
+
+  getInfoOptions (option) {
+    return allInfo[option];
   }
 
   conjugate (word, info) {

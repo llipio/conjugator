@@ -52,7 +52,11 @@ class French {
       }
   */
   getInfoList () {
-    return allInfo;
+    return Object.keys(allInfo);
+  }
+
+  getInfoOptions (option) {
+    return allInfo[option];
   }
 
   conjugate (word, info) {

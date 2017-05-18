@@ -25,4 +25,20 @@ describe('Conjugator', () => {
     const fr = Conjugator.create('french');
     expect(fr).to.be.an.instanceof(French);
   });
+  it('should return the language list', () => {
+    const list = Conjugator.getLanguageList();
+    expect(list).to.deep.equal(['Korean', 'Hindi', 'French']);
+  });
+  it('should return the info list for a language', () => {
+    const kc = Conjugator.create('korean');
+    const list = kc.getInfoList('korean');
+    console.log(list);
+    expect(list).to.deep.equal(['tense', 'formal', 'wordType']);
+  });
+  it('should return the list of options for a language info', () => {
+    const kc = Conjugator.create('korean');
+    const list = kc.getInfoOptions('tense');
+    console.log(list);
+    expect(list).to.deep.equal(['present', 'past', 'future', 'PresentContinuous']);
+  });
 });

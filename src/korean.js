@@ -36,10 +36,14 @@ const allInfo = {
   tense: ['present', 'past', 'future', 'presentContinuous'],
   formality: ['formal', 'casual'],
 };
-class Korean {
 
+class Korean {
   getInfoList () {
-    return allInfo;
+    return Object.keys(allInfo);
+  }
+
+  getInfoOptions (option) {
+    return allInfo[option];
   }
 
   conjugate (word, info) {
