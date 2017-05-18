@@ -16,7 +16,7 @@ const Conjugator = {
     }
   },
 
-  getLanguageList () {
+  getLanguageList: () => {
     return [Korean, Hindi, French];
   }
 };
