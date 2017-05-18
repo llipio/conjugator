@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../style/App.css';
-import ReactDropdown from '../style/Dropdown'
-import Dropdown from 'react-dropdown'
+import '../style/ReactDropdown.css';
+import Dropdown from 'react-dropdown';
 
 const App = ({word, selectedLanguage, changeLanguage, submit, changeWord}) => {
   const languageList = ['Korean', 'French', 'Hindi'];
