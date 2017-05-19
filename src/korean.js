@@ -33,8 +33,14 @@ const combineSymbols = (input) => {
 };
 
 const allInfo = {
+<<<<<<< HEAD
   tense: ['present', 'past', 'future', 'presentContinuous'],
   formality: ['formal', 'casual'],
+=======
+  Tense: ['Present', 'Past', 'Future', 'Present Continuous'],
+  Formal: ['True', 'False'],
+  'Word Type': ['Adjective', 'Verb']
+>>>>>>> add setOptions
 };
 
 class Korean {
@@ -44,6 +50,25 @@ class Korean {
 
   getInfoOptions (option) {
     return allInfo[option];
+  }
+
+  setInfo (infoSite) {
+    const info = {
+      tense: '',
+      formal: '',
+      wordType: ''
+    };
+    info.tense = infoSite.Tense.toLowerCase();
+    if (infoSite.Tense === 'Present Continuous') {
+      info.tense = 'presentContinuous';
+    }
+    if (infoSite.Formal === 'True') {
+      info.formal = true;
+    } else {
+      info.formal = false;
+    }
+    info.wordType = infoSite['Word Type'].toLowerCase();
+    return info;
   }
 
   conjugate (word, info) {
@@ -59,8 +84,12 @@ class Korean {
         result = this.doPast(word);
         break;
       case 'future':
+<<<<<<< HEAD
         result = this.doFuture(word);
         break;
+=======
+        return this.doFuture(word);
+>>>>>>> add setOptions
       case 'presentContinuous':
         return this.doPresentContinuous(word);
       default:

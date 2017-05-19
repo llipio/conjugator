@@ -205,4 +205,11 @@ describe('Korean', () => {
       expect(pastWord).to.equal('불렀어');
     });
   });
+  describe('setInfo', () => {
+    it('should return the info adapted for the conjugator', () => {
+      const kc = new Korean();
+      let infos = kc.setInfo({Tense: 'Present Continuous', Formal: 'false', 'Word Type': 'Adjective'});
+      expect(infos).to.deep.equal({tense: 'presentContinuous', formal: false, wordType: 'adjective'});
+    });
+  });
 });

@@ -32,13 +32,11 @@ describe('Conjugator', () => {
   it('should return the info list for a language', () => {
     const kc = Conjugator.create('korean');
     const list = kc.getInfoList('korean');
-    console.log(list);
-    expect(list).to.deep.equal(['tense', 'formal', 'wordType']);
+    expect(list).to.deep.equal(['Tense', 'Formal', 'Word Type']);
   });
   it('should return the list of options for a language info', () => {
     const kc = Conjugator.create('korean');
-    const list = kc.getInfoOptions('tense');
-    console.log(list);
-    expect(list).to.deep.equal(['present', 'past', 'future', 'PresentContinuous']);
+    const list = kc.getInfoOptions('Tense');
+    expect(list).to.deep.equal(['Present', 'Past', 'Future', 'Present Continuous']);
   });
 });
