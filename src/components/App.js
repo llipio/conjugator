@@ -12,14 +12,14 @@ const App = ({word, selectedLanguage, changeLanguage, submit, changeWord}) => {
         <h1>Select Your Language!</h1>
       </div>
 
-      
-    <Dropdown options={languageList} onChange={changeLanguage} value={selectedLanguage} placeholder="Please Select Language" />
+
+      <Dropdown options={languageList} onChange={changeLanguage} value={selectedLanguage} placeholder="Please Select Language" />
 
       <div>
         <form>
           <input type="text" name="word" placeholder="Please input word" value={word} onChange={(e) => {
             changeWord(e.target.value);
-          }}/>
+          }} />
       </form>
     </div>
 
@@ -29,7 +29,7 @@ const App = ({word, selectedLanguage, changeLanguage, submit, changeWord}) => {
         submit();
       }}>Submit</button>
   </div>
-</div>
+    </div>
 );
 }
 

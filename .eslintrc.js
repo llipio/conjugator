@@ -1,7 +1,8 @@
 module.exports = {
   "extends": "airbnb-base",
   "plugins": [
-    "import"
+    "import",
+    "react"
   ],
   "rules": {
     "consistent-return": 0,
