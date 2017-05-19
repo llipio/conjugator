@@ -55,7 +55,7 @@ class Korean {
   setInfo (infoSite) {
     const info = {
       tense: '',
-      formal: '',
+      formal: false,
       wordType: ''
     };
     info.tense = infoSite.Tense.toLowerCase();
@@ -64,8 +64,6 @@ class Korean {
     }
     if (infoSite.Formal === 'True') {
       info.formal = true;
-    } else {
-      info.formal = false;
     }
     info.wordType = infoSite['Word Type'].toLowerCase();
     return info;

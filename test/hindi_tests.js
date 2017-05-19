@@ -207,4 +207,12 @@ describe('Hindi', () => {
       expect(word).to.equal('soungi');
     });
   });
+  describe('setInfo', () => {
+    it('should return the info adapted for the conjugator', () => {
+      const ic = new Hindi();
+      let infos = ic.setInfo({Tense: 'Present', Gender: 'Female', Formal: 'true', 'Word Type': 'Adjective'});
+      console.log(infos);
+      expect(infos).to.deep.equal({tense: 'present', gender: 'f', formal: true, wordType: 'adjective'});
+    });
+  });
 });

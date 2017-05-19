@@ -1,8 +1,8 @@
 const allInfo = {
-  tense: ['present', 'past', 'future'],
-  gender: ['m', 'f'],
-  formal: [true, false],
-  wordType: ['adjective', 'verb']
+  Tense: ['Present', 'Past', 'Future'],
+  gender: ['Female', 'Male'],
+  formal: ['True', 'False'],
+  'word Type': ['Adjective', 'Verb']
 };
 
 class Hindi {
@@ -14,6 +14,23 @@ class Hindi {
     return allInfo[option];
   }
 
+  setInfo (infoSite) {
+    const info = {
+      tense: '',
+      gender: 'm',
+      formal: false,
+      wordType: ''
+    };
+    info.tense = infoSite.Tense.toLowerCase();
+    if (infoSite.Gender === 'Female') {
+      info.gender = 'f';
+    }
+    if (infoSite.Formal === 'true') {
+      info.formal = true;
+    }
+    info.wordType = infoSite['Word Type'].toLowerCase();
+    return info;
+  }
   conjugate (word, info) {
     // Format for info:
     // { tense: 'past/present/future', gender: 'm/f', formal: true/false, wordType: 'adjective/verb' }
