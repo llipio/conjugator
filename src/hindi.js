@@ -31,6 +31,7 @@ class Hindi {
     info.wordType = infoSite['Word Type'].toLowerCase();
     return info;
   }
+
   conjugate (word, info) {
     // Format for info:
     // { tense: 'past/present/future', gender: 'm/f', formal: true/false, wordType: 'adjective/verb' }

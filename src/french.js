@@ -1,5 +1,5 @@
 const allInfo = {
-  tense: {
+  Tense: {
     Indicatif: ['Présent', 'Passé Composé', 'Imparfait', 'Plus-que-parfait',
       'Passé Simple', 'Passé Antérieur', 'Futur Simple', 'Futur Antérieur'],
     Subjonctif: ['Présent', 'Passé', 'Imparfait', 'Plus-que-parfait'],
@@ -8,10 +8,10 @@ const allInfo = {
     Infinitif: ['Présent', 'Passé'],
     Participe: ['Présent', 'Passé']
   },
-  gender: ['female', 'male', 'unknown'],
-  singular: [true, false],
-  person: ['1', '2', '3'],
-  formal: [true, false]
+  Gender: ['Female', 'Male', 'Unknown'],
+  Subject: ['Je', 'Tu', 'Il', 'Nous', 'Vous', 'Ils', 'Elles', 'On'],
+  Singular: ['True', 'False'],
+  Formal: ['True', 'False']
 };
 
 class French {
@@ -57,6 +57,42 @@ class French {
 
   getInfoOptions (option) {
     return allInfo[option];
+  }
+
+  setInfo (infoSite) {
+    //console.log(infoSite);
+    const info = {
+      mood: '',
+      tense: '',
+      gender: 'Unknown',
+      formal: false,
+      singular: false,
+      person: '1'
+    };
+
+    info.mood = Object.keys(infoSite.Tense)[0];
+    info.tense = infoSite.Tense[info.mood];
+
+    if (infoSite.Gender === 'Female') {
+      info.gender = 'female';
+    } else if (infoSite.Gender === 'Male') {
+      info.gender = 'male';
+    }
+
+    if (infoSite.Formal === 'True') {
+      info.formal = true;
+    }
+
+    if (infoSite.Singular === 'True') {
+      info.singular = true;
+    }
+
+    if (/^(?:Tu|Vous)$/.test(infoSite.Subject)) {
+      info.person = '2';
+    } else if (/^(?:Il|Elle|On)/.test(infoSite.Subject)) {
+      info.person = '3';
+    }
+    return info;
   }
 
   conjugate (word, info) {
