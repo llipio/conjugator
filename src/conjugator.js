@@ -15,10 +15,7 @@ const Conjugator = {
         break;
     }
   },
-
-  getLanguageList: () => {
-    return ['Korean', 'Hindi', 'French'];
-  },
+  getLanguageList: () => ['Korean', 'Hindi', 'French']
 };
 
 export default Conjugator;

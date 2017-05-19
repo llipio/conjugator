@@ -60,7 +60,6 @@ class French {
   }
 
   setInfo (infoSite) {
-    //console.log(infoSite);
     const info = {
       mood: '',
       tense: '',

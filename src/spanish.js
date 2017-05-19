@@ -2,7 +2,7 @@ const allInfo = {
   Tense: ['Present', 'Past', 'Future'],
   Gender: ['Female', 'Male'],
   Formal: ['True', 'False'],
-  Subject: ['Yo', 'Tú', 'Él', 'Ella', 'Usted', 'Nosotros', 'Nosotras', 'Vosotros', 'Vosotras', 'Ellos', 'Ellas', 'Ustedes' ]
+  Subject: ['Yo', 'Tú', 'Él', 'Ella', 'Usted', 'Nosotros', 'Nosotras', 'Vosotros', 'Vosotras', 'Ellos', 'Ellas', 'Ustedes']
 };
 
 class Spanish {
