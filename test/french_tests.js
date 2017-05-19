@@ -105,7 +105,6 @@ describe('French', () => {
     it('should return the info adapted for the conjugator', () => {
       const fr = new French();
       let infos = fr.setInfo({Tense: {Infinitif: 'Présent'}, Formal: 'True', Singular: 'False', Subject: 'Vous', Gender: 'Male'});
-      console.log(infos);
       expect(infos).to.deep.equal({mood: 'Infinitif',tense: 'Présent', formal: true, singular: false, person: '2', gender: 'male'});
     });
   });
