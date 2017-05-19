@@ -1,18 +1,31 @@
-// Chai is an assertion library for testing
-// Reference: http://www.http://chaijs.com/
+/* global describe, it */
 
-const expect = require('chai').expect;
 import { Spanish } from '../src/spanish';
 
-describe('Spanish', () => {
-  describe('Present Tense', () => {
-    it('should conjugate "hablar" to "hablo" for "yo"', () => {
-      let conjugatedWord;
-      const spanish = new Spanish();
+const expect = require('chai').expect;
 
-      conjugatedWord = spanish.conjugate('hablar', {noun: 'yo'});
+describe('Spanish', () => {
+  let conjugatedWord;
+  const spanish = new Spanish();
+
+  describe('Present Tense', () => {
+    it('should conjugate present tense correctly', () => {
+      conjugatedWord = spanish.conjugate('hablar', { tense: 'present', noun: 'yo' });
       expect(conjugatedWord).to.equal('hablo');
-      
+    });
+  });
+
+  describe('Future Tense', () => {
+    it('should conjugate future tense', () => {
+      conjugatedWord = spanish.conjugate('hablar', { tense: 'future', noun: 'yo' });
+      expect(conjugatedWord).to.equal('future');
+    });
+  });
+
+  describe('Past Tense', () => {
+    it('should conjugate past tense', () => {
+      conjugatedWord = spanish.conjugate('hablar', { tense: 'past', noun: 'yo' });
+      expect(conjugatedWord).to.equal('past');
     });
   });
 });
