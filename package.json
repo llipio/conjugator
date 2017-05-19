@@ -11,6 +11,9 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0",
     "gh-pages": "^0.12.0",
     "react-scripts": "0.9.5"
   },
@@ -20,6 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "eslint": "./node_modules/.bin/eslint src --ext .js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   }
