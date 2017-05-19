@@ -1,7 +1,7 @@
 //Reference URL for Chai http://chaijs.com/api/bdd/
 
 const expect = require('chai').expect;
-import { Conjugator } from '../src/conjugator';
+import Conjugator from '../src/conjugator';
 import { Korean } from '../src/korean';
 import { Hindi } from '../src/hindi';
 import { French } from '../src/french';
