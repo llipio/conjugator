@@ -1,5 +1,5 @@
 import expect from 'expect';
-import { Portuguese } from '../src/portuguese';
+import Portuguese from '../src/portuguese';
 
 describe('Portuguese', () => {
   

@@ -1,7 +1,7 @@
 import { Korean } from './korean';
 import { Hindi } from './hindi';
 import { French } from './french';
-import { Portuguese } from './portuguese';
+import Portuguese from './portuguese';
 
 const Conjugator = {
   create: (lang) => {
