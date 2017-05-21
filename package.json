@@ -8,7 +8,8 @@
     "react-dropdown": "^1.2.3",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "universal-conjugator": "^1.0.8"
   },
   "devDependencies": {
     "eslint": "^3.19.0",

@@ -8,7 +8,7 @@ const generateHomeContainer = connect((state) => {
     options: state.appState.options,
     info: state.appState.info,
     conjugatedWord: state.appState.conjugatedWord
-  }
+  };
 }, (dispatch) => {
   return {
     changeLanguage: (selectedLanguage) => {
@@ -23,7 +23,7 @@ const generateHomeContainer = connect((state) => {
     setOptions: (languageOption, optionValue) => {
       dispatch({ type: 'SET_OPTIONS', languageOption, optionValue });
     }
-  }
+  };
 });
 
 export { generateHomeContainer };
