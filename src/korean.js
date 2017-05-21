@@ -76,6 +76,9 @@ class Korean {
     if (word[wordLength - 2] === '하') {
       conjugate = word.slice(0, wordLength - 2);
       return conjugate.concat('해');
+    } else if (word[wordLength - 2] === '앉' || word[wordLength - 2] === '솟' || word[wordLength - 2] === '닫') {
+      conjugate = word.slice(0, wordLength - 1);
+      return conjugate.concat('아');
     } else if (word[wordLength - 2] === '르') {
       const sliced = word.slice(0, wordLength - 2);
       let stem = [];
