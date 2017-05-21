@@ -12,11 +12,10 @@ const appState = (state = {
   conjugatedWord: '' }, action) => {
   switch (action.type) {
     case 'CHANGE_LANGUAGE': {
-      let languageOptions = {};
       if (action.selectedLanguage) {
         languageObject = Conjugator.create(action.selectedLanguage);
       }
-      languageOptions = languageObject.getInfoList();
+      const languageOptions = languageObject.getInfoList();
       return Object.assign({}, state, { selectedLanguage: action.selectedLanguage,
         options: languageOptions });
     }
