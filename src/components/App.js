@@ -2,7 +2,14 @@ import React from 'react';
 import '../style/App.css';
 import '../style/ReactDropdown.css';
 import Dropdown from 'react-dropdown';
-
+const RadioButtonOptions = ({options, setOptions,k}) => {
+  let radioOptions = [];
+    options.map(element => {
+      let radioOption = `${element}`;
+      radioOptions.push(<label key={element}><input type="radio" name={k} value={element} onChange={() => {setOptions(k, element)}}/>{radioOption}</label>)
+    })
+    return <div>{radioOptions}</div>;
+  }
 const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
   let optionListForm = [];
   let optionBulletForm = [];
@@ -10,10 +17,7 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
     if (options[k].length > 2){
       optionListForm.push(<Dropdown key={k} value={info[k]} options={options[k]} placeholder={k} onChange={(a) => {setOptions(k,a.value)}}/>)
     } else {
-      options[k].map(element => {
-        let radioOption = `${element}`;
-        return (optionBulletForm.push(<label key={element}><input key={element} type="radio" name={k} value={element} onChange={(selection) => {setOptions(element,selection.value)}}/>{radioOption}</label>)
-        )})
+      optionBulletForm.push(<div key={k}><div>{k}</div><RadioButtonOptions options={options[k]} setOptions={setOptions} k={k}/></div>);
     }}
 
   return (
