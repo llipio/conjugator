@@ -14,10 +14,10 @@ const Conjugator = {
       default:
         break;
     }
-  }
+  },
 
-  getLanguageList () {
-    return [Korean, Hindi, French];
+  getLanguageList: () => {
+    return ['Korean', 'Hindi', 'French'];
   }
 };
 
