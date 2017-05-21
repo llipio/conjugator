@@ -10,10 +10,7 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
     if (options[k].length > 2){
       optionListForm.push(<Dropdown key={k} value={info[k]} options={options[k]} placeholder={k} onChange={(a) => {setOptions(k,a.value)}}/>)
     } else {
-      console.log('options[k] = ', options[k]);
-      console.log('k = ', k)
       options[k].map(element => {
-        console.log('element = ', element);
         let radioOption = `${element}`;
         return (optionBulletForm.push(<label key={element}><input key={element} type="radio" name={k} value={element} onChange={(selection) => {setOptions(element,selection.value)}}/>{radioOption}</label>)
         )})
