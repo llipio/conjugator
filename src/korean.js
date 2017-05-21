@@ -64,7 +64,7 @@ class Korean {
     }
 
     if (info.formality === 'formal') {
-      return `${result}요`
+      return `${result}요`;
     }
     return result;
   }
