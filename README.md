@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/llipio/conjugator.svg?branch=master)](https://travis-ci.org/llipio/conjugator)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/llipio/)
 
 # conjugator
 Conjugator for languages, currently supporting Korean and Hindi. Quickly look up a verb and its usage!
