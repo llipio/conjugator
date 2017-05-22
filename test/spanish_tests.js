@@ -10,22 +10,22 @@ describe('Spanish', () => {
 
   describe('Present Tense', () => {
     it('should conjugate present tense correctly', () => {
-      conjugatedWord = spanish.conjugate('hablar', { tense: 'present', noun: 'yo' });
+      conjugatedWord = spanish.conjugate('hablar', { tense: 'present', pronoun: 'yo' });
       expect(conjugatedWord).to.equal('hablo');
     });
   });
 
   describe('Future Tense', () => {
     it('should conjugate future tense', () => {
-      conjugatedWord = spanish.conjugate('hablar', { tense: 'future', noun: 'yo' });
-      expect(conjugatedWord).to.equal('future');
+      conjugatedWord = spanish.conjugate('hablar', { tense: 'future', pronoun: 'él/ella/Ud.' });
+      expect(conjugatedWord).to.equal('hablará');
     });
   });
 
   describe('Past Tense', () => {
     it('should conjugate past tense', () => {
-      conjugatedWord = spanish.conjugate('hablar', { tense: 'past', noun: 'yo' });
-      expect(conjugatedWord).to.equal('past');
+      conjugatedWord = spanish.conjugate('vivir', { tense: 'past', pronoun: 'nosotros/nosotras' });
+      expect(conjugatedWord).to.equal('vivimos');
     });
   });
 });
