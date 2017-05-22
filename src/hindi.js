@@ -15,34 +15,22 @@ class Hindi {
 
     switch (info.tense) {
       case 'Present':
-        switch (info.gender) {
-          case 'male':
-            return word.replace(/na$/, 'ta hun');
-          case 'female':
-            return word.replace(/na$/, 'ti hun');
-          default:
-            throw new Error(GENDER_ERROR);
+        if (info.gender === 'male') {
+          return word.replace(/na$/, 'ta hun');
         }
+        return word.replace(/na$/, 'ti hun');
       case 'Past':
-        switch (info.gender) {
-          case 'male':
-            return word.replace(/na$/, 'ta tha');
-          case 'female':
-            return word.replace(/na$/, 'ti thi');
-          default:
-            throw new Error(GENDER_ERROR);
+        if (info.gender === 'male') {
+          return word.replace(/na$/, 'ta tha');
         }
+        return word.replace(/na$/, 'ti thi');
       case 'Future':
-        switch (info.gender) {
-          case 'male':
-            return word.replace(/na$/, 'nga');
-          case 'female':
-            return word.replace(/na$/, 'ungi');
-          default:
-            throw new Error(GENDER_ERROR);
+        if (info.gender === 'male') {
+          return word.replace(/na$/, 'nga');
         }
+        return word.replace(/na$/, 'ungi');
       default:
-        throw new Error(TENSE_ERROR);
+        return 'tense not implemented yet';
     }
   }
 }
