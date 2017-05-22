@@ -1,42 +1,19 @@
 const allInfo = {
-  Tense: ['Present', 'Past', 'Future'],
-  Gender: ['Female', 'Male'],
-  Formal: ['True', 'False'],
-  Subject: ['Yo', 'Tú', 'Él', 'Ella', 'Usted', 'Nosotros', 'Nosotras', 'Vosotros', 'Vosotras', 'Ellos', 'Ellas', 'Ustedes']
+  tense: ['Present', 'Past', 'Future'],
+  gender: ['female', 'male'],
+  formality: ['casual', 'formal'],
+  subject: ['yo', 'tú', 'él', 'ella', 'usted', 'nosotros', 'nosotras', 'vosotros', 'vosotras', 'ellos', 'ellas', 'ustedes']
 };
 
 class Spanish {
-  getInfoList () {
-    return Object.keys(allInfo);
-  }
-
-  getInfoOptions (option) {
-    return allInfo[option];
-  }
-
-  setInfo (infoSite) {
-    const info = {
-      tense: 'present',
-      gender: 'male',
-      formal: false,
-      noun: 'yo'
-    };
-
-    info.tense = infoSite.Tense.toLowerCase();
-    if (infoSite.Gender === 'Female') {
-      info.gender = 'female';
-    }
-    if (infoSite.Formal === 'True') {
-      info.formal = true;
-    }
-    info.noun = infoSite.Subject.toLowerCase();
-    return info;
+  getAllInfo () {
+    return allInfo;
   }
 
   conjugate (word, info) {
     const NOUN_ERROR = 'Please input yo, tû, Ud., él, or ella for the noun';
 
-    switch (info.noun) {
+    switch (info.subject) {
       case 'yo':
         return `${word.slice(0, -2)}o`;
       default:

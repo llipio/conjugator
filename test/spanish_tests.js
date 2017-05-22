@@ -10,16 +10,8 @@ describe('Spanish', () => {
       let conjugatedWord;
       const spanish = new Spanish();
 
-      conjugatedWord = spanish.conjugate('hablar', {noun: 'yo'});
+      conjugatedWord = spanish.conjugate('hablar', {subject: 'yo'});
       expect(conjugatedWord).to.equal('hablo');
-    });
-  });
-
-  describe('setInfo', () => {
-    it('should return the info adapted for the conjugator', () => {
-      const sp = new Spanish();
-      let infos = sp.setInfo({Tense: 'Present', Formal: 'True', Subject: 'Usted', Gender: 'Male'});
-      expect(infos).to.deep.equal({tense: 'present', formal: true, noun: 'usted', gender: 'male'});
     });
   });
 });
