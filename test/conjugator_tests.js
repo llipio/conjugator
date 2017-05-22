@@ -31,12 +31,10 @@ describe('Conjugator', () => {
   });
   it('should return the info list for a language', () => {
     const kc = Conjugator.create('korean');
-    const list = kc.getInfoList('korean');
-    expect(list).to.deep.equal(['Tense', 'Formal', 'Word Type']);
-  });
-  it('should return the list of options for a language info', () => {
-    const kc = Conjugator.create('korean');
-    const list = kc.getInfoOptions('Tense');
-    expect(list).to.deep.equal(['Present', 'Past', 'Future', 'Present Continuous']);
+    const list = kc.getAllInfo('korean');
+    expect(list).to.deep.equal({
+      tense: ['Present', 'Past', 'Future', 'Present Continuous'],
+      formality: ['formal', 'casual'],
+    });
   });
 });
