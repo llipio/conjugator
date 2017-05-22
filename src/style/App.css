@@ -1,5 +1,16 @@
+body {$
+  margin: 20px auto;
+  width: 100%;
+  background-color: #32bdf9;
+}
+
+.result {
+  padding: 8px 0;
+}
+
 .App {
   text-align: center;
+  color: #ffffff;
 }
 
 .App-logo {
@@ -23,29 +34,63 @@
   to { transform: rotate(360deg); }
 }
 
-body {
-  margin: 20px auto;
-  width: 60%;
+.title-container {
+  margin: 40px 0px;
 }
 
-header h2 {
-  text-align: center;
-  margin: 30px auto;
+.title {
+  border-style: solid;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 3em;
+  font-family: 'Archivo Black', sans-serif;
+  font-weight: bolder;
 }
 
-pre {
-  background: #f7f7f7;
-  padding: 10px 20px;
-  border-radius: 2px;
-  border: 1px solid #ccc;
+.instruction_text{
+  margin-top: 30px;
+  font-size: 18px;
+  font-family: ProximaNova-Regular;
 }
 
-pre code {
-  line-height: 20px;
+.option_text {
+  font-size: 15px;
+  font-family: ProximaNova-Regular;
 }
 
-.result {
-  padding: 8px 0;
+.radio {
+  margin-bottom: 15px;
+  text-align: left;
+  width: 280px;
 }
 
-  
+.button {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.input-box {
+  border-radius: 5px;
+  width: 280px;
+  height: 35px;
+}
+
+.output-box {
+  margin-top: 10px;
+  border-radius: 5px;
+  height: 70px;
+  width: 200px;
+  margin-left: 5px;
+} 
+
+.dropdown {
+  width: 280px;
+  margin: auto;
+}
+
+.content-container {
+  width: 280px;
+  margin: auto;
+}
