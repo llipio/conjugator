@@ -2,22 +2,26 @@ import React from 'react';
 import '../style/App.css';
 import '../style/ReactDropdown.css';
 import Dropdown from 'react-dropdown';
-const RadioButtonOptions = ({options, setOptions,k}) => {
+
+const RadioButtonOptions = ({options, setOptions, title}) => {
   let radioOptions = [];
     options.map(element => {
-      let radioOption = `${element}`;
-      radioOptions.push(<label key={element}><input type="radio" name={k} value={element} onChange={() => {setOptions(k, element)}}/>{radioOption}</label>)
+      radioOptions.push(
+        <label key={element}>
+          <input type="radio" name={title} value={element} onChange={() => {setOptions(title, element)}}/>{`${element}`}
+        </label>)
     })
-    return <div>{radioOptions}</div>;
+  return (<div>{title}{radioOptions}</div>);
   }
+
 const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
   let optionListForm = [];
   let optionBulletForm = [];
-  for(let k in options) {
-    if (options[k].length > 2){
-      optionListForm.push(<Dropdown key={k} value={info[k]} options={options[k]} placeholder={k} onChange={(a) => {setOptions(k,a.value)}}/>)
+  for(let title in options) {
+    if (options[title].length > 2){
+      optionListForm.push(<Dropdown key={title} value={info[title]} options={options[title]} placeholder={title} onChange={(tense) => {setOptions(title,tense.value)}}/>)
     } else {
-      optionBulletForm.push(<div key={k}><div>{k}</div><RadioButtonOptions options={options[k]} setOptions={setOptions} k={k}/></div>);
+      optionBulletForm.push(<RadioButtonOptions key={title} options={options[title]} setOptions={setOptions} title={title}/>);
     }}
 
   return (
@@ -27,8 +31,7 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
       </div>
 
       <Dropdown options={languageList} onChange={(languageOption) => {changeLanguage(languageOption.value)}} value={selectedLanguage} placeholder="Please Select Language" />
-      {optionListForm}
-      {optionBulletForm}
+      {optionListForm} {optionBulletForm}
       <div>
         <input type="text" name="word" placeholder="Please input word" value={word} onChange={(e) => {
           changeWord(e.target.value);
