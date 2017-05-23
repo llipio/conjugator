@@ -10,9 +10,8 @@ describe('Spanish', () => {
       let conjugatedWord;
       const spanish = new Spanish();
 
-      conjugatedWord = spanish.conjugate('hablar', {noun: 'yo'});
+      conjugatedWord = spanish.conjugate('hablar', {subject: 'yo'});
       expect(conjugatedWord).to.equal('hablo');
-      
     });
   });
 });
