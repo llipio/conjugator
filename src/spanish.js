@@ -26,12 +26,14 @@ const regularVerbConjugation = {
     }
   },
   future: {
-    yo: 'é',
-    tú: 'ás',
-    'él/ella/Ud.': 'á',
-    'nosotros/nosotras': 'emos',
-    'vosotros/vosotras': 'éis',
-    'ellos/ellas/Uds.': 'án'
+    all: {
+      yo: 'é',
+      tú: 'ás',
+      'él/ella/Ud.': 'á',
+      'nosotros/nosotras': 'emos',
+      'vosotros/vosotras': 'éis',
+      'ellos/ellas/Uds.': 'án'
+    }
   },
   past: {
     ar: {
@@ -68,27 +70,18 @@ const allInfo = {
 
 class Spanish {
   conjugate (word, info) {
-    const ending = word.slice(-2);
-    const stem = word.slice(0, -2);
-    const CONJUGATION_ERROR = 'Unable to conjugate';
-    const UNSUPPORTED_ERROR = 'Conjugation feature not yet supported';
+    let ending = word.slice(-2);
+    let stem = word.slice(0, -2);
+    const CONJUGATION_ERROR = 'Unable to conjugate verb';
 
     if (ending === 'ar' || ending === 'er' || ending === 'ir') {
-      switch (info.tense) {
-        case 'present':
-          return stem.concat(regularVerbConjugation[info.tense][ending][info.pronoun]);
-        case 'present progressive':
-          return UNSUPPORTED_ERROR;
-        case 'past':
-          return stem.concat(regularVerbConjugation[info.tense][ending][info.pronoun]);
-        case 'past tense preterite':
-          return UNSUPPORTED_ERROR;
-        case 'future':
-          return word.concat(regularVerbConjugation[info.tense][info.pronoun]);
-        default:
-          return CONJUGATION_ERROR;
+      if (info.tense === 'future') {
+        stem = word;
+        ending = 'all';
       }
+      return stem.concat(regularVerbConjugation[info.tense][ending][info.pronoun]);
     }
+    return CONJUGATION_ERROR;
   }
   getInfoList () {
     return allInfo;
