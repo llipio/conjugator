@@ -11,7 +11,7 @@ const RadioButtonOptions = ({options, setOptions, title}) => {
           <input type="radio" name={title} value={element} onChange={() => {setOptions(title, element)}}/>{`${element}`}
         </label>);
     })
-  return (<div className="radio"><div className="radio-title">{title}</div><span>{radioOptions}</span></div>);
+  return (<div className="radio-group"><div className="radio-title">{title}</div><span>{radioOptions}</span></div>);
   }
 
 const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
