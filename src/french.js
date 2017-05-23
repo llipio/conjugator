@@ -1,17 +1,16 @@
 const allInfo = {
-  tense: {
-    Indicatif: ['Présent', 'Passé Composé', 'Imparfait', 'Plus-que-parfait',
-      'Passé Simple', 'Passé Antérieur', 'Futur Simple', 'Futur Antérieur'],
-    Subjonctif: ['Présent', 'Passé', 'Imparfait', 'Plus-que-parfait'],
-    Impératif: ['Présent', 'Passé'],
-    Conditionnel: ['Présent', 'Passé 1', 'Passé 2'],
-    Infinitif: ['Présent', 'Passé'],
-    Participe: ['Présent', 'Passé']
-  },
+  tense: ['Indicatif Présent', 'Infinitif Présent'],
+  /* TODO: 'Indicatif Passé Composé', 'Indicatif Imparfait',
+    'Indicatif Plus-que-parfait', 'Indicatif Passé Simple',
+    'Indicatif Passé Antérieur', 'Indicatif Futur Simple',
+    'Indicatif Futur Antérieur', 'Subjonctif Présent', 'Subjonctif Passé',
+    'Subjonctif Imparfait', 'Subjonctif Plus-que-parfait', 'Impératif Présent',
+    'Impératif Passé', 'Conditionnel Présent', 'Conditionnel Passé 1',
+    'Conditionnel Passé 2', 'Infinitif Passé',
+    'Participe Présent', 'Participe Passé'*/
   gender: ['female', 'male', 'unknown'],
-  singular: [true, false],
-  person: ['1', '2', '3'],
-  formal: [true, false]
+  subject: ['je', 'tu', 'il', 'elle', 'nous', 'vous', 'ils', 'elles', 'on'],
+  singular: ['true', 'false']
 };
 
 class French {
@@ -51,11 +50,50 @@ class French {
           ! 'on' and objects 'can' also have a gender !
       }
   */
-  getInfoList () {
+  getAllInfo () {
     return allInfo;
   }
 
-  conjugate (word, info) {
+  setInfo (inputInfo) {
+    const info = { formal: false };
+
+    const tenseAndMood = /(\S+) (.+)/.exec(inputInfo.tense);
+    info.mood = tenseAndMood[1];
+    info.tense = tenseAndMood[2];
+
+    if (/^e/.test(inputInfo.subject)) {
+      info.gender = 'female';
+    } else if (/^i/.test(inputInfo.subject)) {
+      info.gender = 'male';
+    } else {
+      info.gender = inputInfo.gender;
+    }
+
+    if (/s$/.test(inputInfo.subject)) {
+      info.singular = false;
+    } else {
+      info.singular = true;
+    }
+    if (inputInfo.subject === 'vous' || inputInfo.subject === 'on') {
+      info.singular = (inputInfo.singular === 'true');
+      if (inputInfo.subject === 'vous' && info.singular === true) {
+        info.formal = true;
+      }
+    }
+
+    if (inputInfo.subject === 'je' || inputInfo.subject === 'nous') {
+      info.person = '1';
+    } else if (inputInfo.subject === 'tu' || inputInfo.subject === 'vous') {
+      info.person = '2';
+    } else {
+      info.person = '3';
+    }
+
+    return info;
+  }
+
+  conjugate (word, inputInfo) {
+    const info = this.setInfo(inputInfo);
     switch (info.mood) {
       case 'Indicatif':
         switch (info.tense) {

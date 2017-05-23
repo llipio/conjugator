@@ -69,6 +69,10 @@ const allInfo = {
 };
 
 class Spanish {
+  getAllInfo () {
+    return allInfo;
+  }
+
   conjugate (word, info) {
     let ending = word.slice(-2);
     let stem = word.slice(0, -2);

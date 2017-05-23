@@ -10,70 +10,70 @@ describe('French', () => {
       let conjugatedWord;
       const fr = new French();
 
-      conjugatedWord = fr.conjugate('aimer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '3', gender: 'unknown'});
+      conjugatedWord = fr.conjugate('aimer', {tense: 'Indicatif Présent', subject: 'on', singular: true, gender: 'unknown'});
       expect(conjugatedWord).to.equal('aime');
 
-      conjugatedWord = fr.conjugate('avoir', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '3', gender: 'unknown'});
+      conjugatedWord = fr.conjugate('avoir', {tense: 'Indicatif Présent', subject: 'on', singular: false, gender: 'unknown'});
       expect(conjugatedWord).to.equal('a');
 
-      conjugatedWord = fr.conjugate('aller', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '2', gender: 'female'});
+      conjugatedWord = fr.conjugate('aller', {tense: 'Indicatif Présent', subject: 'tu', singular: true, gender: 'female'});
       expect(conjugatedWord).to.equal('vas');
 
-      conjugatedWord = fr.conjugate('manger', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('manger', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('mangeons');
 
-      conjugatedWord = fr.conjugate('placer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('placer', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('plaçons');
 
-      conjugatedWord = fr.conjugate('peser', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '3', gender: 'male'});
+      conjugatedWord = fr.conjugate('peser', {tense: 'Indicatif Présent', subject: 'ils', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('pèsent');
 
-      conjugatedWord = fr.conjugate('peser', {mood: 'Indicatif', tense: 'Présent', formal: true, singular: false, person: '2', gender: 'male'});
+      conjugatedWord = fr.conjugate('peser', {tense: 'Indicatif Présent', subject: 'vous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('pesez');
 
-      conjugatedWord = fr.conjugate('céder', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('céder', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('cède');
 
-      conjugatedWord = fr.conjugate('céder', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('céder', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('cédons');
 
-      conjugatedWord = fr.conjugate('rejeter', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('rejeter', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('rejette');
 
-      conjugatedWord = fr.conjugate('rejeter', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('rejeter', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('rejetons');
 
-      conjugatedWord = fr.conjugate('modeler', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('modeler', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('modèle');
 
-      conjugatedWord = fr.conjugate('modeler', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('modeler', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('modelons');
 
-      conjugatedWord = fr.conjugate('niveler', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('niveler', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('nivelle / nivèle');
 
-      conjugatedWord = fr.conjugate('niveler', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('niveler', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('nivelons');
 
-      conjugatedWord = fr.conjugate('assiéger', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('assiéger', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('assiège');
 
-      conjugatedWord = fr.conjugate('assiéger', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('assiéger', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('assiégeons');
 
-      conjugatedWord = fr.conjugate('payer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('payer', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('paie / paye');
 
-      conjugatedWord = fr.conjugate('payer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('payer', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('payons');
 
-      conjugatedWord = fr.conjugate('broyer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('broyer', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('broie');
 
-      conjugatedWord = fr.conjugate('broyer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('broyer', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('broyons');
 
-      conjugatedWord = fr.conjugate('sevrer', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('sevrer', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('sèvre');
     });
 
@@ -81,13 +81,13 @@ describe('French', () => {
       let conjugatedWord;
       const fr = new French();
 
-      conjugatedWord = fr.conjugate('finir', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('finir', {tense: 'Indicatif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('finissons');
 
-      conjugatedWord = fr.conjugate('haïr', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('haïr', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('hais');
 
-      conjugatedWord = fr.conjugate('agir', {mood: 'Indicatif', tense: 'Présent', formal: false, singular: true, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('agir', {tense: 'Indicatif Présent', subject: 'je', singular: true, gender: 'male'});
       expect(conjugatedWord).to.equal('agis');
     });
   });
@@ -96,8 +96,16 @@ describe('French', () => {
     it('should conjugate the Infinitif Présent correctly', () => {
       let conjugatedWord;
       const fr = new French();
-      conjugatedWord = fr.conjugate('broyer', {mood: 'Infinitif', tense: 'Présent', formal: false, singular: false, person: '1', gender: 'male'});
+      conjugatedWord = fr.conjugate('broyer', {tense: 'Infinitif Présent', subject: 'nous', singular: false, gender: 'male'});
       expect(conjugatedWord).to.equal('broyer');
+    });
+  });
+
+  describe('setInfo', () => {
+    it('should return the info adapted for the conjugator', () => {
+      const fr = new French();
+      let infos = fr.setInfo({tense: 'Infinitif Présent', singular: false, subject: 'vous', gender: 'male'});
+      expect(infos).to.deep.equal({mood: 'Infinitif', tense: 'Présent', formal: false, singular: false, person: '2', gender: 'male'});
     });
   });
 });

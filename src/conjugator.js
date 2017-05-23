@@ -18,7 +18,6 @@ const Conjugator = {
         break;
     }
   },
-
   getLanguageList: () => ['Korean', 'Hindi', 'French']
 };
 

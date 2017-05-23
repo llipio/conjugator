@@ -33,31 +33,30 @@ const combineSymbols = (input) => {
 };
 
 const allInfo = {
-  tense: ['present', 'past', 'future', 'presentContinuous'],
+  tense: ['Present', 'Past', 'Future', 'Present Continuous'],
   formality: ['formal', 'casual'],
 };
-class Korean {
 
-  getInfoList () {
+class Korean {
+  getAllInfo () {
     return allInfo;
   }
 
   conjugate (word, info) {
-  // Format for rulesObject: { tense: 'present', formal: 'true/false', wordType: 'adjective/verb'}
+  // Format for rulesObject: { tense: 'Present', formality: 'Casual/Formal'}
   // TODO: test if word is verb, return to avoid switch
-
     let result = '';
     switch (info.tense) {
-      case 'present':
+      case 'Present':
         result = this.doPresent(word);
         break;
-      case 'past':
+      case 'Past':
         result = this.doPast(word);
         break;
-      case 'future':
+      case 'Future':
         result = this.doFuture(word);
         break;
-      case 'presentContinuous':
+      case 'Present Continuous':
         return this.doPresentContinuous(word);
       default:
         return 'Could not find any rules for conjugation';
