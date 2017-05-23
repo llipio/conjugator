@@ -1,17 +1,16 @@
 const allInfo = {
-  Tense: {
-    Indicatif: ['Présent', 'Passé Composé', 'Imparfait', 'Plus-que-parfait',
-      'Passé Simple', 'Passé Antérieur', 'Futur Simple', 'Futur Antérieur'],
-    Subjonctif: ['Présent', 'Passé', 'Imparfait', 'Plus-que-parfait'],
-    Impératif: ['Présent', 'Passé'],
-    Conditionnel: ['Présent', 'Passé 1', 'Passé 2'],
-    Infinitif: ['Présent', 'Passé'],
-    Participe: ['Présent', 'Passé']
-  },
-  Gender: ['Female', 'Male', 'Unknown'],
-  Subject: ['Je', 'Tu', 'Il', 'Nous', 'Vous', 'Ils', 'Elles', 'On'],
-  Singular: ['True', 'False'],
-  Formal: ['True', 'False']
+  tense: ['Indicatif Présent', 'Infinitif Présent'],
+  /* TODO: 'Indicatif Passé Composé', 'Indicatif Imparfait',
+    'Indicatif Plus-que-parfait', 'Indicatif Passé Simple',
+    'Indicatif Passé Antérieur', 'Indicatif Futur Simple',
+    'Indicatif Futur Antérieur', 'Subjonctif Présent', 'Subjonctif Passé',
+    'Subjonctif Imparfait', 'Subjonctif Plus-que-parfait', 'Impératif Présent',
+    'Impératif Passé', 'Conditionnel Présent', 'Conditionnel Passé 1',
+    'Conditionnel Passé 2', 'Infinitif Passé',
+    'Participe Présent', 'Participe Passé'*/
+  gender: ['female', 'male', 'unknown'],
+  subject: ['je', 'tu', 'il', 'elle', 'nous', 'vous', 'ils', 'elles', 'on'],
+  singular: ['true', 'false']
 };
 
 class French {
@@ -51,50 +50,50 @@ class French {
           ! 'on' and objects 'can' also have a gender !
       }
   */
-  getInfoList () {
-    return Object.keys(allInfo);
+  getAllInfo () {
+    return allInfo;
   }
 
-  getInfoOptions (option) {
-    return allInfo[option];
-  }
+  setInfo (inputInfo) {
+    const info = { formal: false };
 
-  setInfo (infoSite) {
-    const info = {
-      mood: '',
-      tense: '',
-      gender: 'Unknown',
-      formal: false,
-      singular: false,
-      person: '1'
-    };
+    const tenseAndMood = /(\S+) (.+)/.exec(inputInfo.tense);
+    info.mood = tenseAndMood[1];
+    info.tense = tenseAndMood[2];
 
-    info.mood = Object.keys(infoSite.Tense)[0];
-    info.tense = infoSite.Tense[info.mood];
-
-    if (infoSite.Gender === 'Female') {
+    if (/^e/.test(inputInfo.subject)) {
       info.gender = 'female';
-    } else if (infoSite.Gender === 'Male') {
+    } else if (/^i/.test(inputInfo.subject)) {
       info.gender = 'male';
+    } else {
+      info.gender = inputInfo.gender;
     }
 
-    if (infoSite.Formal === 'True') {
-      info.formal = true;
-    }
-
-    if (infoSite.Singular === 'True') {
+    if (/s$/.test(inputInfo.subject)) {
+      info.singular = false;
+    } else {
       info.singular = true;
     }
+    if (inputInfo.subject === 'vous' || inputInfo.subject === 'on') {
+      info.singular = (inputInfo.singular === 'true');
+      if (inputInfo.subject === 'vous' && info.singular === true) {
+        info.formal = true;
+      }
+    }
 
-    if (/^(?:Tu|Vous)$/.test(infoSite.Subject)) {
+    if (inputInfo.subject === 'je' || inputInfo.subject === 'nous') {
+      info.person = '1';
+    } else if (inputInfo.subject === 'tu' || inputInfo.subject === 'vous') {
       info.person = '2';
-    } else if (/^(?:Il|Elle|On)/.test(infoSite.Subject)) {
+    } else {
       info.person = '3';
     }
+
     return info;
   }
 
-  conjugate (word, info) {
+  conjugate (word, inputInfo) {
+    const info = this.setInfo(inputInfo);
     switch (info.mood) {
       case 'Indicatif':
         switch (info.tense) {
