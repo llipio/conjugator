@@ -65,7 +65,7 @@ const regularVerbConjugation = {
 
 const allInfo = {
   tense: ['present', 'future', 'past'],
-  pronoun: ['yo', 'tú', 'él/ella/Ud.', 'nosotros/nosotras', 'vosotros/vosotras', 'ellos/ellas/Uds.']
+  subject: ['yo', 'tú', 'él/ella/Ud.', 'nosotros/nosotras', 'vosotros/vosotras', 'ellos/ellas/Uds.']
 };
 
 class Spanish {
@@ -79,7 +79,7 @@ class Spanish {
         stem = word;
         ending = 'all';
       }
-      return stem.concat(regularVerbConjugation[info.tense][ending][info.pronoun]);
+      return stem.concat(regularVerbConjugation[info.tense][ending][info.subject]);
     }
     return CONJUGATION_ERROR;
   }
