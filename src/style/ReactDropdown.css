@@ -50,7 +50,7 @@
   position: absolute;
   top: 100%;
   width: 100%;
-  z-index: 1000;;
+  z-index: 1000;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -67,8 +67,6 @@
   cursor: pointer;
   display: block;
   padding: 8px 10px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .Dropdown-option:last-child {

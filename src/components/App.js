@@ -11,7 +11,7 @@ const RadioButtonOptions = ({options, setOptions, title}) => {
           <input type="radio" name={title} value={element} onChange={() => {setOptions(title, element)}}/>{`${element}`}
         </label>)
     })
-  return (<div className="radio option_text">{title}{radioOptions}</div>);
+  return (<div className="radio"><div className="radio-title">{title}</div><span>{radioOptions}</span></div>);
   }
 
 const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
@@ -19,7 +19,7 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
   let optionBulletForm = [];
   for(let title in options) {
     if (options[title].length > 2){
-      optionListForm.push(<Dropdown key={title} value={info[title]} options={options[title]} placeholder={title} onChange={(tense) => {setOptions(title,tense.value)}}/>)
+      optionListForm.push(<div className="option"><div className="option-title">{title}</div><div className="option-menu"><Dropdown key={title} value={info[title]} options={options[title]} onChange={(tense) => {setOptions(title,tense.value)}}/></div></div>)
     } else {
       optionBulletForm.push(<RadioButtonOptions key={title} options={options[title]} setOptions={setOptions} title={title}/>);
     }}
@@ -31,15 +31,15 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
         <span className="title" >CONJUGATOR</span>
       </div>
       <div className='content-container'>
-        <p className="instruction_text">Select Your Language!</p>
+        <p className="instruction-text">Select Your Language!</p>
       <Dropdown options={languageList} onChange={(languageOption) => {changeLanguage(languageOption.value)}} value={selectedLanguage} placeholder="Please Select Language" />
-      {optionListForm} {optionBulletForm}
-        <p className="instruction_text">Type Your Word</p>    
+      {optionBulletForm} {optionListForm}
+        <p className="instruction-text">Type Your Word</p>    
     <input type="text" className="input-box" name="word" placeholder="Please input word" value={word} onChange={(e) => {
           changeWord(e.target.value);
         }} />
         <img className="image" src="/arrow_button_white.png"
-          width="73" height="auto" onClick={ () => { submit(); } } />
+          width="73" height="auto" onClick={ submit } />
         <label>
           <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
         </label>
