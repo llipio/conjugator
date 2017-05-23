@@ -19,7 +19,13 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
   let optionBulletForm = [];
   for(let title in options) {
     if (options[title].length > 2){
-      optionListForm.push(<div className="option"><div className="option-title">{title}</div><div className="option-menu"><Dropdown key={title} value={info[title]} options={options[title]} onChange={(tense) => {setOptions(title,tense.value)}}/></div></div>)
+      optionListForm.push(
+        <div className="option">
+          <div className="option-title">{title}</div>
+            <div className="option-menu">
+              <Dropdown key={title} value={info[title]} options={options[title]} onChange={(tense) => {setOptions(title,tense.value)}}/>
+            </div>
+        </div>)
     } else {
       optionBulletForm.push(<RadioButtonOptions key={title} options={options[title]} setOptions={setOptions} title={title}/>);
     }}
@@ -32,22 +38,27 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
       </div>
       <div className='content-container'>
         <p className="instruction-text">Select Your Language!</p>
-      <Dropdown options={languageList} onChange={(languageOption) => {changeLanguage(languageOption.value)}} value={selectedLanguage} placeholder="Please Select Language" />
-      {optionBulletForm} {optionListForm}
+        <Dropdown 
+          options={languageList} onChange={(languageOption) => {changeLanguage(languageOption.value)}} 
+          value={selectedLanguage} placeholder="Please Select Language" 
+        />
+        {optionBulletForm} {optionListForm}
         <p className="instruction-text">Type Your Word</p>    
-    <input type="text" className="input-box" name="word" placeholder="Please input word" value={word} onChange={(e) => {
+        <input 
+          type="text" className="input-box" name="word" placeholder="Please input word" value={word} onChange={(e) => {
           changeWord(e.target.value);
-        }} />
-        <img className="image" src="/arrow_button_white.png"
-          width="73" height="auto" onClick={ submit } />
-        <label>
-          <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
-        </label>
-    </div>  
- </div>
+          }} 
+        />
+        <div>
+          <img src="/arrow_button_white.png"
+            width="73" height="auto" onClick={ submit } />
+        </div>
+        <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
+      </div>  
+    </div>
 
 
-);
-}
+  );
+};
 
 export default App;
