@@ -1,36 +1,10 @@
-body {$
-  width: 100%;
+body {
   background-color: #32bdf9;
-}
-
-.result {
-  padding: 8px 0;
 }
 
 .App {
   text-align: center;
   color: #ffffff;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .title-container {
@@ -47,23 +21,15 @@ body {$
   font-weight: bolder;
 }
 
+.content-container {
+  width: 280px;
+  margin: auto;
+}
+
 .instruction-text{
   margin-top: 30px;
   font-size: 18px;
   font-family: ProximaNova-Regular;
-}
-
-
-.radio {
-  margin-bottom: 15px;
-  text-align: left;
-  font-family: ProximaNova-Regular;
-  text-transform: capitalize;
-}
-
-.button {
-  display: inline-block;
-  margin-right: 10px;
 }
 
 .input-box {
@@ -74,17 +40,23 @@ body {$
   margin-bottom: 20px;
 }
 
-.output-box {
-  border-radius: 5px;
-  width: 100%;
-  height: 70px;
-  color: black;
-  margin-top: 20px;
-} 
+.radio {
+  margin-bottom: 15px;
+  text-align: left;
+  font-family: ProximaNova-Regular;
+  text-transform: capitalize;
+}
 
-.content-container {
-  width: 280px;
-  margin: auto;
+.radio-title {
+  display: inline-block;
+  width: 60px;
+  margin-right: 40px;
+  font-size: 16px;
+}
+
+.button {
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .option { 
@@ -105,10 +77,19 @@ body {$
   font-family: ProximaNova-Regular;
   text-transform: capitalize;
 }
-
-.radio-title {
-  display: inline-block;
-  width: 60px;
-  margin-right: 40px;
-  font-size: 16px;
+.conjugate-button {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
 }
+
+.output-box {
+  border-radius: 5px;
+  width: 100%;
+  height: 70px;
+  color: black;
+  margin-top: 20px;
+} 
+
+
+

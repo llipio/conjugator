@@ -9,7 +9,7 @@ const RadioButtonOptions = ({options, setOptions, title}) => {
       radioOptions.push(
         <label className="button" key={element}>
           <input type="radio" name={title} value={element} onChange={() => {setOptions(title, element)}}/>{`${element}`}
-        </label>)
+        </label>);
     })
   return (<div className="radio"><div className="radio-title">{title}</div><span>{radioOptions}</span></div>);
   }
@@ -50,7 +50,8 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
           }} 
         />
         <div>
-          <img src="/arrow_button_white.png"
+          <img className="conjugate-button"
+            src="/arrow_button_white.png"
             width="73" height="auto" onClick={ submit } />
         </div>
         <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
