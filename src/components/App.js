@@ -2,6 +2,7 @@ import React from 'react';
 import '../style/App.css';
 import '../style/ReactDropdown.css';
 import Dropdown from 'react-dropdown';
+import myImage from '../assets/arrow_button_white.png';
 
 const RadioButtonOptions = ({options, setOptions, title}) => {
   let radioOptions = [];
@@ -51,7 +52,7 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
         />
         <div>
           <img className="conjugate-button"
-            src="/arrow_button_white.png"
+            src={myImage}
             width="73" height="auto" onClick={ submit } />
         </div>
         <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
