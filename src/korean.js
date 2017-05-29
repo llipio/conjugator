@@ -113,6 +113,9 @@ class Korean {
           return word.slice(0, wordLength - 1);
         case 1:
         case 8:
+        case 5:
+        case 7:
+        case 9:
           if (syllableEnd === 1 && brokeWord.length < 3) {
             // if last letter is simply ㅏ leave alone
             return word.slice(0, wordLength - 1);
@@ -121,9 +124,11 @@ class Korean {
             switch (brokeWord[brokeLength - 2]) {
               case 0:
               case 8:
+                // if the medial jamo is ㅏ or ㅗ
                 return `${word.slice(0, wordLength - 1)}아`;
               case 4:
               case 13:
+                // if the medial jamo is ㅓ or ㅜ
                 return `${word.slice(0, wordLength - 1)}어`;
               default:
                 break;
