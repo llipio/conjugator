@@ -151,7 +151,7 @@ class Korean {
               // if the medial jamo is ㅓor ㅡ, replace with: ㄹ (9)
               newSyllable.push(8);
               newSyllable = combineSymbols(newSyllable);
-              return (stemWord + newSyllable).concat('어');
+              return `${stemWord + newSyllable}어`;
             case 13:
               // if the medial jamo is ㅓ or ㅜ
               return `${word.slice(0, wordLength - 1)}어`;
