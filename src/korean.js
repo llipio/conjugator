@@ -114,7 +114,6 @@ class Korean {
         case 1:
         case 8:
         case 5:
-        case 7:
         case 9:
           if (syllableEnd === 1 && brokeWord.length < 3) {
             // if last letter is simply ㅏ leave alone
@@ -142,10 +141,24 @@ class Korean {
           }
           break;
         case 7:
-          // replace with: ㄹ (9)
-          newSyllable.push(8);
-          newSyllable = combineSymbols(newSyllable);
-          return (stemWord + newSyllable).concat('어');
+          switch (brokeWord[brokeLength - 2]) {
+            case 0:
+            case 8:
+              // if the medial jamo is ㅏ or ㅗ
+              return `${word.slice(0, wordLength - 1)}아`;
+            case 4:
+            case 18:
+              // if the medial jamo is ㅓor ㅡ, replace with: ㄹ (9)
+              newSyllable.push(8);
+              newSyllable = combineSymbols(newSyllable);
+              return (stemWord + newSyllable).concat('어');
+            case 13:
+              // if the medial jamo is ㅓ or ㅜ
+              return `${word.slice(0, wordLength - 1)}어`;
+            default:
+              break;
+          }
+          break;
         case 18:
           // vowel ㅡ replace with ㅓ (4)
           newSyllable.push(4);
