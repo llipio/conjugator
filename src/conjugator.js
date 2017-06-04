@@ -1,6 +1,7 @@
 import { Korean } from './korean';
 import { Hindi } from './hindi';
 import { French } from './french';
+import { Spanish } from './spanish';
 
 const Conjugator = {
   create: (lang) => {
@@ -11,6 +12,8 @@ const Conjugator = {
         return new Hindi();
       case 'french':
         return new French();
+      case 'spanish':
+        return new Spanish();
       default:
         break;
     }
