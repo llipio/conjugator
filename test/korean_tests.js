@@ -140,6 +140,14 @@ describe('Korean', () => {
     });
    });
   describe('Future Tense', () => {
+    it('should conjugate verbs with more than one character before 다', () => {
+      const kc = new Korean();
+      let futureWord = kc.conjugate('좋아하다', {tense: 'Future', formality: 'Casual'});
+      expect(futureWord).to.equal('좋아할 거야');
+
+      futureWord = kc.conjugate('부르다', {tense: 'Future', formality: 'Casual'});
+      expect(futureWord).to.equal('부를 거야');
+    });
     it('should conjugate verbs with stem ending with a vowel correctly', () => {
       const kc = new Korean();
       let futureWord = kc.conjugate('하다', {tense: 'Future', formality: 'Casual'});
@@ -205,4 +213,20 @@ describe('Korean', () => {
       expect(pastWord).to.equal('불렀어');
     });
   });
-});
+  describe('Prepared form', () => {
+    it('should conjugate verbs correctly for prepared form', () => {
+      const kc = new Korean();
+      let presentWord = kc.conjugate('하다', {tense: 'Prepared'});
+      expect(presentWord).to.equal('할');
+
+      presentWord = kc.conjugate('오다', {tense: 'Prepared'});
+      expect(presentWord).to.equal('올');
+
+      presentWord = kc.conjugate('먹다', {tense: 'Prepared'});
+      expect(presentWord).to.equal('먹을');
+
+      presentWord = kc.conjugate('부르다', {tense: 'Prepared'});
+      expect(presentWord).to.equal('부를');
+    });
+  });
+ });
