@@ -33,7 +33,7 @@ const combineSymbols = (input) => {
 };
 
 const allInfo = {
-  tense: ['Present', 'Past', 'Future', 'Present Continuous'],
+  tense: ['Present', 'Past', 'Future', 'Present Continuous', 'Prepared'],
   formality: ['formal', 'casual'],
 };
 
@@ -58,6 +58,10 @@ class Korean {
         break;
       case 'Present Continuous':
         return this.doPresentContinuous(word);
+      case 'Prepared': {
+        const futureConjugation = this.doFuture(word);
+        return futureConjugation.substring(0, futureConjugation.length - 3);
+      }
       default:
         return 'Could not find any rules for conjugation';
     }
@@ -210,10 +214,11 @@ class Korean {
   }
 
   doFuture (word) {
-    const stem = breakdown(word.slice(0, -1));
+    const endingSliced = word.slice(0, -2);
+    const stem = breakdown(word[word.length - 2]);
     if (stem.length < 3) {
       stem.push(8);
-      return `${combineSymbols(stem)} 거야`;
+      return `${endingSliced}${combineSymbols(stem)} 거야`;
     }
     if (stem[stem.length - 1] === 17) {
       stem.pop();
