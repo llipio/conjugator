@@ -216,8 +216,8 @@ class Korean {
   doFuture (word) {
     const endingSliced = word.slice(0, -2);
     const stem = breakdown(word[word.length - 2]);
-    if (stem.length < 3) {
-      stem.push(8);
+    if (stem.length < 3) { // does not have bottom consonant
+      stem.push(8); // push ㄹ as bottom consonant
       return `${endingSliced}${combineSymbols(stem)} 거야`;
     }
     if (stem[stem.length - 1] === 17) {
