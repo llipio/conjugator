@@ -1,5 +1,5 @@
 const allInfo = {
-  tense: ['Indicatif Présent', 'Infinitif Présent'],
+  tense: ['indicatif présent', 'infinitif présent'],
   /* TODO: 'Indicatif Passé Composé', 'Indicatif Imparfait',
     'Indicatif Plus-que-parfait', 'Indicatif Passé Simple',
     'Indicatif Passé Antérieur', 'Indicatif Futur Simple',
@@ -94,62 +94,62 @@ class French {
 
   conjugate (word, inputInfo) {
     const info = this.setInfo(inputInfo);
-    switch (info.mood) {
-      case 'Indicatif':
-        switch (info.tense) {
-          case 'Présent':
+    switch (info.mood.toLowerCase()) {
+      case 'indicatif':
+        switch (info.tense.toLowerCase()) {
+          case 'présent':
             return this.doIndicatifPresent(word, info);
-          case 'Passé Composé':
-          case 'Imparfait':
-          case 'Plus-que-parfait':
-          case 'Passé Simple':
-          case 'Passé Antérieur':
-          case 'Futur Simple':
-          case 'Futur Antérieur':
+          case 'passé composé':
+          case 'imparfait':
+          case 'plus-que-parfait':
+          case 'passé simple':
+          case 'passé antérieur':
+          case 'futur simple':
+          case 'futur antérieur':
             return 'not implemented yet';
           default:
             return 'Indicatif Tense not found';
         }
-      case 'Infinitif':
-        switch (info.tense) {
-          case 'Présent':
+      case 'infinitif':
+        switch (info.tense.toLowerCase()) {
+          case 'présent':
             return word;
-          case 'Passé':
+          case 'passé':
             return 'not implemented yet';
           default:
             return 'Infinitif Tense not found';
         }
-      case 'Participe':
-        switch (info.tense) {
-          case 'Présent':
-          case 'Passé':
+      case 'participe':
+        switch (info.tense.toLowerCase()) {
+          case 'présent':
+          case 'passé':
             return 'not implemented yet';
           default:
             return 'Participe Tense not found';
         }
-      case 'Subjonctif':
-        switch (info.tense) {
-          case 'Présent':
-          case 'Passé':
-          case 'Imparfait':
-          case 'Plus-que-parfait':
+      case 'subjonctif':
+        switch (info.tense.toLowerCase()) {
+          case 'présent':
+          case 'passé':
+          case 'imparfait':
+          case 'plus-que-parfait':
             return 'not implemented yet';
           default:
             return 'Subjonctif Tense not found';
         }
-      case 'Impératif':
-        switch (info.tense) {
-          case 'Présent':
-          case 'Passé':
+      case 'impératif':
+        switch (info.tense.toLowerCase()) {
+          case 'présent':
+          case 'passé':
             return 'not implemented yet';
           default:
             return 'Impératif Tense not found';
         }
-      case 'Conditionnel':
-        switch (info.tense) {
-          case 'Présent':
-          case 'Passé 1':
-          case 'Passé 2':
+      case 'conditionnel':
+        switch (info.tense.toLowerCase()) {
+          case 'présent':
+          case 'passé 1':
+          case 'passé 2':
             return 'not implemented yet';
           default:
             return 'Conditionnel Tense not found';

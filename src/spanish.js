@@ -79,7 +79,7 @@ class Spanish {
     const CONJUGATION_ERROR = 'Unable to conjugate verb';
 
     if (ending === 'ar' || ending === 'er' || ending === 'ir') {
-      if (info.tense === 'future') {
+      if (info.tense.toLowerCase() === 'future') {
         stem = word;
         ending = 'all';
       }

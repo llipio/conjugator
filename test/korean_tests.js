@@ -216,17 +216,17 @@ describe('Korean', () => {
   describe('Prepared form', () => {
     it('should conjugate verbs correctly for prepared form', () => {
       const kc = new Korean();
-      let presentWord = kc.conjugate('하다', {tense: 'Prepared'});
-      expect(presentWord).to.equal('할');
+      let preparedWord = kc.conjugate('하다', {tense: 'Prepared'});
+      expect(preparedWord).to.equal('할');
 
-      presentWord = kc.conjugate('오다', {tense: 'Prepared'});
-      expect(presentWord).to.equal('올');
+      preparedWord = kc.conjugate('오다', {tense: 'Prepared'});
+      expect(preparedWord).to.equal('올');
 
-      presentWord = kc.conjugate('먹다', {tense: 'Prepared'});
-      expect(presentWord).to.equal('먹을');
+      preparedWord = kc.conjugate('먹다', {tense: 'Prepared'});
+      expect(preparedWord).to.equal('먹을');
 
-      presentWord = kc.conjugate('부르다', {tense: 'Prepared'});
-      expect(presentWord).to.equal('부를');
+      preparedWord = kc.conjugate('부르다', {tense: 'Prepared'});
+      expect(preparedWord).to.equal('부를');
     });
   });
  });

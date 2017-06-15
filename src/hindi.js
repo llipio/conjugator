@@ -1,5 +1,5 @@
 const allInfo = {
-  tense: ['Present', 'Past', 'Future'],
+  tense: ['present', 'past', 'future'],
   gender: ['female', 'male'],
 };
 
@@ -10,27 +10,27 @@ class Hindi {
 
   conjugate (word, info) {
     // Format for info:
-    // {tense: 'Past/Present/Future', gender: 'male/female'}
+    // {tense: 'past/present/future', gender: 'male/female'}
     word = word.trim().toLowerCase();
 
-    switch (info.tense) {
-      case 'Present':
-        if (info.gender === 'male') {
+    switch (info.tense.toLowerCase()) {
+      case 'present':
+        if (info.gender && info.gender.toLowerCase() === 'male') {
           return word.replace(/na$/, 'ta hun');
         }
         return word.replace(/na$/, 'ti hun');
-      case 'Past':
-        if (info.gender === 'male') {
+      case 'past':
+        if (info.gender && info.gender.toLowerCase() === 'male') {
           return word.replace(/na$/, 'ta tha');
         }
         return word.replace(/na$/, 'ti thi');
-      case 'Future':
-        if (info.gender === 'male') {
+      case 'future':
+        if (info.gender && info.gender.toLowerCase() === 'male') {
           return word.replace(/na$/, 'nga');
         }
         return word.replace(/na$/, 'ungi');
       default:
-        return 'tense not implemented yet';
+        return `Could not find any rules for ${info.tense}`;
     }
   }
 }
