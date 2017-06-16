@@ -220,13 +220,20 @@ class Korean {
       stem.push(8); // push ㄹ as bottom consonant
       return `${endingSliced}${combineSymbols(stem)} 거야`;
     }
-    if (stem[stem.length - 1] === 17) {
-      stem.pop();
-      return `${combineSymbols(stem)}울 거야`;
-    } else if (stem[stem.length - 1] === 8) {
-      return `${combineSymbols(stem)} 거야`;
+
+    // check the bottom consonant
+    switch (stem[stem.length - 1]) {
+      case 17: // ㅂ
+        stem.pop();
+        return `${combineSymbols(stem)}울 거야`;
+      case 8: // ㄹ
+        return `${combineSymbols(stem)} 거야`;
+      case 7: // ㄷ
+        stem[stem.length - 1] = 8;
+        return `${combineSymbols(stem)}을 거야`;
+      default:
+        return `${combineSymbols(stem)}을 거야`;
     }
-    return `${combineSymbols(stem)}을 거야`;
   }
 } // end for class
 

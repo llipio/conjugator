@@ -174,7 +174,14 @@ describe('Korean', () => {
 
       futureWord = kc.conjugate('먹다', {tense: 'Future', formality: 'Casual'});
       expect(futureWord).to.equal('먹을 거야');
-    });
+
+      futureWord = kc.conjugate('듣다', {tense: 'Future', formality: 'Casual'});
+      expect(futureWord).to.equal('들을 거야');
+
+      futureWord = kc.conjugate('걷다', {tense: 'Future', formality: 'Casual'});
+      expect(futureWord).to.equal('걸을 거야');
+       
+     });
   });
   describe('Present Continuous Tense', () => {
     it('should conjugate verbs correctly', () => {
@@ -227,6 +234,9 @@ describe('Korean', () => {
 
       preparedWord = kc.conjugate('부르다', {tense: 'Prepared'});
       expect(preparedWord).to.equal('부를');
-    });
+
+      preparedWord = kc.conjugate('듣다', {tense: 'Prepared'});
+      expect(preparedWord).to.equal('들을');
+     });
   });
  });
