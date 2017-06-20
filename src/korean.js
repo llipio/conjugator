@@ -60,6 +60,7 @@ class Korean {
         return this.doPresentContinuous(word);
       case 'prepared': {
         const futureConjugation = this.doFuture(word);
+        // simply drop the ' 거야' at the end of future conjugation
         return futureConjugation.substring(0, futureConjugation.length - 3);
       }
       default:
@@ -214,25 +215,28 @@ class Korean {
   }
 
   doFuture (word) {
-    const endingSliced = word.slice(0, -2);
+    const preStem = word.slice(0, -2);
     const stem = breakdown(word[word.length - 2]);
     if (stem.length < 3) { // does not have bottom consonant
       stem.push(8); // push ㄹ as bottom consonant
-      return `${endingSliced}${combineSymbols(stem)} 거야`;
+      return `${preStem}${combineSymbols(stem)} 거야`;
     }
 
     // check the bottom consonant
     switch (stem[stem.length - 1]) {
       case 17: // ㅂ
+        if (stem[stem.length - 2] === 20) { // special case: if medial jamo is 'ㅣ'
+          return `${preStem}${combineSymbols(stem)}을 거야`;
+        }
         stem.pop();
-        return `${combineSymbols(stem)}울 거야`;
+        return `${preStem}${combineSymbols(stem)}울 거야`;
       case 8: // ㄹ
-        return `${combineSymbols(stem)} 거야`;
+        return `${preStem}${combineSymbols(stem)} 거야`;
       case 7: // ㄷ
         stem[stem.length - 1] = 8;
-        return `${combineSymbols(stem)}을 거야`;
+        return `${preStem}${combineSymbols(stem)}을 거야`;
       default:
-        return `${combineSymbols(stem)}을 거야`;
+        return `${preStem}${combineSymbols(stem)}을 거야`;
     }
   }
 } // end for class
