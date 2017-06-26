@@ -2,6 +2,7 @@ import { Korean } from './korean';
 import { Hindi } from './hindi';
 import { French } from './french';
 import { Spanish } from './spanish';
+import { Vietnamese } from './vietnamese';
 
 const Conjugator = {
   create: (lang) => {
@@ -14,11 +15,13 @@ const Conjugator = {
         return new French();
       case 'spanish':
         return new Spanish();
+      case 'vietnamese':
+        return new Vietnamese();
       default:
         break;
     }
   },
-  getLanguageList: () => ['Korean', 'Hindi', 'French']
+  getLanguageList: () => ['Korean', 'Hindi', 'French', 'Vietnamese']
 };
 
 export default Conjugator;
