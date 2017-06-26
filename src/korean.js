@@ -33,7 +33,7 @@ const combineSymbols = (input) => {
 };
 
 const allInfo = {
-  tense: ['present', 'past', 'future', 'present continuous', 'prepared'],
+  tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated'],
   formality: ['formal', 'casual'],
 };
 
@@ -63,6 +63,8 @@ class Korean {
         // simply drop the ' 거야' at the end of future conjugation
         return futureConjugation.substring(0, futureConjugation.length - 3);
       }
+      case 'truncated':
+        return word.substring(0, word.length - 1);
       default:
         return `Could not find any rules for ${info.tense}`;
     }

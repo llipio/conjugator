@@ -33,7 +33,7 @@ describe('Conjugator', () => {
     const kc = Conjugator.create('korean');
     const list = kc.getAllInfo('korean');
     expect(list).to.deep.equal({
-      tense: ['present', 'past', 'future', 'present continuous', 'prepared'],
+      tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated'],
       formality: ['formal', 'casual'],
     });
   });
