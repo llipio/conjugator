@@ -64,7 +64,7 @@ class Korean {
         return futureConjugation.substring(0, futureConjugation.length - 3);
       }
       case 'truncated':
-        return word.substring(0, word.length-1);
+        return word.substring(0, word.length - 1);
       default:
         return `Could not find any rules for ${info.tense}`;
     }
