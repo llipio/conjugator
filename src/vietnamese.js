@@ -1,7 +1,7 @@
 class Vietnamese {
-  conjugate(word, info) {
+  conjugate (word, info) {
     // format for info:
-    // { tense: 'past/present/future/present progressive/past progressive/future progressive'}
+    // { tense: 'past/present/future/present continuous/past continuous/future continuous'}
     word = word.trim().toLowerCase();
 
     switch (info.tense.toLowerCase()) {
@@ -11,14 +11,14 @@ class Vietnamese {
         return `đã ${word} / ${word} rồi`;
       case 'future':
         return `sẽ ${word}`;
-      case 'present progressive':
+      case 'present continuous':
         return `đang ${word}`;
-      case 'past progressive':
+      case 'past continuous':
         return `đã đang ${word}`;
-      case 'future progressive':
-        return `đang sẽ ${word}`
+      case 'future continuous':
+        return `đang sẽ ${word}`;
       default:
-      return `Could not find any rules for ${info.tense}`;
+        return `Could not find any rules for ${info.tense}`;
     }
   }
 }
