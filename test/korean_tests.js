@@ -244,4 +244,18 @@ describe('Korean', () => {
       expect(preparedWord).to.equal('들을');
      });
   });
+  describe('Truncated form', () => {
+    it('should conjugate verbs correctly for truncated form', () => {
+      const kc = new Korean();
+      let preparedWord = kc.conjugate('하다', {tense: 'Truncated'});
+      expect(preparedWord).to.equal('하');
+
+      preparedWord = kc.conjugate('부르다', {tense: 'Truncated'});
+      expect(preparedWord).to.equal('부르');
+
+      preparedWord = kc.conjugate('듣다', {tense: 'Truncated'});
+      expect(preparedWord).to.equal('듣');
+ 
+     });
+  });
  });
