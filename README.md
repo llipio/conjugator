@@ -9,6 +9,9 @@ The conjugator takes in a verb and a grammar form and outputs the conjugated wor
 * Hindi
 * French
 * Spanish
+* Vietnamese
+
+[The Conjugator Website](https://llipio.github.io/conjugator/)
 
 [Full API Documentation](https://github.com/llipio/conjugator/wiki)
  
@@ -22,6 +25,9 @@ npm install universal-conjugator
 First create a supported language object.  Second pass in a language attribute (e.g. tense) associated with the language.
 
 ```shell
+# Import the universal-conjugator module
+let Conjugator = require('universal-conjugator');
+
 # First get a conjugator object for language of your choice.
 let koreanConjugator = Conjugator.create('korean');
   
