@@ -33,7 +33,7 @@ const combineSymbols = (input) => {
 };
 
 const allInfo = {
-  tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated'],
+  tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional'],
   formality: ['formal', 'casual'],
 };
 
@@ -65,6 +65,8 @@ class Korean {
       }
       case 'truncated':
         return word.substring(0, word.length - 1);
+      case 'conditional':
+        return this.doConditional(word);
       default:
         return `Could not find any rules for ${info.tense}`;
     }
@@ -155,7 +157,7 @@ class Korean {
               return `${word.slice(0, wordLength - 1)}아`;
             case 4:
             case 18:
-              // if the medial jamo is ㅓor ㅡ, replace with: ㄹ (9)
+              // if the medial jamo is ㅓ or ㅡ, replace with: ㄹ (8)
               newSyllable.push(8);
               newSyllable = combineSymbols(newSyllable);
               return `${stemWord + newSyllable}어`;
@@ -240,6 +242,22 @@ class Korean {
       default:
         return `${preStem}${combineSymbols(stem)}을 거야`;
     }
+  }
+
+  doConditional (word) {
+    const stem = breakdown(word[word.length - 2]);
+    const stemLen = stem.length;
+    const truncatedWord = word.substring(0, word.length - 1);
+    if (stemLen < 3) { // does not have bottom consonant
+      return truncatedWord;
+    }
+
+    // irregular case:
+    if (stem[stemLen - 1] === 7 && // if bottom consonant is ㄷ
+      (stem[stemLen - 2] === 4 || stem[stemLen - 2] === 18)) { // if vowel is ㅓ or ㅡ
+      stem[stemLen - 1] = 8; // replace it with ㄹ
+    }
+    return `${combineSymbols(stem)}으`;
   }
 } // end for class
 

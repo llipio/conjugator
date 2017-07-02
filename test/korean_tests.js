@@ -255,7 +255,24 @@ describe('Korean', () => {
 
       preparedWord = kc.conjugate('듣다', {tense: 'Truncated'});
       expect(preparedWord).to.equal('듣');
- 
      });
+  });
+  describe('Conditional form', () => {
+    it('should conjugate verbs correctly for conditional form', () => {
+      const kc = new Korean();
+      let preparedWord = kc.conjugate('하다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('하');
+
+      preparedWord = kc.conjugate('부르다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('부르');
+
+      preparedWord = kc.conjugate('울다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('울으');
+    });
+    it('should conjugate irregular verbs correctly for conditional form', () => {
+      const kc = new Korean();
+      let preparedWord = kc.conjugate('듣다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('들으');
+    });
   });
  });
