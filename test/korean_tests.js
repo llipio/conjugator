@@ -258,20 +258,25 @@ describe('Korean', () => {
      });
   });
   describe('Conditional form', () => {
-    it('should conjugate verbs correctly for conditional form', () => {
+    it('should conjugate verbs without bottom consonant correctly for conditional form', () => {
       const kc = new Korean();
       let preparedWord = kc.conjugate('하다', {tense: 'Conditional'});
       expect(preparedWord).to.equal('하');
 
       preparedWord = kc.conjugate('부르다', {tense: 'Conditional'});
       expect(preparedWord).to.equal('부르');
-
-      preparedWord = kc.conjugate('울다', {tense: 'Conditional'});
+    });
+    it('should conjugate verbs with bottom consonant correctly for conditional form', () => {
+      const kc = new Korean();
+      let preparedWord = kc.conjugate('울다', {tense: 'Conditional'});
       expect(preparedWord).to.equal('울으');
     });
-    it('should conjugate irregular verbs correctly for conditional form', () => {
+    it('should conjugate ㅓㄷ/ㅡㄷ words correctly for conditional form', () => {
       const kc = new Korean();
-      let preparedWord = kc.conjugate('듣다', {tense: 'Conditional'});
+      let preparedWord = kc.conjugate('걷다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('걸으');
+
+      preparedWord = kc.conjugate('듣다', {tense: 'Conditional'});
       expect(preparedWord).to.equal('들으');
     });
   });
