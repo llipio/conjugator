@@ -105,8 +105,6 @@ class Korean {
           // other vowels are followed by 러
           return newSyllable.concat('러');
       }
-    } else if (word[wordLength - 2] === '있') {
-      return `${word.slice(0, wordLength - 1)}어`;
     } else {
       /** breakdown the word to find out the 2nd to last character's letter **/
       const brokeWord = breakdown(word[wordLength - 2]);
@@ -115,70 +113,67 @@ class Korean {
       const stemWord = word.slice(0, wordLength - 2);
       let newSyllable = brokeWord.slice(0, brokeLength - 1);
 
-      switch (syllableEnd) {
-        case 0:
-        case 4:
-          // if last letter is ㅏ leave alone
-          return word.slice(0, wordLength - 1);
-        case 1:
-        case 8:
-        case 5:
-        case 9:
-          if (syllableEnd === 1 && brokeWord.length < 3) {
-            // if last letter is simply ㅏ leave alone
-            return word.slice(0, wordLength - 1);
-          } else if (brokeWord.length > 2) {
-            // ㅗㄹ, ㅏㄹ, ㅜㄹ, ㅓㄹ, ㅗㄱ, ㅏㄱ, ㅜㄱ, ㅓㄱ
-            switch (brokeWord[brokeLength - 2]) {
+      // If it has a bottom consonant:
+      if (brokeLength > 2) {
+        switch (syllableEnd) {
+          case 1: // ㄱ, ㄴㅈ, ㄹ, ㄹㄱ
+          case 5:
+          case 8:
+          case 9:
+            switch (brokeWord[brokeLength - 2]) { // Check the vowel
               case 0:
               case 8:
-                // if the medial jamo is ㅏ or ㅗ
+                // if ㅏ or ㅗ
+                return `${word.slice(0, wordLength - 1)}아`;
+              default:
+                // for any other vowel
+                return `${word.slice(0, wordLength - 1)}어`;
+            }
+          case 7: // ㄷ
+            switch (brokeWord[brokeLength - 2]) { // Check the vowel
+              case 0:
+              case 8:
+                // if ㅏ or ㅗ
                 return `${word.slice(0, wordLength - 1)}아`;
               case 4:
-              case 13:
-                // if the medial jamo is ㅓ or ㅜ
-                return `${word.slice(0, wordLength - 1)}어`;
+              case 18:
+                // if ㅓ or ㅡ, replace with: ㄹ (8)
+                newSyllable.push(8);
+                newSyllable = combineSymbols(newSyllable);
+                return `${stemWord + newSyllable}어`;
               default:
-                break;
+                // for all other vowel
+                return `${word.slice(0, wordLength - 1)}어`;
             }
-          } else {
-            // replace with: ㅘ (9)
-            // concat back to word
-            newSyllable.push(9);
-            newSyllable = combineSymbols(newSyllable);
-            return stemWord + newSyllable;
-          }
-          break;
-        case 7:
-          switch (brokeWord[brokeLength - 2]) {
-            case 0:
-            case 8:
-              // if the medial jamo is ㅏ or ㅗ
-              return `${word.slice(0, wordLength - 1)}아`;
-            case 4:
-            case 18:
-              // if the medial jamo is ㅓ or ㅡ, replace with: ㄹ (8)
-              newSyllable.push(8);
-              newSyllable = combineSymbols(newSyllable);
-              return `${stemWord + newSyllable}어`;
-            case 13:
-              // if the medial jamo is ㅓ or ㅜ
-              return `${word.slice(0, wordLength - 1)}어`;
-            default:
-              break;
-          }
-          break;
-        case 18:
-          // vowel ㅡ replace with ㅓ (4)
-          newSyllable.push(4);
+          default:
+            return `${word.slice(0, wordLength - 1)}어`;
+        }
+      }
+
+      // If it ends in a vowel
+      switch (syllableEnd) {
+        case 0:
+        case 1:
+        case 4:
+          // if the vowel is ㅏor ㅓ leave alone
+          return word.slice(0, wordLength - 1);
+        case 8:
+          // replace with: ㅘ (9)
+          // concat back to word
+          newSyllable.push(9);
+          newSyllable = combineSymbols(newSyllable);
+          return stemWord + newSyllable;
+        case 13:
+          // 13 (ㅜ) convert to 14 (ㅝ)
+          newSyllable.push(14);
           newSyllable = combineSymbols(newSyllable);
           if (wordLength <= 2) {
             return newSyllable;
           }
           return stemWord + newSyllable;
-        case 13:
-          // 13 (ㅜ) convert to 14 (ㅝ)
-          newSyllable.push(14);
+        case 18:
+          // vowel ㅡ replace with ㅓ (4)
+          newSyllable.push(4);
           newSyllable = combineSymbols(newSyllable);
           if (wordLength <= 2) {
             return newSyllable;
@@ -193,11 +188,11 @@ class Korean {
           }
           return stemWord + newSyllable;
         default:
-          // if consonant
+          // any other vowel
           conjugate = word.slice(0, wordLength - 1);
           return conjugate.concat('어');
       }
-    } // end of first else
+    }
   } // end of presentWord function
 
   doPresentContinuous (word) {
@@ -208,6 +203,11 @@ class Korean {
     const presentTense = this.doPresent(word);
     let origin = '';
     let brokenWord = '';
+
+    if (!presentTense) {
+      return 'conjugation error';
+    }
+
     if (presentTense.length > 1) {
       origin = presentTense.slice(0, presentTense.length - 1);
       brokenWord = breakdown(presentTense.charAt(presentTense.length - 1));
