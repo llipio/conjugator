@@ -139,6 +139,21 @@ describe('Korean', () => {
       expect(presentWord).to.equal('들어');
     });
    });
+   it('should conjugate all other words correctly', () => {
+      const kc = new Korean();
+      let presentWord = kc.conjugate('열다', {tense: 'Present', formality: 'Casual'});
+      expect(presentWord).to.equal('열어');
+
+      presentWord = kc.conjugate('만들다', {tense: 'Present', formality: 'Casual'});
+      expect(presentWord).to.equal('만들어');
+
+      presentWord = kc.conjugate('찍다', {tense: 'Present', formality: 'Casual'});
+      expect(presentWord).to.equal('찍어');
+
+      presentWord = kc.conjugate('있다', {tense: 'Present', formality: 'Casual'});
+      expect(presentWord).to.equal('있어');
+     });
+   });
   describe('Future Tense', () => {
     it('should conjugate verbs with more than one character before 다', () => {
       const kc = new Korean();
@@ -223,6 +238,8 @@ describe('Korean', () => {
       expect(pastWord).to.equal('먹었어');
       pastWord = kc.conjugate('부르다', {tense: 'Past', formality: 'Casual'});
       expect(pastWord).to.equal('불렀어');
+      pastWord = kc.conjugate('믿다', {tense: 'Past', formality: 'Casual'});
+      expect(pastWord).to.equal('믿었어');
     });
   });
   describe('Prepared form', () => {
@@ -255,7 +272,28 @@ describe('Korean', () => {
 
       preparedWord = kc.conjugate('듣다', {tense: 'Truncated'});
       expect(preparedWord).to.equal('듣');
- 
      });
   });
- });
+  describe('Conditional form', () => {
+    it('should conjugate verbs without bottom consonant correctly for conditional form', () => {
+      const kc = new Korean();
+      let preparedWord = kc.conjugate('하다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('하');
+
+      preparedWord = kc.conjugate('부르다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('부르');
+    });
+    it('should conjugate verbs with bottom consonant correctly for conditional form', () => {
+      const kc = new Korean();
+      let preparedWord = kc.conjugate('울다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('울으');
+    });
+    it('should conjugate ㅓㄷ/ㅡㄷ words correctly for conditional form', () => {
+      const kc = new Korean();
+      let preparedWord = kc.conjugate('걷다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('걸으');
+
+      preparedWord = kc.conjugate('듣다', {tense: 'Conditional'});
+      expect(preparedWord).to.equal('들으');
+    });
+});
