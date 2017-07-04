@@ -3,7 +3,7 @@
 
 # Universal Conjugator
 
-The conjugator takes in a verb and a grammar form and outputs the conjugated word. For example, the future form of ‘하다’(to do) should return ‘할꺼야’(will do). This API will     come handy for people who are learning a new language or, if you’re like me, building a language learning app [https://llip.io](https://llip.io). The following languages are     supported:
+The conjugator takes in a verb and a grammar form and outputs the conjugated word. For example, the future form of ‘하다’(to do) should return ‘할거야’(will do). This API will     come handy for people who are learning a new language or, if you’re like us, building a language learning app [https://llip.io](https://llip.io). As for now, the following languages are     supported:
 
 * Korean
 * Hindi
@@ -11,39 +11,42 @@ The conjugator takes in a verb and a grammar form and outputs the conjugated wor
 * Spanish
 * Vietnamese
 
-[The Conjugator Website](https://llipio.github.io/conjugator/)
-
 [Full API Documentation](https://github.com/llipio/conjugator/wiki)
  
- ## Installing / Getting started
+## The Conjugator Website
+The Conjugator Webiste is live! [https://llipio.github.io/conjugator](https://llipio.github.io/conjugator/)
+ 
+## Installing / Getting started
 Installing universal-conjugator can be done with npm.  The link to the npm page can be found [here](https://www.npmjs.com/package/universal-conjugator).
 ```shell
 npm install universal-conjugator
 ```
 
 ## Usage
-First create a supported language object.  Second pass in a language attribute (e.g. tense) associated with the language.
+First, create a supported language conjugator.  Second, pass in a verb and attributes (e.g. tense) associated with the language.
 
 ```shell
 # Import the universal-conjugator module
 let Conjugator = require('universal-conjugator');
 
-# First get a conjugator object for language of your choice.
+# First get a conjugator object for language of your choice
 let koreanConjugator = Conjugator.create('korean');
   
-#  Call the conjugator object's conjugate method to conjugate the verb of your liking
+#  Call the conjugator's conjugate method to conjugate the verb of your liking
 let conjugatedWord = koreanConjugator.conjugate(‘하다’, {
   tense: 'future',
   });
 ```
 
 ## Developing
-To start developing, fork and clone the reposity onto your local computer.  Change to the conjugator directory and run npm install all dependencies.
+To start developing, fork and clone the reposity onto your local computer and run npm install.
 ```shell
 git clone https://github.com/llipio/conjugator.git
 cd conjugator
 npm install
 ```
+
+To contribute to the Conjugator Website, please submit pull request to origin/website branch.
 
 # Tests
 Tests are written with Chai.js.  Reference for the library is [here](http://chaijs.com/).  After writing tests, use the below instructions to run the tests.
