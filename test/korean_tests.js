@@ -296,4 +296,42 @@ describe('Korean', () => {
       preparedWord = kc.conjugate('듣다', {tense: 'Conditional'});
       expect(preparedWord).to.equal('들으');
     });
-});
+  });
+  describe('Adjective in different tenses', () => {
+    it('should conjugate adjectives correctly', () => {
+      const kc = new Korean();
+      let adjectiveWord = kc.conjugate('외롭다', {tense: 'past'});
+      expect(adjectiveWord).to.equal('외로웠어');
+
+      adjectiveWord = kc.conjugate('덥다', {tense: 'present'});
+      expect(adjectiveWord).to.equal('더워');
+
+      adjectiveWord = kc.conjugate('고급스럽다', {tense: 'present'});
+      expect(adjectiveWord).to.equal('고급스러워');
+
+      adjectiveWord = kc.conjugate('비싸다', {tense: 'past'});
+      expect(adjectiveWord).to.equal('비쌌어');
+
+      adjectiveWord = kc.conjugate('게으르다', {tense: 'present'});
+      expect(adjectiveWord).to.equal('게을러');
+    });
+  });
+  describe('Adjective in state tense', () => {
+    it('should conjugate adjectives correctly', () => {
+      const kc = new Korean();
+      let adjectiveWord = kc.conjugate('외롭다', {tense: 'state'});
+      expect(adjectiveWord).to.equal('외로운');
+
+      adjectiveWord = kc.conjugate('졸리다', {tense: 'state'});
+      expect(adjectiveWord).to.equal('졸린');
+
+      adjectiveWord = kc.conjugate('고급스럽다', {tense: 'state'});
+      expect(adjectiveWord).to.equal('고급스러운');
+
+      adjectiveWord = kc.conjugate('비싸다', {tense: 'state'});
+      expect(adjectiveWord).to.equal('비싼');
+
+      adjectiveWord = kc.conjugate('게으르다', {tense: 'state'});
+      expect(adjectiveWord).to.equal('게으른');
+    });
+  });

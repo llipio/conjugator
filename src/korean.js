@@ -33,7 +33,7 @@ const combineSymbols = (input) => {
 };
 
 const allInfo = {
-  tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional'],
+  tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional', 'state'],
   formality: ['formal', 'casual'],
 };
 
@@ -67,6 +67,8 @@ class Korean {
         return word.substring(0, word.length - 1);
       case 'conditional':
         return this.doConditional(word);
+      case 'state':
+        return this.doState(word);
       default:
         return `Could not find any rules for ${info.tense}`;
     }
@@ -115,12 +117,13 @@ class Korean {
 
       // If it has a bottom consonant:
       if (brokeLength > 2) {
+        const medialValue = brokeWord[brokeLength - 2];
         switch (syllableEnd) {
           case 1: // ㄱ, ㄴㅈ, ㄹ, ㄹㄱ
           case 5:
           case 8:
           case 9:
-            switch (brokeWord[brokeLength - 2]) { // Check the vowel
+            switch (medialValue) { // Check the vowel
               case 0:
               case 8:
                 // if ㅏ or ㅗ
@@ -130,7 +133,7 @@ class Korean {
                 return `${word.slice(0, wordLength - 1)}어`;
             }
           case 7: // ㄷ
-            switch (brokeWord[brokeLength - 2]) { // Check the vowel
+            switch (medialValue) { // Check the vowel
               case 0:
               case 8:
                 // if ㅏ or ㅗ
@@ -142,7 +145,20 @@ class Korean {
                 newSyllable = combineSymbols(newSyllable);
                 return `${stemWord + newSyllable}어`;
               default:
-                // for all other vowel
+                // for all other vowels
+                return `${word.slice(0, wordLength - 1)}어`;
+            }
+          case 17: // ㅂ
+            switch (medialValue) { // Check the vowel
+              case 0:
+              case 4:
+              case 8:
+              case 13:
+                // if ㅏ,ㅓ,ㅕ,ㅗ,ㅜ, remove ㅂ and add 워
+                newSyllable = combineSymbols(newSyllable);
+                return `${stemWord + newSyllable}워`;
+              default:
+                // for all other vowels
                 return `${word.slice(0, wordLength - 1)}어`;
             }
           default:
@@ -194,6 +210,41 @@ class Korean {
       }
     }
   } // end of presentWord function
+
+  doState (word) {
+    const wordLength = word.length;
+    /** breakdown the word to find out the 2nd to last character's letter **/
+    const brokeWord = breakdown(word[wordLength - 2]);
+    const brokeLength = brokeWord.length;
+    const syllableEnd = brokeWord[brokeLength - 1];
+    const stemWord = word.slice(0, wordLength - 2);
+    let newSyllable = brokeWord.slice(0, brokeLength - 1);
+
+    // If it has a bottom consonant:
+    if (brokeLength > 2) {
+      const medialValue = brokeWord[brokeLength - 2];
+      switch (syllableEnd) {
+        case 17: // ㅂ
+          switch (medialValue) {
+            case 0:
+            case 4:
+            case 8:
+            case 13:
+              // if ㅏ,ㅓ,ㅕ,ㅗ,ㅜ, remove ㅂ and add 운
+              newSyllable = combineSymbols(newSyllable);
+              return `${stemWord + newSyllable}운`;
+            default:
+              // for all other vowels
+              return `${word.slice(0, wordLength - 1)}은`;
+          }
+        default:
+          return `${word.slice(0, wordLength - 1)}은`;
+      }
+    }
+    // Else it ends in a vowel:
+    brokeWord.push(4); // add ㄴ as bottom consonant
+    return stemWord + combineSymbols(brokeWord);
+  }
 
   doPresentContinuous (word) {
     return `${word.substring(0, word.length - 1)}고있어`;
