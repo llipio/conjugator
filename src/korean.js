@@ -180,7 +180,8 @@ class Korean {
               case 4:
               case 8:
               case 13:
-                // if ㅏ,ㅓ,ㅕ,ㅗ,ㅜ, remove ㅂ and add 워
+              case 16:
+                // if ㅏ,ㅓ,ㅕ,ㅗ,ㅜ,ㅟ remove ㅂ and add 워
                 newSyllable = combineSymbols(newSyllable);
                 return `${stemWord + newSyllable}워`;
               default:
