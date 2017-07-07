@@ -335,3 +335,22 @@ describe('Korean', () => {
       expect(adjectiveWord).to.equal('게으른');
     });
   });
+  describe('Noun conjugation', () => {
+    it('should conjugate in subject form', () => {
+      const kc = new Korean();
+      let nounWord = kc.conjugate('손', {wordType: 'noun', tense: 'subject'});
+      expect(nounWord).to.equal('손이');
+      
+      nounWord = kc.conjugate('바지', {wordType: 'noun', tense: 'subject'});
+      expect(nounWord).to.equal('바지가');
+    });
+    
+    it('should conjugate in object form', () => {
+      const kc = new Korean();
+      let nounWord = kc.conjugate('손', {wordType: 'noun', tense: 'object'});
+      expect(nounWord).to.equal('손을');
+      
+      nounWord = kc.conjugate('바지', {wordType: 'noun', tense: 'object'});
+      expect(nounWord).to.equal('바지를');
+    });
+  });
