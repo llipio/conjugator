@@ -1,6 +1,8 @@
 const allInfo = {
-  tense: ['present', 'past', 'future'],
-  gender: ['female', 'male'],
+  verb: {
+    tense: ['present', 'past', 'future'],
+    gender: ['female', 'male'],
+  }
 };
 
 class Hindi {

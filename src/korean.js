@@ -33,10 +33,17 @@ const combineSymbols = (input) => {
 };
 
 const allInfo = {
-  wordType: ['noun', 'adjective', 'verb'],
-  tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional', 'state',
-    'subject', 'object'],
-  formality: ['formal', 'casual'],
+  noun: {
+    tense: ['subject', 'object'],
+  },
+  adjective: {
+    tense: ['present', 'past', 'future', 'prepared', 'truncated', 'conditional', 'state'],
+    formality: ['formal', 'casual'],
+  },
+  verb: {
+    tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional', 'state'],
+    formality: ['formal', 'casual'],
+  }
 };
 
 class Korean {

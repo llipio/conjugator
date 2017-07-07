@@ -38,9 +38,17 @@ describe('Conjugator', () => {
     const kc = Conjugator.create('korean');
     const list = kc.getAllInfo('korean');
     expect(list).to.deep.equal({
-      wordType: ['noun', 'adjective', 'verb'],
-      tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional', 'state', 'subject', 'object'],
-      formality: ['formal', 'casual'],
+      noun: {
+        tense: ['subject', 'object'],
+      },
+      adjective: {
+        tense: ['present', 'past', 'future', 'prepared', 'truncated', 'conditional', 'state'],
+        formality: ['formal', 'casual'],
+      },
+      verb: {
+        tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional', 'state'],
+        formality: ['formal', 'casual'],
+      }
     });
   });
   it('should conjugate whether tense input is capitalized or all lowercase', () => {

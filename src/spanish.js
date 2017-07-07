@@ -64,8 +64,10 @@ const regularVerbConjugation = {
 };
 
 const allInfo = {
-  tense: ['present', 'future', 'past'],
-  subject: ['yo', 'tú', 'él/ella/Ud.', 'nosotros/nosotras', 'vosotros/vosotras', 'ellos/ellas/Uds.']
+  verb: {
+    tense: ['present', 'future', 'past'],
+    subject: ['yo', 'tú', 'él/ella/Ud.', 'nosotros/nosotras', 'vosotros/vosotras', 'ellos/ellas/Uds.']
+  }
 };
 
 class Spanish {
