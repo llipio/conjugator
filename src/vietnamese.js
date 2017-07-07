@@ -1,4 +1,14 @@
+const allInfo = {
+  verb: {
+    tense: ['present', 'past', 'future', 'present continuous', 'past continuous', 'future continuous'],
+  }
+};
+
 class Vietnamese {
+  getAllInfo () {
+    return allInfo;
+  }
+
   conjugate (word, info) {
     // format for info:
     // { tense: 'past/present/future/present continuous/past continuous/future continuous'}

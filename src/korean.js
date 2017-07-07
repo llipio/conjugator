@@ -33,8 +33,17 @@ const combineSymbols = (input) => {
 };
 
 const allInfo = {
-  tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional', 'state'],
-  formality: ['formal', 'casual'],
+  noun: {
+    tense: ['subject', 'object'],
+  },
+  adjective: {
+    tense: ['present', 'past', 'future', 'prepared', 'truncated', 'conditional', 'state'],
+    formality: ['formal', 'casual'],
+  },
+  verb: {
+    tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional', 'state'],
+    formality: ['formal', 'casual'],
+  }
 };
 
 class Korean {
@@ -46,6 +55,10 @@ class Korean {
   // Format for rulesObject: { tense: 'Present', formality: 'Casual/Formal'}
   // TODO: test if word is verb, return to avoid switch
     let result = '';
+    if (info.wordType && info.wordType.toLowerCase() === 'noun') {
+      return this.doNoun(word, info.tense.toLowerCase());
+    }
+    // Else, conjugate adjective or verb
     switch (info.tense.toLowerCase()) {
       case 'present':
         result = this.doPresent(word);
@@ -70,7 +83,7 @@ class Korean {
       case 'state':
         return this.doState(word);
       default:
-        return `Could not find any rules for ${info.tense}`;
+        return `Could not find any adjective/verb rules for ${info.tense}`;
     }
 
     if (info.formality && info.formality.toLowerCase() === 'formal') {
@@ -79,6 +92,26 @@ class Korean {
     return result;
   }
 
+// Nouns
+  doNoun (word, tense) {
+    const wordLength = word.length;
+    // break down the last character to check if it has a bottom consonant
+    const lastCharArray = breakdown(word[wordLength - 1]);
+    if (tense === 'subject') {
+      if (lastCharArray.length > 2) {
+        return `${word}이`;
+      }
+      return `${word}가`;
+    } else if (tense === 'object') {
+      if (lastCharArray.length > 2) {
+        return `${word}을`;
+      }
+      return `${word}를`;
+    }
+    return `Could not find any noun rules for ${tense}`;
+  }
+
+// Adjectives and verbs
   doPresent (word) {
     const wordLength = word.length;
     let conjugate = '';
@@ -154,7 +187,8 @@ class Korean {
               case 4:
               case 8:
               case 13:
-                // if ㅏ,ㅓ,ㅕ,ㅗ,ㅜ, remove ㅂ and add 워
+              case 16:
+                // if ㅏ,ㅓ,ㅕ,ㅗ,ㅜ,ㅟ remove ㅂ and add 워
                 newSyllable = combineSymbols(newSyllable);
                 return `${stemWord + newSyllable}워`;
               default:

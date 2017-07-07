@@ -1,16 +1,18 @@
 const allInfo = {
-  tense: ['indicatif présent', 'infinitif présent'],
-  /* TODO: 'Indicatif Passé Composé', 'Indicatif Imparfait',
-    'Indicatif Plus-que-parfait', 'Indicatif Passé Simple',
-    'Indicatif Passé Antérieur', 'Indicatif Futur Simple',
-    'Indicatif Futur Antérieur', 'Subjonctif Présent', 'Subjonctif Passé',
-    'Subjonctif Imparfait', 'Subjonctif Plus-que-parfait', 'Impératif Présent',
-    'Impératif Passé', 'Conditionnel Présent', 'Conditionnel Passé 1',
-    'Conditionnel Passé 2', 'Infinitif Passé',
-    'Participe Présent', 'Participe Passé'*/
-  gender: ['female', 'male', 'unknown'],
-  subject: ['je', 'tu', 'il', 'elle', 'nous', 'vous', 'ils', 'elles', 'on'],
-  singular: ['true', 'false']
+  verb: {
+    tense: ['indicatif présent', 'infinitif présent'],
+    /* TODO: 'Indicatif Passé Composé', 'Indicatif Imparfait',
+      'Indicatif Plus-que-parfait', 'Indicatif Passé Simple',
+      'Indicatif Passé Antérieur', 'Indicatif Futur Simple',
+      'Indicatif Futur Antérieur', 'Subjonctif Présent', 'Subjonctif Passé',
+      'Subjonctif Imparfait', 'Subjonctif Plus-que-parfait', 'Impératif Présent',
+      'Impératif Passé', 'Conditionnel Présent', 'Conditionnel Passé 1',
+      'Conditionnel Passé 2', 'Infinitif Passé',
+      'Participe Présent', 'Participe Passé'*/
+    gender: ['female', 'male', 'unknown'],
+    subject: ['je', 'tu', 'il', 'elle', 'nous', 'vous', 'ils', 'elles', 'on'],
+    singular: ['true', 'false']
+  }
 };
 
 class French {
