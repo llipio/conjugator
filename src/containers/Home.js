@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 const generateHomeContainer = connect((state) => {
+  console.log('language list:', state.appState.languageList);
   return {
     word: state.appState.word,
     selectedLanguage: state.appState.selectedLanguage,
@@ -12,6 +13,7 @@ const generateHomeContainer = connect((state) => {
 }, (dispatch) => {
   return {
     changeLanguage: (selectedLanguage) => {
+      console.log('selected lanuguage:', selectedLanguage);
       dispatch({ type: 'CHANGE_LANGUAGE', selectedLanguage });
     },
     submit: () => {

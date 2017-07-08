@@ -13,9 +13,12 @@ const appState = (state = {
   switch (action.type) {
     case 'CHANGE_LANGUAGE': {
       if (action.selectedLanguage) {
+        console.log('when language is selected:', action.selectedLanguage);
         languageObject = Conjugator.create(action.selectedLanguage);
+        console.log('conjugator create:', Conjugator.create(action.selectedLanguage));
       }
-      const languageOptions = languageObject.getInfoList();
+      const languageOptions = languageObject.getAllInfo();
+      console.log('the error:', languageObject.getAllInfo());
       return Object.assign({}, state, { selectedLanguage: action.selectedLanguage,
         options: languageOptions });
     }

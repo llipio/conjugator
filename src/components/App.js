@@ -16,19 +16,29 @@ const RadioButtonOptions = ({options, setOptions, title}) => {
   }
 
 const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
+  let wordTypeForm = '';
   let optionListForm = [];
   let optionBulletForm = [];
-  for(let title in options) {
-    if (options[title].length > 2){
+  console.log('component options:', options);
+  wordTypeForm =
+    <RadioButtonOptions
+      options={Object.keys(options)}
+      setOptions={setOptions}
+      title='WordType'
+    />
+  console.log('info:', info);
+  let chosenType = info.WordType || 'verb';
+  for(let title in options[chosenType]) {
+    if (options[chosenType][title].length > 2){
       optionListForm.push(
-        <div className="option">
+        <div key={title} className="option">
           <div className="option-title">{title}</div>
             <div className="option-menu">
-              <Dropdown key={title} value={info[title]} options={options[title]} onChange={(tense) => {setOptions(title,tense.value)}}/>
+              <Dropdown value={options[chosenType][title]} options={options[chosenType][title]} onChange={(tense) => {setOptions(title,tense.value)}}/>
             </div>
         </div>)
     } else {
-      optionBulletForm.push(<RadioButtonOptions key={title} options={options[title]} setOptions={setOptions} title={title}/>);
+      optionBulletForm.push(<RadioButtonOptions key={title} options={options[chosenType][title]} setOptions={setOptions} title={title}/>);
     }}
 
   return (
@@ -43,6 +53,7 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
           options={languageList} onChange={(languageOption) => {changeLanguage(languageOption.value)}} 
           value={selectedLanguage} placeholder="Please Select Language" 
         />
+        {wordTypeForm}
         {optionBulletForm} {optionListForm}
         <p className="instruction-text">Type Your Word</p>    
         <input 
