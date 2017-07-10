@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
 const generateHomeContainer = connect((state) => {
-  console.log('language list:', state.appState.languageList);
   return {
     word: state.appState.word,
     selectedLanguage: state.appState.selectedLanguage,
@@ -13,8 +12,14 @@ const generateHomeContainer = connect((state) => {
 }, (dispatch) => {
   return {
     changeLanguage: (selectedLanguage) => {
-      console.log('selected lanuguage:', selectedLanguage);
       dispatch({ type: 'CHANGE_LANGUAGE', selectedLanguage });
+      // When language changes,
+      // reset the word type option to Verb
+      dispatch({ type: 'SET_OPTIONS',
+        languageOption: 'wordType',
+        optionValue: 'verb' });
+      // clear out the text inputs
+      dispatch({ type: 'CLEAR_INPUTS' });
     },
     submit: () => {
       dispatch({ type: 'SUBMIT' });
@@ -24,6 +29,10 @@ const generateHomeContainer = connect((state) => {
     },
     setOptions: (languageOption, optionValue) => {
       dispatch({ type: 'SET_OPTIONS', languageOption, optionValue });
+      if (languageOption === 'wordType') {
+        // clear out the text input
+        dispatch({ type: 'CLEAR_INPUTS' });
+      }
     }
   };
 });
