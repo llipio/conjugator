@@ -13,6 +13,13 @@ const generateHomeContainer = connect((state) => {
   return {
     changeLanguage: (selectedLanguage) => {
       dispatch({ type: 'CHANGE_LANGUAGE', selectedLanguage });
+      // When language changes,
+      // reset the word type option to Verb
+      dispatch({ type: 'SET_OPTIONS',
+        languageOption: 'wordType',
+        optionValue: 'verb' });
+      // clear out the text inputs
+      dispatch({ type: 'CLEAR_INPUTS' });
     },
     submit: () => {
       dispatch({ type: 'SUBMIT' });
@@ -22,6 +29,10 @@ const generateHomeContainer = connect((state) => {
     },
     setOptions: (languageOption, optionValue) => {
       dispatch({ type: 'SET_OPTIONS', languageOption, optionValue });
+      if (languageOption === 'wordType') {
+        // clear out the text input
+        dispatch({ type: 'CLEAR_INPUTS' });
+      }
     }
   };
 });

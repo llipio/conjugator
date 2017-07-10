@@ -8,14 +8,16 @@ const appState = (state = {
   selectedLanguage: '',
   languageList: Conjugator.getLanguageList(),
   options: {},
-  info: {},
+  info: {
+    wordType: 'verb'
+  },
   conjugatedWord: '' }, action) => {
   switch (action.type) {
     case 'CHANGE_LANGUAGE': {
       if (action.selectedLanguage) {
         languageObject = Conjugator.create(action.selectedLanguage);
       }
-      const languageOptions = languageObject.getInfoList();
+      const languageOptions = languageObject.getAllInfo();
       return Object.assign({}, state, { selectedLanguage: action.selectedLanguage,
         options: languageOptions });
     }
@@ -25,12 +27,16 @@ const appState = (state = {
     case 'SET_OPTIONS': {
       const languageOption = action.languageOption;
       const optionValue = action.optionValue;
-      state.info[languageOption] = optionValue;
-      return Object.assign({}, state);
+      const newInfo = Object.assign({}, state.info);
+      newInfo[languageOption] = optionValue;
+      return Object.assign({}, state, { info: newInfo });
     }
     case 'SUBMIT': {
       const conjugatedWord = languageObject.conjugate(state.word, state.info);
       return Object.assign({}, state, { conjugatedWord });
+    }
+    case 'CLEAR_INPUTS': {
+      return Object.assign({}, state, { word: '', conjugatedWord: '' });
     }
     default: {
       return state;
