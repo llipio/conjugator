@@ -201,7 +201,15 @@ describe('Korean', () => {
 
       futureWord = kc.conjugate('입다', {tense: 'Future', formality: 'Casual'});
       expect(futureWord).to.equal('입을 거야');
-      });
+    });
+    it('should conjugate verbs in formal test correctly', () => {
+      const kc = new Korean();
+      let futureWord = kc.conjugate('있다', {tense: 'Future', formality: 'Formal'});
+      expect(futureWord).to.equal('있을 거에요');
+
+      futureWord = kc.conjugate('사다', {tense: 'Future', formality: 'Formal'});
+      expect(futureWord).to.equal('살 거에요');
+    });
   });
   describe('Present Continuous Tense', () => {
     it('should conjugate verbs correctly', () => {
