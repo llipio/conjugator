@@ -70,7 +70,8 @@ class Korean {
         result = this.doFuture(word);
         break;
       case 'present continuous':
-        return this.doPresentContinuous(word);
+        result = this.doPresentContinuous(word);
+        break;
       case 'prepared': {
         const futureConjugation = this.doFuture(word);
         // simply drop the ' 거야' at the end of future conjugation
@@ -87,6 +88,10 @@ class Korean {
     }
 
     if (info.formality && info.formality.toLowerCase() === 'formal') {
+      // for future tense, change 야 to 에 before making it formal
+      if (info.tense.toLowerCase() === 'future') {
+        return `${result.substring(0, result.length - 1)}에요`;
+      }
       return `${result}요`;
     }
     return result;
