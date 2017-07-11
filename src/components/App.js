@@ -9,7 +9,7 @@ const RadioButtonOptions = ({options, setOptions, displayTitle, title, selectedO
   options.map(element => {
     radioOptions.push(
       <label className="button" key={element}>
-        <input type="radio" 
+        <Dropdown
           name={title}
           value={element}
           onChange={() => {setOptions(title, element)}}
@@ -22,18 +22,19 @@ const RadioButtonOptions = ({options, setOptions, displayTitle, title, selectedO
   return (<div className="radio-group"><div className="radio-title">{displayTitle || title}</div><span>{radioOptions}</span></div>);
   }
 
-const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
-  console.log('language list:', languageList)
+const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord, title}) => {
   let wordTypeForm = '';
   let optionListForm = [];
   let optionBulletForm = [];
   wordTypeForm =
-    <RadioButtonOptions
+    <Dropdown
       options={Object.keys(options)}
       setOptions={setOptions}
       displayTitle='Word Type'
       title='wordType'
       selectedOption={info.wordType}
+      value={info.wordType}
+      onChange={(title) => {setOptions(title,info.wordType.value)}}      
     />
     console.log('object.key(options):', Object.keys(options));
     console.log('set options:', setOptions);
@@ -53,9 +54,13 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
           </div>
         </div>)
     } else {
-      optionBulletForm.push(<RadioButtonOptions key={title} options={options[chosenType][title]} setOptions={setOptions} 
+      optionBulletForm.push(<Dropdown key={title} options={options[chosenType][title]} setOptions={setOptions} 
       selectedOption={info[title]}
-      title={title}/>);
+      title={title}
+      onChange={(wordTypeForm) => {setOptions(title, wordTypeForm.value)}}
+      value={info.formality}
+      />);
+      console.log('options chosen type', options[chosenType])
     }}
   let languageButton = [];
   for(let i = 0; i < languageList.length; i++){
@@ -79,22 +84,19 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
         {languageButton}
         {wordTypeForm}
         {optionBulletForm} {optionListForm}
-        <p className="instruction-text">Type Your Word</p>    
-        <input 
-          type="text" className="input-box" name="word" placeholder="Please input word" value={word} onChange={(e) => {
-          changeWord(e.target.value);
-          }} 
-        />
-        <div>
-          <img className="conjugate-button"
-            src={myImage}
-            width="73" height="auto" onClick={ submit } />
-        </div>
+        
+        <p className="instruction-text">Type Your Word</p>
+        <div className="wrapper">
+          <input 
+            type="text" name="word" placeholder="Please input your word!" value={word} onChange={(e) => {
+            changeWord(e.target.value);
+            }} 
+          />
+          <button className="conjugate-button">Conjugate!</button>
+        </div>  
         <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
       </div>  
     </div>
-
-
   );
 };
 
