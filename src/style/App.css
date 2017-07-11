@@ -91,5 +91,27 @@ body {
   margin-top: 20px;
 } 
 
+.languages {
+  background-color: white;
+  color: #32bdf9;
+  height: 40px;
+  width: 120px;
+  border: solid;
+  font-size: larger;
+  font-weight: bold;
+  z-index: -1px;
+  margin: 2px;
 
+}
 
+.selectedlanguage {
+  background-color: white;
+  color: #32bdf9;
+  height: 45px;
+  width: 125px;
+  border: 0px;
+  font-size: larger;
+  font-weight: bold;
+  box-shadow: 0 6px 16px 0 rgba(0,0,0,0.19),0 17px 60px 0 rgba(0,0,0,0.19);
+  margin: 2px
+}

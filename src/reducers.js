@@ -28,7 +28,9 @@ const appState = (state = {
       const languageOption = action.languageOption;
       const optionValue = action.optionValue;
       const newInfo = Object.assign({}, state.info);
+      console.log('New Info:', newInfo);
       newInfo[languageOption] = optionValue;
+      console.log('language option:', newInfo[languageOption]);
       return Object.assign({}, state, { info: newInfo });
     }
     case 'SUBMIT': {

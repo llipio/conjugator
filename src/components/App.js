@@ -23,6 +23,7 @@ const RadioButtonOptions = ({options, setOptions, displayTitle, title, selectedO
   }
 
 const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
+  console.log('language list:', languageList)
   let wordTypeForm = '';
   let optionListForm = [];
   let optionBulletForm = [];
@@ -34,8 +35,11 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
       title='wordType'
       selectedOption={info.wordType}
     />
+    console.log('object.key(options):', Object.keys(options));
+    console.log('set options:', setOptions);
   let chosenType = info.wordType || 'verb';
   for(let title in options[chosenType]) {
+    console.log('options', options);
     if (options[chosenType][title].length > 2){
       optionListForm.push(
         <div key={title} className="option">
@@ -53,7 +57,17 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
       selectedOption={info[title]}
       title={title}/>);
     }}
-
+  let languageButton = [];
+  for(let i = 0; i < languageList.length; i++){
+    let styleName = 'languages';
+    if(selectedLanguage === languageList[i]){
+      styleName = 'selectedlanguage';
+      languageButton.push(<span><button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}>{languageList[i]}</button></span>)
+       
+    } else {
+    languageButton.push(<button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}>{languageList[i]}</button>)
+    }  
+  }
   return (
 
     <div className="App">
@@ -62,10 +76,7 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
       </div>
       <div className='content-container'>
         <p className="instruction-text">Select Your Language!</p>
-        <Dropdown 
-          options={languageList} onChange={(languageOption) => {changeLanguage(languageOption.value)}} 
-          value={selectedLanguage} placeholder="Please Select Language" 
-        />
+        {languageButton}
         {wordTypeForm}
         {optionBulletForm} {optionListForm}
         <p className="instruction-text">Type Your Word</p>    
