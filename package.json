@@ -27,7 +27,7 @@
     "eject": "react-scripts eject",
     "eslint": "./node_modules/.bin/eslint src --ext .js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
     "jenkinsdeploy": "gh-pages -d build -r git@github.com:llipio/conjugator.git"
   }
 }
