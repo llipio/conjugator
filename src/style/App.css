@@ -22,7 +22,7 @@ body {
 }
 
 .content-container {
-  width: 560px;
+  width: 600px;
   margin: auto;
 }
 
@@ -63,11 +63,12 @@ body {
 
 .option { 
   text-align: left;
+  font-size: 15px;
 }
 
 .option-menu {
   display: inline-block;
-  width: 140px;
+  width: 120px;
   vertical-align: middle;
 }
 
@@ -75,9 +76,10 @@ body {
   display:inline-block;
   margin-right:40px;
   width: 60px;
-  font-size: 16px;
+  font-size: 12px;
   font-family: ProximaNova-Regular;
   text-transform: capitalize;
+  margin-top: 10px;
 }
 .output-box {
   width: 100%;
@@ -90,20 +92,17 @@ body {
   display:inline-block;
   color:black;
   height: 50px;
-  width: 560px;
+  width: 600px;
   background-color: white;
   position: relative;
 
 }
 .conjugate-button {
-  /*-ms-transform: rotate(90deg); /* IE 9 */
-  /*-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-  /*transform: rotate(90deg);*/
   display: inline-block;
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #f2ad6f;
+  background-color: #32bdf9;
   color: white;
   padding: 1px 1px;
   text-align: center;
@@ -113,12 +112,14 @@ body {
   cursor: pointer;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: #e0b483;
+  color: grey;
+  font-style:italic;
 }
 
-
-
-
+.container{
+  width:560px;
+  margin-bottom:40px;
+}
 .languages {
   background-color: white;
   color: #32bdf9;
