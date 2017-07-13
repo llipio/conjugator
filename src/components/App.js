@@ -4,40 +4,22 @@ import '../style/ReactDropdown.css';
 import Dropdown from 'react-dropdown';
 import myImage from '../assets/arrow_button_white.png';
 
-const RadioButtonOptions = ({options, setOptions, displayTitle, title, selectedOption}) => {
-  let radioOptions = [];
-  options.map(element => {
-    radioOptions.push(
-      <label className="button" key={element}>
-        <Dropdown
-          name={title}
-          value={element}
-          onChange={() => {setOptions(title, element)}}
-          checked={element === selectedOption}
-        />
-      {`${element}`}
-      </label>
-    );
-    })
-  return (<div className="radio-group"><div className="radio-title">{displayTitle || title}</div><span>{radioOptions}</span></div>);
-  }
-
-const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord, title}) => {
+const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord, title}) => {
   let wordTypeForm = '';
   let optionListForm = [];
   let optionBulletForm = [];
   wordTypeForm =
     <Dropdown
       options={Object.keys(options)}
-      setOptions={setOptions}
       displayTitle='Word Type'
-      title='wordType'
-      selectedOption={info.wordType}
       value={info.wordType}
-      onChange={(title) => {setOptions(title,info.wordType.value)}}      
+      onChange={(wordType) => {
+    console.log('wordType', wordType);
+        setOptions('wordType',wordType.value)}}      
     />
     console.log('object.key(options):', Object.keys(options));
     console.log('set options:', setOptions);
+  console.log('value:', info.wordType);
   let chosenType = info.wordType || 'verb';
   for(let title in options[chosenType]) {
     console.log('options', options);
@@ -55,10 +37,9 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
         </div>)
     } else {
       optionBulletForm.push(<Dropdown key={title} options={options[chosenType][title]} setOptions={setOptions} 
-      selectedOption={info[title]}
       title={title}
       onChange={(wordTypeForm) => {setOptions(title, wordTypeForm.value)}}
-      value={info.formality}
+      value={info[title]}
       />);
       console.log('options chosen type', options[chosenType])
     }}
@@ -82,17 +63,17 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
       <div className='content-container'>
         <p className="instruction-text">Select Your Language!</p>
         {languageButton}
-        {wordTypeForm}
-        {optionBulletForm} {optionListForm}
+        <span className="optionSpan">{wordTypeForm}</span>
+        <span className="optionSpan">{optionBulletForm}</span> <span className="optionSpan">{optionListForm}</span>
         
         <p className="instruction-text">Type Your Word</p>
         <div className="wrapper">
           <input 
-            type="text" name="word" placeholder="Please input your word!" value={word} onChange={(e) => {
+            className="input-box" type="text" name="word" placeholder="Please input your word!" value={word} onChange={(e) => {
             changeWord(e.target.value);
             }} 
           />
-          <button className="conjugate-button">Conjugate!</button>
+          <button onClick={() => {submit()}} className="conjugate-button">Conjugate!</button>
         </div>  
         <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
       </div>  

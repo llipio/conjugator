@@ -30,6 +30,7 @@ const appState = (state = {
       const newInfo = Object.assign({}, state.info);
       console.log('New Info:', newInfo);
       newInfo[languageOption] = optionValue;
+      console.log('newInfo[languageOption]:', newInfo[languageOption]);
       return Object.assign({}, state, { info: newInfo });
     }
     case 'SUBMIT': {
@@ -37,7 +38,14 @@ const appState = (state = {
       return Object.assign({}, state, { conjugatedWord });
     }
     case 'CLEAR_INPUTS': {
-      return Object.assign({}, state, { word: '', conjugatedWord: '' });
+      console.log('state:', state);
+      const newInfo = Object.assign({}, state.info);
+      for(let key in newInfo){
+        if(key !== 'wordType'){
+          newInfo[key] = ''
+        }
+      }
+      return Object.assign({}, state, { word: '', conjugatedWord: '', info: newInfo});
     }
     default: {
       return state;
