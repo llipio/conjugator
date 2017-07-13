@@ -22,7 +22,7 @@ body {
 }
 
 .content-container {
-  width: 280px;
+  width: 560px;
   margin: auto;
 }
 
@@ -33,10 +33,12 @@ body {
 }
 
 .input-box {
-  border-radius: 5px;
-  width: 100%;
-  height: 45px;
+  width: 80%;
+  height: 100%;
   color: black;
+  border: transparent;
+  left: 0px;
+  position: absolute;
   padding:10px;
 }
 
@@ -78,16 +80,19 @@ body {
   text-transform: capitalize;
 }
 .output-box {
-  border-radius: 5px;
   width: 100%;
   height: 70px;
   color: black;
   margin-top: 20px;
+  border: transparent;
 } 
 .wrapper {
-  border:1px solid #000;
   display:inline-block;
   color:black;
+  height: 50px;
+  width: 560px;
+  background-color: white;
+  position: relative;
 
 }
 .conjugate-button {
@@ -95,6 +100,9 @@ body {
   /*-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
   /*transform: rotate(90deg);*/
   display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   background-color: #f2ad6f;
   color: white;
   padding: 1px 1px;
@@ -117,6 +125,7 @@ body {
   height: 40px;
   width: 120px;
   border: solid;
+  border-width: 0px;
   font-size: larger;
   font-weight: bold;
   z-index: -1px;
@@ -127,11 +136,15 @@ body {
 .selectedlanguage {
   background-color: white;
   color: #32bdf9;
-  height: 45px;
-  width: 125px;
+  height: 50px;
+  width: 130px;
   border: 0px;
   font-size: larger;
   font-weight: bold;
   box-shadow: 0 6px 16px 0 rgba(0,0,0,0.19),0 17px 60px 0 rgba(0,0,0,0.19);
   margin: 2px
+}
+
+.optionSpan {
+
 }
