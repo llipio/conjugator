@@ -58,17 +58,30 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
   let languageButton = [];
   let nativeBackground = '';
   for(let i = 0; i < languageList.length; i++){
-    console.log('language list:', languageList);
     let styleName = 'languages';
     if(selectedLanguage === languageList[i]){
       nativeBackground = nativeLanguage[languageList[i]];
-      console.log('native background:',nativeBackground);
       styleName = 'selectedlanguage';
-      languageButton.push(<span><button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}><div className='nativeText'>{nativeLanguage[languageList[i]]}</div><div>{languageList[i]}</div></button></span>)
-       
+      languageButton.push(
+        <span>
+          <button
+            key={i}
+            className={styleName}
+            onClick={() => {changeLanguage(languageList[i]);}}>
+            <div className='nativeText'>{nativeLanguage[languageList[i]]}</div>
+            <div>{languageList[i]}</div>
+          </button>
+        </span>)
     } else {
-      languageButton.push(<button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}><div>{nativeLanguage[languageList[i]]}</div><div>{languageList[i]}</div></button>)
-    }  
+      languageButton.push(
+        <button
+          key={i}
+          className={styleName}
+          onClick={() => {changeLanguage(languageList[i]);}}>
+          <div>{nativeLanguage[languageList[i]]}</div>
+          <div>{languageList[i]}</div>
+        </button>)
+    }
   }
   return (
     <div className="App">
@@ -77,8 +90,13 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
         <div className="title-container">
           <span className="title" >CONJUGATOR</span>
         </div>
+        <div className="title-underline">
+          <img src="http://i.imgur.com/JQNkayi.png?3"/>
+        </div>
         <p className="instruction-text">Choose Your Language!</p>
-        {languageButton}
+        <div className="language-container">
+          {languageButton}
+        </div>
         <div className="container">
           <div className="row">
             <div className="col-md-4">{wordTypeForm}</div>
@@ -87,15 +105,19 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
           </div>
         </div>
         <div className="wrapper">
-          <input 
-            className="input-box" type="text" name="word" placeholder="Please input your word!" value={word} onChange={(e) => {
-            changeWord(e.target.value);
-            }} 
+          <input
+            className="input-box"
+            type="text"
+            name="word"
+            placeholder="Please input your word!"
+            value={word}
+            onChange={(e) => {changeWord(e.target.value);}}
           />
-          <button type="button" onClick={() => {submit()}} className="btn btn-xs">Conjugate!</button>
-        </div>  
-        <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
-      </div>  
+          <button
+            type="button" onClick={() => {submit()}} className="btn btn-xs">Conjugate!</button>
+        </div>
+        <input className="output-box" type="textbox" name="output" value={conjugatedWord}/>
+      </div>
     </div>
   );
 };
