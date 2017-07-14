@@ -1,5 +1,5 @@
 body {
-  background-color: #32bdf9;
+  background-color: #F1B06C;
 }
 
 .App {
@@ -12,16 +12,17 @@ body {
 }
 
 .title {
-  border-style: solid;
-  border-radius: 5px;
   padding-left: 20px;
   padding-right: 20px;
   font-size: 3em;
   font-family: 'Archivo Black', sans-serif;
+  text-decoration: underline;
   font-weight: bolder;
 }
 
 .content-container {
+  position: relative;
+  z-index: 2;
   width: 600px;
   margin: auto;
 }
@@ -38,8 +39,13 @@ body {
   color: black;
   border: transparent;
   left: 0px;
+  font-size: 18px;
   position: absolute;
   padding:10px;
+}
+
+input[type=text] {
+  color: #F4BC81;
 }
 
 .radio-group {
@@ -54,11 +60,6 @@ body {
   width: 60px;
   margin-right: 40px;
   font-size: 16px;
-}
-
-.button {
-  display: inline-block;
-  margin-right: 10px;
 }
 
 .option { 
@@ -83,9 +84,11 @@ body {
 }
 .output-box {
   width: 100%;
-  height: 70px;
-  color: black;
-  margin-top: 20px;
+  height: 100px;
+  padding: 10px;
+  font-size: 30px;
+  color: #F4BC81;
+  margin-top: 40px;
   border: transparent;
 } 
 .wrapper {
@@ -112,7 +115,7 @@ body {
   cursor: pointer;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: grey;
+  color: #F4BC81;
   font-style:italic;
 }
 
@@ -122,30 +125,36 @@ body {
 }
 .languages {
   background-color: white;
-  color: #32bdf9;
-  height: 40px;
-  width: 120px;
-  border: solid;
-  border-width: 0px;
+  color: #F4BC81;
+  height: 50px;
+  width: 25%;
+  border-left-color: #F0F0F0;
+  border-width: 1px;
   font-size: larger;
   font-weight: bold;
-  z-index: -1px;
-  margin: 2px;
-
+  box-shadow: -1px 0px 58px -13px rgba(0,0,0,0.75);
 }
 
 .selectedlanguage {
   background-color: white;
-  color: #32bdf9;
-  height: 50px;
-  width: 130px;
-  border: 0px;
+  color: #F4BC81;
+  height: 60px;
+  width: 25%;
+  border: 1px;
   font-size: larger;
   font-weight: bold;
-  box-shadow: 0 6px 16px 0 rgba(0,0,0,0.19),0 17px 60px 0 rgba(0,0,0,0.19);
-  margin: 2px
+  z-index: 1;
+  position: relative;
+  box-shadow: 0px 2px 27px -2px rgba(13,12,13,1);
 }
 
-.optionSpan {
-
+.background-text {
+  position: absolute;
+  color: #F4BC81;
+  font-size: 30vw;
+  user-select: none;
+  cursor: default;
+  z-index: 1;
+  margin: auto;
 }
+

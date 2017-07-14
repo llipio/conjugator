@@ -63,10 +63,11 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
   return (
 
     <div className="App">
-      <div className="title-container">
-        <span className="title" >CONJUGATOR</span>
-      </div>
+      <div className="background-text">한국어</div>
       <div className='content-container'>
+        <div className="title-container">
+          <span className="title" >CONJUGATOR</span>
+        </div>
         <p className="instruction-text">Select Your Language!</p>
         {languageButton}
         <div className="container">
