@@ -15,7 +15,7 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   font-size: 3em;
-  font-family: 'Archivo Black', sans-serif;
+  font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   text-decoration: underline;
   font-weight: bolder;
 }
@@ -30,7 +30,7 @@ body {
 .instruction-text{
   margin-top: 30px;
   font-size: 18px;
-  font-family: ProximaNova-Regular;
+  font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;;
   text-align: left;
 }
 
@@ -80,7 +80,7 @@ input[type=text] {
   display:inline-block;
   width: 60px;
   font-size: 12px;
-  font-family: ProximaNova-Regular;
+  font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   text-transform: capitalize;
   margin-top: 10px;
   text-align: left;
@@ -146,11 +146,11 @@ input[type=text] {
 .languages {
   background-color: white;
   color: #F4BC81;
-  height: 50px;
+  height: 60px;
   width: 25%;
   border-left-color: #F0F0F0;
+  font-size: 14px;
   border-width: 1px;
-  font-size: larger;
   font-weight: bold;
   box-shadow: -1px 0px 58px -13px rgba(0,0,0,0.75);
 }
@@ -158,10 +158,10 @@ input[type=text] {
 .selectedlanguage {
   background-color: white;
   color: #F4BC81;
-  height: 60px;
+  height: 80px;
   width: 25%;
   border: 1px;
-  font-size: larger;
+  font-size: 14px;
   font-weight: bold;
   z-index: 1;
   position: relative;
@@ -175,6 +175,12 @@ input[type=text] {
   user-select: none;
   cursor: default;
   z-index: 1;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
+.nativeText {
+  font-size: 24px;
+}
