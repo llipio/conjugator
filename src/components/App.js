@@ -8,6 +8,12 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
   let wordTypeForm = '';
   let optionListForm = [];
   let optionBulletForm = [];
+  let nativeLanguage = {
+    'Korean': '한국어',
+    'Hindi': 'हिंदी',
+    'French': 'Français',
+    'Vietnamese': 'Tiếng Việt'
+}
   wordTypeForm =
     <div className="option">
       <div className="option-title">Wordtype</div>
@@ -50,19 +56,23 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
       ;
     }}
   let languageButton = [];
+  let nativeBackground = '';
   for(let i = 0; i < languageList.length; i++){
+    console.log('language list:', languageList);
     let styleName = 'languages';
     if(selectedLanguage === languageList[i]){
+      nativeBackground = nativeLanguage[languageList[i]];
+      console.log('native background:',nativeBackground);
       styleName = 'selectedlanguage';
-      languageButton.push(<span><button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}>{languageList[i]}</button></span>)
+      languageButton.push(<span><button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}><div>{nativeLanguage[languageList[i]]}</div><div>{languageList[i]}</div></button></span>)
        
     } else {
-    languageButton.push(<button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}>{languageList[i]}</button>)
+      languageButton.push(<button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}><div>{nativeLanguage[languageList[i]]}</div><div>{languageList[i]}</div></button>)
     }  
   }
   return (
     <div className="App">
-      <div className="background-text">한국어</div>
+      <div className="background-text">{nativeBackground}</div>
       <div className='content-container'>
         <div className="title-container">
           <span className="title" >CONJUGATOR</span>
