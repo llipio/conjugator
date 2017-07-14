@@ -31,6 +31,7 @@ body {
   margin-top: 30px;
   font-size: 18px;
   font-family: ProximaNova-Regular;
+  text-align: left;
 }
 
 .input-box {
@@ -63,24 +64,26 @@ input[type=text] {
 }
 
 .option { 
+  width: 600px;
   text-align: left;
-  font-size: 15px;
+  font-size: 10px;
+  padding: 5px;
 }
 
 .option-menu {
   display: inline-block;
-  width: 120px;
+  width: 110px;
   vertical-align: middle;
 }
 
 .option-title {
   display:inline-block;
-  margin-right:40px;
   width: 60px;
   font-size: 12px;
   font-family: ProximaNova-Regular;
   text-transform: capitalize;
   margin-top: 10px;
+  text-align: left;
 }
 .output-box {
   width: 100%;
@@ -100,28 +103,45 @@ input[type=text] {
   position: relative;
 
 }
-.conjugate-button {
+
+.btn {
   display: inline-block;
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: #32bdf9;
+  background-color: #f2ad6f;
   color: white;
-  padding: 1px 1px;
+  padding: 5px 20px;
   text-align: center;
-  border-radius: 8px;
-  font-size: 16px;
-  box-shadow: 0 3px #999;
+  border-radius: 2px;
+  font-size: 12px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   cursor: pointer;
 }
+
+.btn:hover {
+  color: white;
+  background-color: #f4bc81;
+}
+
+.btn:active {
+  color: white;
+  transform: translateY(2px);
+}
+
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #F4BC81;
   font-style:italic;
 }
 
 .container{
-  width:560px;
+  width:100%;
   margin-bottom:40px;
+  display: inline-block;
+}
+.row {
+  margin-left: -30px;
+  margin-right: -10px;
 }
 .languages {
   background-color: white;

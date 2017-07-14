@@ -45,8 +45,8 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
         onChange={(wordTypeForm) => {setOptions(title, wordTypeForm.value)}}
         value={info[title]}
         />
-      </div>
-    </div>)
+        </div>
+      </div>)
       ;
     }}
   let languageButton = [];
@@ -61,7 +61,6 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
     }  
   }
   return (
-
     <div className="App">
       <div className="background-text">한국어</div>
       <div className='content-container'>
@@ -83,7 +82,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
             changeWord(e.target.value);
             }} 
           />
-          <button onClick={() => {submit()}} className="conjugate-button">Conjugate!</button>
+          <button type="button" onClick={() => {submit()}} className="btn btn-xs">Conjugate!</button>
         </div>  
         <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
       </div>  
