@@ -64,7 +64,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
       nativeBackground = nativeLanguage[languageList[i]];
       console.log('native background:',nativeBackground);
       styleName = 'selectedlanguage';
-      languageButton.push(<span><button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}><div>{nativeLanguage[languageList[i]]}</div><div>{languageList[i]}</div></button></span>)
+      languageButton.push(<span><button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}><div className='nativeText'>{nativeLanguage[languageList[i]]}</div><div>{languageList[i]}</div></button></span>)
        
     } else {
       languageButton.push(<button key={i} className={styleName} onClick={() => {changeLanguage(languageList[i]);}}><div>{nativeLanguage[languageList[i]]}</div><div>{languageList[i]}</div></button>)
@@ -77,7 +77,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
         <div className="title-container">
           <span className="title" >CONJUGATOR</span>
         </div>
-        <p className="instruction-text">Select Your Language!</p>
+        <p className="instruction-text">Choose Your Language!</p>
         {languageButton}
         <div className="container">
           <div className="row">
