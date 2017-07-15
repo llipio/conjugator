@@ -37,11 +37,11 @@ const appState = (state = {
     }
     case 'CLEAR_INPUTS': {
       const newInfo = Object.assign({}, state.info);
-      for(let key in newInfo){
+      Object.keys(newInfo).forEach((key) => {
         if(key !== 'wordType'){
           newInfo[key] = ''
         }
-      }
+      });
       return Object.assign({}, state, { word: '', conjugatedWord: '', info: newInfo});
     }
     default: {
