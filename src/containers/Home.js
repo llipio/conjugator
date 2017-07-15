@@ -28,8 +28,6 @@ const generateHomeContainer = connect((state) => {
       dispatch({ type: 'CHANGE_WORD', word });
     },
     setOptions: (languageOption, optionValue) => {
-      console.log('language option', languageOption);
-      console.log('option value', optionValue);
       dispatch({ type: 'SET_OPTIONS', languageOption, optionValue });
       if (languageOption === 'wordType') {
         // clear out the text input

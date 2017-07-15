@@ -2,7 +2,7 @@ import React from 'react';
 import '../style/App.css';
 import '../style/ReactDropdown.css';
 import Dropdown from 'react-dropdown';
-import myImage from '../assets/arrow_button_white.png';
+import myImage from '../assets/underline-text1.png';
 
 const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
   let wordTypeForm = '';
@@ -23,7 +23,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
           displayTitle='Word Type'
           value={info.wordType}
           onChange={(wordType) => {
-          setOptions('wordType',wordType.value)}}      
+          setOptions('wordType',wordType.value)}}
         />
       </div>
     </div>
@@ -46,11 +46,14 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
       <div key={title} className="option">
         <div className="option-title">{title}</div>
         <div className="option-menu">
-        <Dropdown key={title} options={options[chosenType][title]} setOptions={setOptions} 
-        title={title}
-        onChange={(wordTypeForm) => {setOptions(title, wordTypeForm.value)}}
-        value={info[title]}
-        />
+          <Dropdown 
+            key={title} 
+            options={options[chosenType][title]} 
+            setOptions={setOptions} 
+            title={title}
+            onChange={(wordTypeForm) => {setOptions(title, wordTypeForm.value)}}
+            value={info[title]}
+          />
         </div>
       </div>)
       ;
@@ -63,15 +66,13 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
       nativeBackground = nativeLanguage[languageList[i]];
       styleName = 'selectedlanguage';
       languageButton.push(
-        <span>
           <button
             key={i}
             className={styleName}
             onClick={() => {changeLanguage(languageList[i]);}}>
-            <div className='nativeText'>{nativeLanguage[languageList[i]]}</div>
+            <div className='nativeText'>{nativeBackground}</div>
             <div>{languageList[i]}</div>
-          </button>
-        </span>)
+          </button>)
     } else {
       languageButton.push(
         <button
@@ -91,7 +92,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
           <span className="title" >CONJUGATOR</span>
         </div>
         <div className="title-underline">
-          <img src="http://i.imgur.com/JQNkayi.png?3"/>
+          <img src={myImage}/>
         </div>
         <p className="instruction-text">Choose Your Language!</p>
         <div className="language-container">
