@@ -13,7 +13,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
     'Hindi': 'हिंदी',
     'French': 'Français',
     'Vietnamese': 'Tiếng Việt'
-}
+  }
   wordTypeForm =
     <div className="option">
       <div className="option-title">Wordtype</div>
@@ -28,7 +28,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
       </div>
     </div>
   let chosenType = info.wordType || 'verb';
-  for(let title in options[chosenType]) {
+  Object.keys(options[chosenType]).forEach( (title) => {
     if (options[chosenType][title].length > 2){
       optionListForm.push(
         <div key={title} className="option">
@@ -57,33 +57,28 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
         </div>
       </div>)
       ;
-    }}
+    }});
   let languageButton = [];
   let nativeBackground = '';
-  for(let i = 0; i < languageList.length; i++){
-    let styleName = 'languages';
-    if(selectedLanguage === languageList[i]){
-      nativeBackground = nativeLanguage[languageList[i]];
-      styleName = 'selectedlanguage';
-      languageButton.push(
-          <button
-            key={i}
-            className={styleName}
-            onClick={() => {changeLanguage(languageList[i]);}}>
-            <div className='nativeText'>{nativeBackground}</div>
-            <div>{languageList[i]}</div>
-          </button>)
-    } else {
-      languageButton.push(
-        <button
-          key={i}
-          className={styleName}
-          onClick={() => {changeLanguage(languageList[i]);}}>
-          <div>{nativeLanguage[languageList[i]]}</div>
-          <div>{languageList[i]}</div>
-        </button>)
-    }
+  let languageButtonClass = '';
+  languageButton = languageList.map( (language, i) => {
+  let styleName = 'languages';
+  let textClass = '';
+  if(selectedLanguage === language){
+    nativeBackground = nativeLanguage[language];
+    styleName = 'selectedlanguage';
+    textClass = 'nativeText';
   }
+  return(
+    languageButtonClass=
+      <button
+        key={i}
+        className={styleName}
+        onClick={() => {changeLanguage(language)}}>
+        <div className={textClass}>{nativeLanguage[language]}</div>
+        <div>{language}</div>
+      </button>)
+  });
   return (
     <div className="App">
       <div className="background-text">{nativeBackground}</div>
@@ -115,7 +110,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
             onChange={(e) => {changeWord(e.target.value);}}
           />
           <button
-            type="button" onClick={() => {submit()}} className="btn btn-xs">Conjugate!</button>
+            type="button" onClick={submit} className="btn btn-xs">Conjugate!</button>
         </div>
         <input className="output-box" type="textbox" name="output" value={conjugatedWord}/>
       </div>
