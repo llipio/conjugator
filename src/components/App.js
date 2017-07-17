@@ -2,7 +2,7 @@ import React from 'react';
 import '../style/App.css';
 import '../style/ReactDropdown.css';
 import Dropdown from 'react-dropdown';
-import myImage from '../assets/underline-text1.png';
+import titleUnderline from '../assets/underline-text1.png';
 
 const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
   let wordTypeForm = '';
@@ -17,15 +17,15 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
   wordTypeForm =
     <div className="option">
       <div className="option-title">Wordtype</div>
-      <div className="option-menu">
-        <Dropdown
-          options={Object.keys(options)}
-          displayTitle='Word Type'
-          value={info.wordType}
-          onChange={(wordType) => {
-          setOptions('wordType',wordType.value)}}
-        />
-      </div>
+        <div className="option-menu">
+          <Dropdown
+            options={Object.keys(options)}
+            displayTitle='Word Type'
+            value={info.wordType}
+            onChange={(wordType) => {
+            setOptions('wordType',wordType.value)}}
+          />
+        </div>
     </div>
   let chosenType = info.wordType || 'verb';
   Object.keys(options[chosenType]).forEach( (title) => {
@@ -87,7 +87,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
           <span className="title" >CONJUGATOR</span>
         </div>
         <div className="title-underline">
-          <img src={myImage}/>
+          <img src={titleUnderline}/>
         </div>
         <p className="instruction-text">Choose Your Language!</p>
         <div className="language-container">
