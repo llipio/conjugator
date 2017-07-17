@@ -7,7 +7,11 @@ const appState = (state = {
   word: '',
   selectedLanguage: '',
   languageList: Conjugator.getLanguageList(),
-  options: {},
+  options: {
+    verb: {},
+    noun: {},
+    adjective: {}
+  },
   info: {
     wordType: 'verb'
   },
