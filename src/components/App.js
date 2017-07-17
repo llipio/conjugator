@@ -5,7 +5,6 @@ import Dropdown from 'react-dropdown';
 import titleUnderline from '../assets/underline-text1.png';
 
 const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
-  let wordTypeForm = '';
   let optionListForm = [];
   let optionBulletForm = [];
   let nativeLanguage = {
@@ -14,7 +13,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
     'French': 'Français',
     'Vietnamese': 'Tiếng Việt'
   }
-  wordTypeForm =
+  let wordTypeForm =
     <div className="option">
       <div className="option-title">Wordtype</div>
         <div className="option-menu">
@@ -60,17 +59,15 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
     }});
   let languageButton = [];
   let nativeBackground = '';
-  let languageButtonClass = '';
   languageButton = languageList.map( (language, i) => {
-  let styleName = 'languages';
-  let textClass = '';
-  if(selectedLanguage === language){
-    nativeBackground = nativeLanguage[language];
-    styleName = 'selectedlanguage';
-    textClass = 'nativeText';
-  }
-  return(
-    languageButtonClass=
+    let styleName = 'languages';
+    let textClass = '';
+    if(selectedLanguage === language){
+      nativeBackground = nativeLanguage[language];
+      styleName = 'selectedlanguage';
+      textClass = 'nativeText';
+    }
+    return(
       <button
         key={i}
         className={styleName}

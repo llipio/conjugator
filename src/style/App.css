@@ -51,6 +51,7 @@ body {
   border: transparent;
   font-size: 18px;
   padding:10px;
+  outline: none;
 }
 
 input[type=text] {
@@ -102,6 +103,7 @@ input[type=text] {
   color: #F4BC81;
   margin-top: 40px;
   border: transparent;
+  outline: none;
 }
 
 .wrapper {
