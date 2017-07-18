@@ -78,7 +78,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
   });
   return (
     <div className="App">
-      <div className="background-text">{nativeBackground}</div>
+      <div className="background-text" style={{fontSize: Math.max(100/nativeBackground.length, 25) +'vw' }}>{nativeBackground}</div>
       <div className='content-container'>
         <div className="title-container">
           <span className="title">CONJUGATOR</span>
