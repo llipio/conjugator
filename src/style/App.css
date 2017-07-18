@@ -7,6 +7,26 @@ body {
   color: #ffffff;
 }
 
+.background-text {
+  position: absolute;
+  color: #F4BC81;
+  font-size: 30vw;
+  user-select: none;
+  cursor: default;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.content-container {
+  position: relative;
+  z-index: 2;
+  width: 600px;
+  margin: auto;
+}
+
 .title-container {
   margin: 40px 0px;
 }
@@ -18,22 +38,8 @@ body {
   font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: bolder;
 }
-
-.title-underline {
-  position: absolute;
-  width: 500px;
-  height: 50px;
-  left: 50px;
-  right: 50px;
-  top: 45px;
-  bottom: 55px;
-}
-
-.content-container {
-  position: relative;
-  z-index: 2;
-  width: 600px;
-  margin: auto;
+.titleUnderline {
+  margin-top: -15px;
 }
 
 .instruction-text {
@@ -44,32 +50,53 @@ body {
   text-align: left;
 }
 
-.input-box {
-  width: 80%;
-  height: 100%;
-  color: black;
-  border: transparent;
-  font-size: 18px;
-  padding:10px;
+.language-container {
+  box-shadow: -1px 0px 58px -13px rgba(0,0,0,0.75);
+  height: 60px;
+  margin-bottom: 30px;
   outline: none;
 }
 
-input[type=text] {
+.languages {
+  background-color: white;
   color: #F4BC81;
+  height: 60px;
+  width: 25%;
+  border-left-color: #F0F0F0;
+  font-size: 14px;
+  border-width: 1px;
+  font-weight: bold;
+  outline: none;
 }
 
-.radio-group {
-  margin-bottom: 15px;
-  text-align: left;
-  font-family: ProximaNova-Regular;
-  text-transform: capitalize;
+.selectedlanguage {
+  background-color: white;
+  color: #F4BC81;
+  height: 80px;
+  width: 25%;
+  border: 1px;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 1;
+  position: relative;
+  box-shadow: 0px 2px 27px -2px rgba(13,12,13,1);
+  margin-top: -25px;
+  outline: none;
 }
 
-.radio-title {
+.nativeText {
+  font-size: 24px;
+}
+
+.container {
+  width:100%;
+  margin-bottom:40px;
   display: inline-block;
-  width: 60px;
-  margin-right: 40px;
-  font-size: 16px;
+}
+
+.row {
+  margin-left: -30px;
+  margin-right: -10px;
 }
 
 .option { 
@@ -95,17 +122,6 @@ input[type=text] {
   text-align: left;
 }
 
-.output-box {
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  font-size: 30px;
-  color: #F4BC81;
-  margin-top: 40px;
-  border: transparent;
-  outline: none;
-}
-
 .wrapper {
   display:inline-block;
   color: black;
@@ -114,6 +130,25 @@ input[type=text] {
   background-color: white;
   position: relative;
   text-align: left;
+}
+
+.input-box {
+  width: 80%;
+  height: 100%;
+  color: black;
+  border: transparent;
+  font-size: 18px;
+  padding:10px;
+  outline: none;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #F4BC81;
+  font-style:italic;
+}
+
+input[type=text] {
+  color: #F4BC81;
 }
 
 .btn {
@@ -145,69 +180,14 @@ input[type=text] {
   color: white;
 }
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+.output-box {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-size: 30px;
   color: #F4BC81;
-  font-style:italic;
-}
-
-.container {
-  width:100%;
-  margin-bottom:40px;
-  display: inline-block;
-}
-
-.row {
-  margin-left: -30px;
-  margin-right: -10px;
-}
-
-.languages {
-  background-color: white;
-  color: #F4BC81;
-  height: 60px;
-  width: 25%;
-  border-left-color: #F0F0F0;
-  font-size: 14px;
-  border-width: 1px;
-  font-weight: bold;
+  margin-top: 40px;
+  border: transparent;
   outline: none;
 }
 
-.selectedlanguage {
-  background-color: white;
-  color: #F4BC81;
-  height: 80px;
-  width: 25%;
-  border: 1px;
-  font-size: 14px;
-  font-weight: bold;
-  z-index: 1;
-  position: relative;
-  box-shadow: 0px 2px 27px -2px rgba(13,12,13,1);
-  margin-top: -25px;
-  outline: none;
-}
-
-.background-text {
-  position: absolute;
-  color: #F4BC81;
-  font-size: 30vw;
-  user-select: none;
-  cursor: default;
-  z-index: 1;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-}
-
-.nativeText {
-  font-size: 24px;
-}
-
-.language-container {
-  box-shadow: -1px 0px 58px -13px rgba(0,0,0,0.75);
-  height: 60px;
-  margin-bottom: 30px;
-  outline: none;
-}

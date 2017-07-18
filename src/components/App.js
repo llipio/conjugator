@@ -81,10 +81,8 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
       <div className="background-text">{nativeBackground}</div>
       <div className='content-container'>
         <div className="title-container">
-          <span className="title" >CONJUGATOR</span>
-        </div>
-        <div className="title-underline">
-          <img src={titleUnderline}/>
+          <span className="title">CONJUGATOR</span>
+          <img className="titleUnderline" src={titleUnderline}/>
         </div>
         <p className="instruction-text">Choose Your Language!</p>
         <div className="language-container">
