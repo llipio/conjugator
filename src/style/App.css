@@ -1,5 +1,5 @@
 body {
-  background-color: #32bdf9;
+  background-color: #F1B06C;
 }
 
 .App {
@@ -7,89 +7,188 @@ body {
   color: #ffffff;
 }
 
-.title-container {
-  margin: 40px 0px;
-}
-
-.title {
-  border-style: solid;
-  border-radius: 5px;
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 3em;
-  font-family: 'Archivo Black', sans-serif;
-  font-weight: bolder;
+.background-text {
+  position: absolute;
+  color: #F4BC81;
+  user-select: none;
+  cursor: default;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  line-height: 100%;
+  left: 0;
+  right: 0;
 }
 
 .content-container {
-  width: 280px;
+  position: relative;
+  z-index: 2;
+  width: 600px;
   margin: auto;
 }
 
-.instruction-text{
+.title-container {
+  margin: 30px 0px;
+}
+
+.title {
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 3em;
+  font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  font-weight: bolder;
+}
+.titleUnderline {
+  margin-top: -15px;
+}
+
+.instruction-text {
   margin-top: 30px;
+  margin-bottom: 30px;
   font-size: 18px;
-  font-family: ProximaNova-Regular;
-}
-
-.input-box {
-  border-radius: 5px;
-  width: 100%;
-  height: 35px;
-  color: black;
-  margin-bottom: 20px;
-}
-
-.radio-group {
-  margin-bottom: 15px;
+  font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   text-align: left;
-  font-family: ProximaNova-Regular;
-  text-transform: capitalize;
 }
 
-.radio-title {
-  display: inline-block;
-  width: 60px;
-  margin-right: 40px;
-  font-size: 16px;
+.language-container {
+  box-shadow: -1px 0px 58px -13px rgba(0,0,0,0.75);
+  height: 60px;
+  margin-bottom: 30px;
+  outline: none;
 }
 
-.button {
+.languages {
+  background-color: white;
+  color: #F4BC81;
+  height: 60px;
+  width: 25%;
+  border-left-color: #F0F0F0;
+  font-size: 14px;
+  border-width: 1px;
+  font-weight: bold;
+  outline: none;
+}
+
+.selectedlanguage {
+  background-color: white;
+  color: #F4BC81;
+  height: 80px;
+  width: 25%;
+  border: 1px;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 1;
+  position: relative;
+  box-shadow: 0px 2px 27px -2px rgba(13,12,13,1);
+  margin-top: -25px;
+  outline: none;
+}
+
+.nativeText {
+  font-size: 24px;
+}
+
+.container {
+  width:100%;
+  margin-bottom:40px;
   display: inline-block;
-  margin-right: 10px;
+}
+
+.row {
+  margin-left: -30px;
+  margin-right: -10px;
 }
 
 .option { 
+  width: 600px;
   text-align: left;
+  font-size: 10px;
+  padding: 5px;
 }
 
 .option-menu {
   display: inline-block;
-  width: 140px;
+  width: 110px;
   vertical-align: middle;
 }
 
 .option-title {
   display:inline-block;
-  margin-right:40px;
   width: 60px;
-  font-size: 16px;
-  font-family: ProximaNova-Regular;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   text-transform: capitalize;
+  margin-top: 10px;
+  text-align: left;
 }
-.conjugate-button {
-  -ms-transform: rotate(90deg); /* IE 9 */
-  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-  transform: rotate(90deg);
+
+.wrapper {
+  display:inline-block;
+  color: black;
+  height: 50px;
+  width: 600px;
+  background-color: white;
+  position: relative;
+  text-align: left;
+}
+
+.input-box {
+  width: 80%;
+  height: 100%;
+  color: black;
+  border: transparent;
+  font-size: 18px;
+  padding:10px;
+  outline: none;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #F4BC81;
+  font-style:italic;
+}
+
+input[type=text] {
+  color: #F4BC81;
+}
+
+.btn {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #f2ad6f;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  border-radius: 2px;
+  font-size: 12px;
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.2), 0 6px 30px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: white;
+  background-color: #f4bc81;
+}
+
+.btn:active {
+  transform: translateY(2px);
+}
+
+.btn:focus {
+  outline: none;
+  color: white;
 }
 
 .output-box {
-  border-radius: 5px;
   width: 100%;
-  height: 70px;
-  color: black;
-  margin-top: 20px;
-} 
-
-
+  height: 100px;
+  padding: 10px;
+  font-size: 30px;
+  color: #F4BC81;
+  margin-top: 40px;
+  border: transparent;
+  outline: none;
+}
 

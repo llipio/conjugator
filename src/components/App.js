@@ -2,40 +2,32 @@ import React from 'react';
 import '../style/App.css';
 import '../style/ReactDropdown.css';
 import Dropdown from 'react-dropdown';
-import myImage from '../assets/arrow_button_white.png';
+import titleUnderline from '../assets/underline-text1.png';
 
-const RadioButtonOptions = ({options, setOptions, displayTitle, title, selectedOption}) => {
-  let radioOptions = [];
-  options.map(element => {
-    radioOptions.push(
-      <label className="button" key={element}>
-        <input type="radio" 
-          name={title}
-          value={element}
-          onChange={() => {setOptions(title, element)}}
-          checked={element === selectedOption}
-        />
-      {`${element}`}
-      </label>
-    );
-    })
-  return (<div className="radio-group"><div className="radio-title">{displayTitle || title}</div><span>{radioOptions}</span></div>);
-  }
-
-const App = ({options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
-  let wordTypeForm = '';
+const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWord, languageList, submit, setOptions, info, conjugatedWord}) => {
   let optionListForm = [];
   let optionBulletForm = [];
-  wordTypeForm =
-    <RadioButtonOptions
-      options={Object.keys(options)}
-      setOptions={setOptions}
-      displayTitle='Word Type'
-      title='wordType'
-      selectedOption={info.wordType}
-    />
+  let nativeLanguage = {
+    'Korean': '한국어',
+    'Hindi': 'हिंदी',
+    'French': 'Français',
+    'Vietnamese': 'Tiếng Việt'
+  }
+  let wordTypeForm =
+    <div className="option">
+      <div className="option-title">Wordtype</div>
+        <div className="option-menu">
+          <Dropdown
+            options={Object.keys(options)}
+            displayTitle='Word Type'
+            value={info.wordType}
+            onChange={(wordType) => {
+            setOptions('wordType',wordType.value)}}
+          />
+        </div>
+    </div>
   let chosenType = info.wordType || 'verb';
-  for(let title in options[chosenType]) {
+  Object.keys(options[chosenType]).forEach( (title) => {
     if (options[chosenType][title].length > 2){
       optionListForm.push(
         <div key={title} className="option">
@@ -49,41 +41,75 @@ const App = ({options, selectedLanguage, changeLanguage, word, changeWord, langu
           </div>
         </div>)
     } else {
-      optionBulletForm.push(<RadioButtonOptions key={title} options={options[chosenType][title]} setOptions={setOptions} 
-      selectedOption={info[title]}
-      title={title}/>);
-    }}
-
-  return (
-
-    <div className="App">
-      <div className="title-container">
-        <span className="title" >CONJUGATOR</span>
-      </div>
-      <div className='content-container'>
-        <p className="instruction-text">Select Your Language!</p>
-        <Dropdown 
-          options={languageList} onChange={(languageOption) => {changeLanguage(languageOption.value)}} 
-          value={selectedLanguage} placeholder="Please Select Language" 
-        />
-        {wordTypeForm}
-        {optionBulletForm} {optionListForm}
-        <p className="instruction-text">Type Your Word</p>    
-        <input 
-          type="text" className="input-box" name="word" placeholder="Please input word" value={word} onChange={(e) => {
-          changeWord(e.target.value);
-          }} 
-        />
-        <div>
-          <img className="conjugate-button"
-            src={myImage}
-            width="73" height="auto" onClick={ submit } />
+      optionBulletForm.push(
+      <div key={title} className="option">
+        <div className="option-title">{title}</div>
+        <div className="option-menu">
+          <Dropdown 
+            key={title} 
+            options={options[chosenType][title]} 
+            setOptions={setOptions} 
+            title={title}
+            onChange={(wordTypeForm) => {setOptions(title, wordTypeForm.value)}}
+            value={info[title]}
+          />
         </div>
-        <input className="output-box" type="textbox" name="output" value={conjugatedWord} />
-      </div>  
+      </div>)
+      ;
+    }});
+  let languageButton = [];
+  let nativeBackground = '';
+  languageButton = languageList.map( (language, i) => {
+    let styleName = 'languages';
+    let textClass = '';
+    if(selectedLanguage === language){
+      nativeBackground = nativeLanguage[language];
+      styleName = 'selectedlanguage';
+      textClass = 'nativeText';
+    }
+    return(
+      <button
+        key={i}
+        className={styleName}
+        onClick={() => {changeLanguage(language)}}>
+        <div className={textClass}>{nativeLanguage[language]}</div>
+        <div>{language}</div>
+      </button>)
+  });
+  return (
+    <div className="App">
+      <div className="background-text" style={{fontSize: Math.max(100/nativeBackground.length, 25) +'vw' }}>{nativeBackground}</div>
+      <div className='content-container'>
+        <div className="title-container">
+          <span className="title">CONJUGATOR</span>
+          <img className="titleUnderline" src={titleUnderline}/>
+        </div>
+        <p className="instruction-text">Choose Your Language!</p>
+        <div className="language-container">
+          {languageButton}
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-4">{wordTypeForm}</div>
+            <div className="col-md-4">{optionBulletForm}</div>
+            <div className="col-md-4">{optionListForm}</div>
+          </div>
+        </div>
+        <div className="wrapper">
+          <input
+            className="input-box"
+            type="text"
+            name="word"
+            placeholder="Please input your word!"
+            value={word}
+            onChange={(e) => {changeWord(e.target.value);}}
+          />
+          <button
+            type="button" onClick={submit} className="btn btn-xs">Conjugate!</button>
+        </div>
+        <input className="output-box" type="textbox" name="output" value={conjugatedWord}/>
+      </div>
     </div>
-
-
   );
 };
 

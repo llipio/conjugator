@@ -7,7 +7,11 @@ const appState = (state = {
   word: '',
   selectedLanguage: '',
   languageList: Conjugator.getLanguageList(),
-  options: {},
+  options: {
+    verb: {},
+    noun: {},
+    adjective: {}
+  },
   info: {
     wordType: 'verb'
   },
@@ -36,7 +40,13 @@ const appState = (state = {
       return Object.assign({}, state, { conjugatedWord });
     }
     case 'CLEAR_INPUTS': {
-      return Object.assign({}, state, { word: '', conjugatedWord: '' });
+      const newInfo = Object.assign({}, state.info);
+      Object.keys(newInfo).forEach((key) => {
+        if (key !== 'wordType') {
+          newInfo[key] = '';
+        }
+      });
+      return Object.assign({}, state, { word: '', conjugatedWord: '', info: newInfo });
     }
     default: {
       return state;
