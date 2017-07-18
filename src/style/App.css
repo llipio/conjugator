@@ -10,12 +10,13 @@ body {
 .background-text {
   position: absolute;
   color: #F4BC81;
-  font-size: 30vw;
   user-select: none;
   cursor: default;
   z-index: 1;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 100px;
+  line-height: 100%;
   left: 0;
   right: 0;
 }
@@ -28,7 +29,7 @@ body {
 }
 
 .title-container {
-  margin: 40px 0px;
+  margin: 30px 0px;
 }
 
 .title {
