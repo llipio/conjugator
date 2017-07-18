@@ -3,7 +3,7 @@
 
 # Universal Conjugator
 
-The conjugator takes in a verb and a grammar form and outputs the conjugated word. For example, the future form of ‘하다’(to do) should return ‘할거야’(will do). This API will come handy for people who are learning a new language or, if you’re like us, building a language learning app [https://llip.io](https://llip.io). As for now, the following languages are     supported:
+The conjugator takes in a verb and a grammar form and outputs the conjugated word. For example, the future form of ‘하다’(to do) should return ‘할거야’(will do). This API will come handy for people who are learning a new language or, if you’re like us, building a language learning app [https://llip.io](https://llip.io). As for now, the following languages are supported:
 
 * Korean
 * Hindi
