@@ -35,12 +35,13 @@ body {
 .title {
   padding-left: 20px;
   padding-right: 20px;
-  font-size: 3em;
+  font-size: 4em;
   font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   font-weight: bolder;
 }
 .titleUnderline {
   margin-top: -15px;
+  width: 420px;
 }
 
 .instruction-text {
@@ -91,7 +92,8 @@ body {
 
 .container {
   width:100%;
-  margin-bottom:40px;
+  margin-bottom:20px;
+  min-height: 90px;
   display: inline-block;
 }
 
@@ -129,6 +131,7 @@ body {
   height: 50px;
   width: 600px;
   background-color: white;
+  margin-top: 10px;
   position: relative;
   text-align: left;
 }
@@ -190,5 +193,6 @@ input[type=text] {
   margin-top: 40px;
   border: transparent;
   outline: none;
+  margin-bottom: 40px;
 }
 
