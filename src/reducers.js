@@ -1,23 +1,22 @@
 import { combineReducers } from 'redux';
 import Conjugator from 'universal-conjugator';
 
-let languageObject = {};
+let languageObject = Conjugator.create('Korean');
 
 const appState = (state = {
   word: '',
-  selectedLanguage: '',
+  selectedLanguage: 'Korean',
   languageList: Conjugator.getLanguageList(),
-  options: {
-    verb: {},
-    noun: {},
-    adjective: {}
-  },
+  options: Conjugator.create('Korean').getAllInfo(),
   info: {
-    wordType: 'verb'
+    wordType: 'verb',
+    formality: 'casual',
+    tense: 'present'
   },
   conjugatedWord: '' }, action) => {
   switch (action.type) {
     case 'CHANGE_LANGUAGE': {
+      console.log('state:', state);
       if (action.selectedLanguage) {
         languageObject = Conjugator.create(action.selectedLanguage);
       }

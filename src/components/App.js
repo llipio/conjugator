@@ -117,6 +117,9 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
           </div>
           <input className="output-box" type="textbox" name="output" value={conjugatedWord}/>
         </div>
+        <div className="link">For more information, visit
+          <a href="https://llip.io/"> https://llip.io/</a> 
+        </div>
       </div>
     </div>
   );
