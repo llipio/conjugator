@@ -12,7 +12,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
     'Hindi': 'हिंदी',
     'French': 'Français',
     'Vietnamese': 'Tiếng Việt'
-  }
+  };
   let wordTypeForm =
     <div className="option">
       <div className="option-title">Wordtype</div>
@@ -25,7 +25,7 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
             setOptions('wordType',wordType.value)}}
           />
         </div>
-    </div>
+    </div>;
   let chosenType = info.wordType || 'verb';
   Object.keys(options[chosenType]).forEach( (title) => {
     if (options[chosenType][title].length > 2){
@@ -76,9 +76,14 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
         <div>{language}</div>
       </button>)
   });
+  const handleKeyPress = (event) => {
+    if(event.key == "Enter"){
+      submit();
+    }
+  };
   return (
     <div className="App">
-      <div className="background-text" style={{fontSize: Math.max(100/nativeBackground.length, 25) +'vw' }}>{nativeBackground}</div>
+      <div className="background-text" style={{fontSize: Math.max(95/nativeBackground.length, 20) +'vw' }}>{nativeBackground}</div>
       <div className='content-container'>
         <div className="title-container">
           <span className="title">CONJUGATOR</span>
@@ -95,19 +100,23 @@ const App = ({wordType,options, selectedLanguage, changeLanguage, word, changeWo
             <div className="col-md-4">{optionListForm}</div>
           </div>
         </div>
-        <div className="wrapper">
-          <input
-            className="input-box"
-            type="text"
-            name="word"
-            placeholder="Please input your word!"
-            value={word}
-            onChange={(e) => {changeWord(e.target.value);}}
-          />
-          <button
-            type="button" onClick={submit} className="btn btn-xs">Conjugate!</button>
+        <div className="text-container">
+          <div className="wrapper">
+            <input
+              className="input-box"
+              type="text"
+              name="word"
+              placeholder="Please input your word!"
+              value={word}
+              onChange={(e) => {changeWord(e.target.value);
+              }}
+              onKeyPress={(e) => {handleKeyPress(e)}}
+            />
+            <button
+              type="button" onClick={submit} className="btn btn-xs">Conjugate!</button>
+          </div>
+          <input className="output-box" type="textbox" name="output" value={conjugatedWord}/>
         </div>
-        <input className="output-box" type="textbox" name="output" value={conjugatedWord}/>
       </div>
     </div>
   );
