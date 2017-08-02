@@ -16,7 +16,6 @@ const appState = (state = {
   conjugatedWord: '' }, action) => {
   switch (action.type) {
     case 'CHANGE_LANGUAGE': {
-      console.log('state:', state);
       if (action.selectedLanguage) {
         languageObject = Conjugator.create(action.selectedLanguage);
       }
