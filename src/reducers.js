@@ -41,8 +41,7 @@ const appState = (state = {
       return Object.assign({}, state, { conjugatedWord });
     }
     case 'CLEAR_INPUTS': {
-      const newInfo = Object.assign({}, state.info);
-      return Object.assign({}, state, { word: '', conjugatedWord: '', info: newInfo });
+      return Object.assign({}, state, { word: '', conjugatedWord: '' });
     }
     default: {
       return state;
