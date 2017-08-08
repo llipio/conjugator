@@ -11,7 +11,10 @@ const appState = (state = {
   info: {
     wordType: 'verb',
     formality: 'casual',
-    tense: 'present'
+    tense: 'present',
+    singular: 'true',
+    gender: 'female',
+    subject: 'je',
   },
   conjugatedWord: '' }, action) => {
   switch (action.type) {
@@ -39,11 +42,6 @@ const appState = (state = {
     }
     case 'CLEAR_INPUTS': {
       const newInfo = Object.assign({}, state.info);
-      Object.keys(newInfo).forEach((key) => {
-        if (key !== 'wordType') {
-          newInfo[key] = '';
-        }
-      });
       return Object.assign({}, state, { word: '', conjugatedWord: '', info: newInfo });
     }
     default: {
