@@ -64,8 +64,8 @@ describe('Korean', () => {
     });
     it('should conjugate 으다 words correctly', () => {
       const kc = new Korean();
-      let presentWord = kc.conjugate('으다', {tense: 'Present', formality: 'Casual'});
-      expect(presentWord).to.equal('어');
+      let presentWord = kc.conjugate('아프다', {tense: 'Present', formality: 'Casual'});
+      expect(presentWord).to.equal('아파');
 
       presentWord = kc.conjugate('쓰다', {tense: 'Present', formality: 'Casual'});
       expect(presentWord).to.equal('써');

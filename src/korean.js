@@ -227,8 +227,13 @@ class Korean {
           }
           return stemWord + newSyllable;
         case 18:
-          // vowel ㅡ replace with ㅓ (4)
-          newSyllable.push(4);
+          if (stemWord) {
+            // vowel ㅡ replace with ㅏ (0)
+            newSyllable.push(0);
+          } else {
+            // vowel ㅡ replace with ㅓ (4)
+            newSyllable.push(4);
+          }
           newSyllable = combineSymbols(newSyllable);
           if (wordLength <= 2) {
             return newSyllable;
