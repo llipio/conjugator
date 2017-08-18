@@ -64,8 +64,8 @@ describe('Korean', () => {
     });
     it('should conjugate 으다 words correctly', () => {
       const kc = new Korean();
-      let presentWord = kc.conjugate('으다', {tense: 'Present', formality: 'Casual'});
-      expect(presentWord).to.equal('어');
+      let presentWord = kc.conjugate('아프다', {tense: 'Present', formality: 'Casual'});
+      expect(presentWord).to.equal('아파');
 
       presentWord = kc.conjugate('쓰다', {tense: 'Present', formality: 'Casual'});
       expect(presentWord).to.equal('써');
@@ -126,6 +126,9 @@ describe('Korean', () => {
       presentWord = kc.conjugate('닫다', {tense: 'Present'});
       expect(presentWord).to.equal('닫아');
 
+      presentWord = kc.conjugate('깨닫다', {tense: 'Present'});
+      expect(presentWord).to.equal('깨달아');
+      
       presentWord = kc.conjugate('솟다', {tense: 'Present'});
       presentWord = kc.conjugate('솟아', {tense: 'Present'});
     });
@@ -205,10 +208,10 @@ describe('Korean', () => {
     it('should conjugate verbs in formal test correctly', () => {
       const kc = new Korean();
       let futureWord = kc.conjugate('있다', {tense: 'Future', formality: 'Formal'});
-      expect(futureWord).to.equal('있을 거에요');
+      expect(futureWord).to.equal('있을 거예요');
 
       futureWord = kc.conjugate('사다', {tense: 'Future', formality: 'Formal'});
-      expect(futureWord).to.equal('살 거에요');
+      expect(futureWord).to.equal('살 거예요');
     });
   });
   describe('Present Continuous Tense', () => {
@@ -341,6 +344,12 @@ describe('Korean', () => {
 
       adjectiveWord = kc.conjugate('게으르다', {tense: 'state'});
       expect(adjectiveWord).to.equal('게으른');
+
+      adjectiveWord = kc.conjugate('재밌다', {wordType: 'adjective', tense: 'state'});
+      expect(adjectiveWord).to.equal('재밌는');
+      
+      adjectiveWord = kc.conjugate('좋다', {wordType: 'verb', tense: 'state'});
+      expect(adjectiveWord).to.equal('좋은');
     });
   });
   describe('Noun conjugation', () => {

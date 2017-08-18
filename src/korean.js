@@ -1,6 +1,6 @@
-/** the conjugate returns a conjugate verb, but it should be checked for tense, past tense will take present tense verb and then add something to the the verb, and then add an additional letter after **/
+/* the conjugate returns a conjugate verb, but it should be checked for tense, past tense will take present tense verb and then add something to the the verb, and then add an additional letter after */
 
-/** Additional Functions **/
+/* Additional Functions */
 // reference: http://www.programminginkorean.com/programming/hangul-in-unicode/composing-syllables-in-unicode/
 // input: hangul character
 // output: returns an array of components that make up the given hangul
@@ -82,15 +82,15 @@ class Korean {
       case 'conditional':
         return this.doConditional(word);
       case 'state':
-        return this.doState(word);
+        return this.doState(word, info.wordType);
       default:
         return `Could not find any adjective/verb rules for ${info.tense}`;
     }
 
     if (info.formality && info.formality.toLowerCase() === 'formal') {
-      // for future tense, change 야 to 에 before making it formal
+      // for future tense, change 야 to 예 before making it formal
       if (info.tense.toLowerCase() === 'future') {
-        return `${result.substring(0, result.length - 1)}에요`;
+        return `${result.substring(0, result.length - 1)}예요`;
       }
       return `${result}요`;
     }
@@ -146,7 +146,7 @@ class Korean {
           return newSyllable.concat('러');
       }
     } else {
-      /** breakdown the word to find out the 2nd to last character's letter **/
+      /* breakdown the word to find out the 2nd to last character's letter */
       const brokeWord = breakdown(word[wordLength - 2]);
       const brokeLength = brokeWord.length;
       const syllableEnd = brokeWord[brokeLength - 1];
@@ -175,6 +175,12 @@ class Korean {
               case 0:
               case 8:
                 // if ㅏ or ㅗ
+                if (stemWord) {
+                  // if it has stemWord in front, replace ㄷ with: ㄹ (8)
+                  newSyllable.push(8);
+                  newSyllable = combineSymbols(newSyllable);
+                  return `${stemWord + newSyllable}아`;
+                }
                 return `${word.slice(0, wordLength - 1)}아`;
               case 4:
               case 18:
@@ -227,8 +233,13 @@ class Korean {
           }
           return stemWord + newSyllable;
         case 18:
-          // vowel ㅡ replace with ㅓ (4)
-          newSyllable.push(4);
+          if (stemWord) {
+            // vowel ㅡ replace with ㅏ (0)
+            newSyllable.push(0);
+          } else {
+            // vowel ㅡ replace with ㅓ (4)
+            newSyllable.push(4);
+          }
           newSyllable = combineSymbols(newSyllable);
           if (wordLength <= 2) {
             return newSyllable;
@@ -250,9 +261,9 @@ class Korean {
     }
   } // end of presentWord function
 
-  doState (word) {
+  doState (word, wordType) {
     const wordLength = word.length;
-    /** breakdown the word to find out the 2nd to last character's letter **/
+    /* breakdown the word to find out the 2nd to last character's letter */
     const brokeWord = breakdown(word[wordLength - 2]);
     const brokeLength = brokeWord.length;
     const syllableEnd = brokeWord[brokeLength - 1];
@@ -274,10 +285,16 @@ class Korean {
               return `${stemWord + newSyllable}운`;
             default:
               // for all other vowels
-              return `${word.slice(0, wordLength - 1)}은`;
+              if (wordType && wordType.toLowerCase() === 'verb') {
+                return `${word.slice(0, wordLength - 1)}은`;
+              }
+              return `${word.slice(0, wordLength - 1)}는`;
           }
         default:
-          return `${word.slice(0, wordLength - 1)}은`;
+          if (wordType && wordType.toLowerCase() === 'verb') {
+            return `${word.slice(0, wordLength - 1)}은`;
+          }
+          return `${word.slice(0, wordLength - 1)}는`;
       }
     }
     // Else it ends in a vowel:
