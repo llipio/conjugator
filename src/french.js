@@ -8,7 +8,7 @@ const allInfo = {
       'Subjonctif Imparfait', 'Subjonctif Plus-que-parfait', 'Impératif Présent',
       'Impératif Passé', 'Conditionnel Présent', 'Conditionnel Passé 1',
       'Conditionnel Passé 2', 'Infinitif Passé',
-      'Participe Présent', 'Participe Passé'*/
+      'Participe Présent', 'Participe Passé' */
     gender: ['female', 'male', 'unknown'],
     subject: ['je', 'tu', 'il', 'elle', 'nous', 'vous', 'ils', 'elles', 'on'],
     singular: ['true', 'false']
@@ -184,7 +184,7 @@ class French {
       of the verb
       group1: all verbs ending in -er except the verb 'aller'
       group2: all verbs ending in -ir except the irregular verbs ending in -ir
-      group3: irregular verbs ending in -ir, -re, -oir*/
+      group3: irregular verbs ending in -ir, -re, -oir */
     const ending = word.slice(-2);
     let stem = word.slice(0, -2);
 
@@ -326,7 +326,7 @@ class French {
     /* the last letter of the stem and the first letter of the tense ending
       affect each other in some specific cases
       in some cases there are several stem solutions
-      those cases apply to all tenses*/
+      those cases apply to all tenses */
     const combinations = [];
     if (group === 'group1') {
       // rules for group1: verbs ending in -er
@@ -345,7 +345,7 @@ class French {
         const globalPattern = /e[cmnprsvlt]/;
         if (globalPattern.test(stem.slice(-2)) || stem.slice(-3) === 'evr') {
           /* verbs ending in -e(.)er and (.) can only be either
-          'c', 'm', 'n', 'p', 'r', 's', 'v', 'vr', 'l', 't'*/
+          'c', 'm', 'n', 'p', 'r', 's', 'v', 'vr', 'l', 't' */
           if (stem.slice(-2) === 'el' || stem.slice(-2) === 'et') {
             // verbs ending in -eler or -eter
             // special cases of -el and -et that always become -èl and -èt
@@ -376,7 +376,7 @@ class French {
             return [`${stem.slice(0, -3)}èvr${ending}`];
           }
           /* verbs ending in -e(.)er where (.) is either
-             'c', 'm', 'n', 'p', 'r', 's', 'v'*/
+             'c', 'm', 'n', 'p', 'r', 's', 'v' */
           return [`${stem.slice(0, -2)}è${stem.slice(-1) + ending}`];
         }
 

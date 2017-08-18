@@ -1,6 +1,6 @@
-/** the conjugate returns a conjugate verb, but it should be checked for tense, past tense will take present tense verb and then add something to the the verb, and then add an additional letter after **/
+/* the conjugate returns a conjugate verb, but it should be checked for tense, past tense will take present tense verb and then add something to the the verb, and then add an additional letter after */
 
-/** Additional Functions **/
+/* Additional Functions */
 // reference: http://www.programminginkorean.com/programming/hangul-in-unicode/composing-syllables-in-unicode/
 // input: hangul character
 // output: returns an array of components that make up the given hangul
@@ -146,7 +146,7 @@ class Korean {
           return newSyllable.concat('러');
       }
     } else {
-      /** breakdown the word to find out the 2nd to last character's letter **/
+      /* breakdown the word to find out the 2nd to last character's letter */
       const brokeWord = breakdown(word[wordLength - 2]);
       const brokeLength = brokeWord.length;
       const syllableEnd = brokeWord[brokeLength - 1];
@@ -263,7 +263,7 @@ class Korean {
 
   doState (word, wordType) {
     const wordLength = word.length;
-    /** breakdown the word to find out the 2nd to last character's letter **/
+    /* breakdown the word to find out the 2nd to last character's letter */
     const brokeWord = breakdown(word[wordLength - 2]);
     const brokeLength = brokeWord.length;
     const syllableEnd = brokeWord[brokeLength - 1];
