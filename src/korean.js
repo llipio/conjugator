@@ -82,7 +82,7 @@ class Korean {
       case 'conditional':
         return this.doConditional(word);
       case 'state':
-        return this.doState(word);
+        return this.doState(word, info.wordType);
       default:
         return `Could not find any adjective/verb rules for ${info.tense}`;
     }
@@ -261,7 +261,7 @@ class Korean {
     }
   } // end of presentWord function
 
-  doState (word) {
+  doState (word, wordType) {
     const wordLength = word.length;
     /** breakdown the word to find out the 2nd to last character's letter **/
     const brokeWord = breakdown(word[wordLength - 2]);
@@ -285,10 +285,16 @@ class Korean {
               return `${stemWord + newSyllable}운`;
             default:
               // for all other vowels
-              return `${word.slice(0, wordLength - 1)}은`;
+              if (wordType && wordType.toLowerCase() === 'verb') {
+                return `${word.slice(0, wordLength - 1)}은`;
+              }
+              return `${word.slice(0, wordLength - 1)}는`;
           }
         default:
-          return `${word.slice(0, wordLength - 1)}은`;
+          if (wordType && wordType.toLowerCase() === 'verb') {
+            return `${word.slice(0, wordLength - 1)}은`;
+          }
+          return `${word.slice(0, wordLength - 1)}는`;
       }
     }
     // Else it ends in a vowel:
