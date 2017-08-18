@@ -88,9 +88,9 @@ class Korean {
     }
 
     if (info.formality && info.formality.toLowerCase() === 'formal') {
-      // for future tense, change 야 to 에 before making it formal
+      // for future tense, change 야 to 예 before making it formal
       if (info.tense.toLowerCase() === 'future') {
-        return `${result.substring(0, result.length - 1)}에요`;
+        return `${result.substring(0, result.length - 1)}예요`;
       }
       return `${result}요`;
     }
