@@ -126,6 +126,9 @@ describe('Korean', () => {
       presentWord = kc.conjugate('닫다', {tense: 'Present'});
       expect(presentWord).to.equal('닫아');
 
+      presentWord = kc.conjugate('깨닫다', {tense: 'Present'});
+      expect(presentWord).to.equal('깨달아');
+      
       presentWord = kc.conjugate('솟다', {tense: 'Present'});
       presentWord = kc.conjugate('솟아', {tense: 'Present'});
     });

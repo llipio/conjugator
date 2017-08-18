@@ -175,6 +175,12 @@ class Korean {
               case 0:
               case 8:
                 // if ㅏ or ㅗ
+                if (stemWord) {
+                  // if it has stemWord in front, replace ㄷ with: ㄹ (8)
+                  newSyllable.push(8);
+                  newSyllable = combineSymbols(newSyllable);
+                  return `${stemWord + newSyllable}아`;
+                }
                 return `${word.slice(0, wordLength - 1)}아`;
               case 4:
               case 18:
