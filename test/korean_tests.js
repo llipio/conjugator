@@ -347,9 +347,12 @@ describe('Korean', () => {
 
       adjectiveWord = kc.conjugate('재밌다', {wordType: 'adjective', tense: 'state'});
       expect(adjectiveWord).to.equal('재밌는');
-      
-      adjectiveWord = kc.conjugate('좋다', {wordType: 'verb', tense: 'state'});
+
+      adjectiveWord = kc.conjugate('좋다', {wordType: 'adjective', tense: 'state'});
       expect(adjectiveWord).to.equal('좋은');
+
+      adjectiveWord = kc.conjugate('걷다', {wordType: 'verb', tense: 'state'});
+      expect(adjectiveWord).to.equal('걷는');
     });
   });
   describe('Noun conjugation', () => {
