@@ -285,16 +285,16 @@ class Korean {
               return `${stemWord + newSyllable}운`;
             default:
               // for all other vowels
-              if (wordType && wordType.toLowerCase() === 'verb') {
-                return `${word.slice(0, wordLength - 1)}은`;
+              if (stemWord || (wordType && wordType.toLowerCase() === 'verb')) {
+                return `${word.slice(0, wordLength - 1)}는`;
               }
-              return `${word.slice(0, wordLength - 1)}는`;
+              return `${word.slice(0, wordLength - 1)}은`;
           }
         default:
-          if (wordType && wordType.toLowerCase() === 'verb') {
-            return `${word.slice(0, wordLength - 1)}은`;
+          if (stemWord || (wordType && wordType.toLowerCase() === 'verb')) {
+            return `${word.slice(0, wordLength - 1)}는`;
           }
-          return `${word.slice(0, wordLength - 1)}는`;
+          return `${word.slice(0, wordLength - 1)}은`;
       }
     }
     // Else it ends in a vowel:
