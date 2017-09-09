@@ -9,6 +9,8 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register",
     "test:watch": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register -w",
+    "testwin": "node ./node_modules/mocha/bin/mocha --compilers js:babel-core/register",
+    "testwin:watch": "node ./node_modules/mocha/bin/mocha --compilers js:babel-core/register -w",
     "start": "babel src/conjugator.js -o build/app.js -w",
     "deploy": "babel src -d build && npm publish",
     "eslint": "./node_modules/.bin/eslint src --ext .js",
