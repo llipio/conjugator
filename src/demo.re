@@ -58,3 +58,8 @@ let conjugate word info => {
   }
 };
 
+/* 
+   Sample: 
+     conjugate('estudiar', { tense: 'present', subject: 'ella' });
+       should return estudia
+ */
