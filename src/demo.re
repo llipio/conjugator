@@ -1,3 +1,9 @@
+/* 
+   Goal: 
+     conjugate('estudiar', { tense: 'present', subject: 'ella' });
+       should return estudia
+ */
+
 type subject = 
 | Yo
 | Tu
@@ -58,8 +64,3 @@ let conjugate word info => {
   }
 };
 
-/* 
-   Sample: 
-     conjugate('estudiar', { tense: 'present', subject: 'ella' });
-       should return estudia
- */
