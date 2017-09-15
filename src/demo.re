@@ -1,43 +1,60 @@
-let getPresentAr subject tense => {
+type subject = 
+| Yo
+| Tu
+| Ella
+| Nosotras
+| Vosotras
+| Ellas;
+
+type ending = 
+| Ar
+| Er
+| Ir;
+
+let getSubjectVariant subject => {
   switch subject {
-    | "yo" => "o"
-    | "tu" =>  "as"
-    | "ella" =>  "a"
-    | "nosotras" =>  "amos"
-    | "vosotras" =>  "áis"
-    | "ellas" =>  "an"
-    | _ =>  "error"
+    | "yo" => Yo
+    | "tu" => Tu
+    | "ella" => Ella
+    | "nosotras" => Nosotras
+    | "vosotras" => Vosotras
+    | _ => Ellas
+  }
+};
+
+let getEndingVariant ending => {
+  switch ending {
+    | "ar" => Ar
+    | "er" => Er
+    | _ => Ir
   }
 };
 
 let genPresentEnding ending subject => {
   Js.log("subject", subject);
   switch subject {
-    | "yo" => "o"
-    | "tu" => switch ending {
-      | "ar" => "as"
-      | "er" => "es"
+    | Yo => "o"
+    | Tu => switch ending {
+      | Ar => "as"
+      | _ => "es"
       }
-    | "ella" => switch ending {
-      | "ar" => "a"
-      | "er" => "e"
+    | Ella => switch ending {
+      | Ar => "a"
+      | _ => "e"
       }
-    | "nosotras" =>  "amos"
-    | "vosotras" =>  "áis"
-    | "ellas" =>  "an"
-    | _ =>  "error"
+    | Nosotras =>  "amos"
+    | Vosotras =>  "áis"
+    | Ellas =>  "an"
   }
 };
 
 let conjugate word info => {
   let start = ( String.length word) - 2;
-  let endingType = (String.sub word start 2);
+  let endingType = getEndingVariant (String.sub word start 2);
   let stem = (String.sub word 0 start);
+  let subject = (getSubjectVariant info##subject);
   switch info##tense {
-    | "present" => stem ^ (genPresentEnding endingType info##subject)
-    | "er" => {
-        "errrrrr";
-      }
+    | "present" => stem ^ (genPresentEnding endingType subject)
   }
 };
 
