@@ -1,25 +1,11 @@
 /* global describe, it */
 
-<<<<<<< HEAD
-import { Spanish } from '../src/spanish';
-=======
 import spanish from '../lib/js/src/spanish';
-
-const expect = require('chai').expect;
->>>>>>> test
 
 const expect = require('chai').expect;
 
 describe('Spanish', () => {
-<<<<<<< HEAD
   let conjugatedWord;
-  const spanish = new Spanish();
-=======
-  describe('Present Tense', () => {
-    it('should conjugate "hablar" to "hablo" for "yo"', () => {
-      let conjugatedWord;
->>>>>>> test
-
   describe('Present Tense', () => {
     it('should conjugate present tense correctly: hablar should be hablo for yo', () => {
       conjugatedWord = spanish.conjugate('hablar', { tense: 'present', subject: 'yo' });
