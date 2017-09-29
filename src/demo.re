@@ -4,18 +4,10 @@
        should return estudia
  */
 
-type ending = 
-| Ar
-| Er
-| Ir;
-
 module Subject = {
-  /* The type name becomes just `t` to avoid repetition when accessed from outside the module */
-  /*
-   * To do:
-   * 1) Conjugation w/ gender
-   * 2) Fix other inputs into info to have gender
-   * 3) Typing Singular / plural
+  /* 
+     The type name becomes just `t` to avoid repetition when 
+     accessed from outside the module 
    */
   
   type t =
@@ -36,10 +28,6 @@ module Subject = {
 };
 
 module Ending = {
- /*
-  * Properties:
-  *   t: gives the simple type in Reason
-  */
   type t =
     | Ar
     | Er
