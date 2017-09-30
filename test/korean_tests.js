@@ -202,10 +202,16 @@ describe('Korean', () => {
       futureWord = kc.conjugate('걷다', {tense: 'Future', formality: 'Casual'});
       expect(futureWord).to.equal('걸을 거야');
 
+      futureWord = kc.conjugate('깨닫다', {tense: 'Future', formality: 'Casual'});
+      expect(futureWord).to.equal('깨달을 거야');
+
+      futureWord = kc.conjugate('닫다', {tense: 'Future', formality: 'Casual'});
+      expect(futureWord).to.equal('닫을 거야');
+
       futureWord = kc.conjugate('입다', {tense: 'Future', formality: 'Casual'});
       expect(futureWord).to.equal('입을 거야');
     });
-    it('should conjugate verbs in formal test correctly', () => {
+    it('should conjugate verbs in formal tense correctly', () => {
       const kc = new Korean();
       let futureWord = kc.conjugate('있다', {tense: 'Future', formality: 'Formal'});
       expect(futureWord).to.equal('있을 거예요');
