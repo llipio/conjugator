@@ -344,7 +344,10 @@ class Korean {
       case 8: // ㄹ
         return `${preStem}${combineSymbols(stem)} 거야`;
       case 7: // ㄷ
-        stem[stem.length - 1] = 8;
+        // This condition skips and thus handles the irregular case of ㅏㄷ like 닫다
+        if (stem[stem.length - 2] !== 0 || preStem) {
+          stem[stem.length - 1] = 8; // replace the consonant with ㄹ
+        }
         return `${preStem}${combineSymbols(stem)}을 거야`;
       default:
         return `${preStem}${combineSymbols(stem)}을 거야`;
