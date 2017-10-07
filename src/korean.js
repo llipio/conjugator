@@ -41,7 +41,8 @@ const allInfo = {
     formality: ['formal', 'casual'],
   },
   verb: {
-    tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional', 'state'],
+    tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'present truncated',
+      'past truncated', 'future truncated', 'conditional', 'state'],
     formality: ['formal', 'casual'],
   }
 };
@@ -78,7 +79,16 @@ class Korean {
         return futureConjugation.substring(0, futureConjugation.length - 3);
       }
       case 'truncated':
+      case 'present truncated':
         return word.substring(0, word.length - 1);
+      case 'past truncated': {
+        const pastConjugation = this.doPast(word);
+        return pastConjugation.substring(0, pastConjugation.length - 1);
+      }
+      case 'future truncated': {
+        const futureConjugation = this.doFuture(word);
+        return futureConjugation.substring(0, futureConjugation.length - 3);
+      }
       case 'conditional':
         return this.doConditional(word);
       case 'state':

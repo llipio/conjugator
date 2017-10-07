@@ -46,7 +46,8 @@ describe('Conjugator', () => {
         formality: ['formal', 'casual'],
       },
       verb: {
-        tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'truncated', 'conditional', 'state'],
+        tense: ['present', 'past', 'future', 'present continuous', 'prepared', 'present truncated',
+        'past truncated', 'future truncated', 'conditional', 'state'],
         formality: ['formal', 'casual'],
       }
     });

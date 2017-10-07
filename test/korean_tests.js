@@ -287,17 +287,39 @@ describe('Korean', () => {
     });
   });
   describe('Truncated form', () => {
-    it('should conjugate verbs correctly for truncated form', () => {
+    it('should conjugate Present verbs correctly for truncated form', () => {
       const kc = new Korean();
-      let truncatedWord = kc.conjugate('하다', {tense: 'Truncated'});
+      let truncatedWord = kc.conjugate('하다', {tense: 'Present Truncated'});
       expect(truncatedWord).to.equal('하');
 
-      truncatedWord = kc.conjugate('부르다', {tense: 'Truncated'});
+      truncatedWord = kc.conjugate('부르다', {tense: 'Present Truncated'});
       expect(truncatedWord).to.equal('부르');
 
-      truncatedWord = kc.conjugate('듣다', {tense: 'Truncated'});
+      truncatedWord = kc.conjugate('듣다', {tense: 'Present Truncated'});
       expect(truncatedWord).to.equal('듣');
      });
+     it('should conjugate Past verbs correctly for truncated form', () => {
+       const kc = new Korean();
+       let truncatedWord = kc.conjugate('하다', {tense: 'Past Truncated'});
+       expect(truncatedWord).to.equal('했');
+
+       truncatedWord = kc.conjugate('부르다', {tense: 'Past Truncated'});
+       expect(truncatedWord).to.equal('불렀');
+
+       truncatedWord = kc.conjugate('듣다', {tense: 'Past Truncated'});
+       expect(truncatedWord).to.equal('들었');
+      });
+      it('should conjugate Future verbs correctly for truncated form', () => {
+        const kc = new Korean();
+        let truncatedWord = kc.conjugate('하다', {tense: 'Future Truncated'});
+        expect(truncatedWord).to.equal('할');
+
+        truncatedWord = kc.conjugate('부르다', {tense: 'Future Truncated'});
+        expect(truncatedWord).to.equal('부를');
+
+        truncatedWord = kc.conjugate('듣다', {tense: 'Future Truncated'});
+        expect(truncatedWord).to.equal('들을');
+       });
   });
   describe('Conditional form', () => {
     it('should conjugate verbs without bottom consonant correctly for conditional form', () => {
