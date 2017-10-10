@@ -56,7 +56,6 @@ let genFutureEnding ending subject => {
   switch (subject:Subject.t, ending:Ending.t) {
     | (Yo, _) => "\130"
     | (Tu, _) => "\160s"
-    | ()
   }
 }; 
 
@@ -67,7 +66,6 @@ let conjugate word info => {
   let subjectType = Subject.ofString info##subject;
   switch info##tense {
     | "present" => stem ^ (genPresentEnding endingType subjectType)
-    //| "future" => word ^ (genFutureEnding endingType subjectType)
   }
 };
 
