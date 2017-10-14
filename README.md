@@ -34,8 +34,8 @@ let koreanConjugator = Conjugator.create('korean');
   
 #  Call the conjugator's conjugate method to conjugate the verb of your liking
 let conjugatedWord = koreanConjugator.conjugate(‘하다’, {
-  tense: 'future',
-  });
+  tense: 'future'
+});
 ```
 
 ## Developing
