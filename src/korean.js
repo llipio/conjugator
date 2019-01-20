@@ -345,6 +345,14 @@ class Korean {
 
     // check the bottom consonant
     switch (stem[stem.length - 1]) {
+      case 19: // ㅅ
+        if (stem[stem.length - 2] === 18 ||
+          stem[stem.length - 2] === 0
+        ) { // special case: if medial jamo is 'ㅡ ㅏ'
+          stem.pop()
+          return `${preStem}${combineSymbols(stem)}을 거야`
+        }
+        return `${preStem}${combineSymbols(stem)}을 거야`
       case 17: // ㅂ
         if (stem[stem.length - 2] === 20) { // special case: if medial jamo is 'ㅣ'
           return `${preStem}${combineSymbols(stem)}을 거야`
